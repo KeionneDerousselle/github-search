@@ -10,6 +10,7 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:js:fix": "npm run lint -- --fix",
+    "lint": "yarn lint:js",
     "run:unit-tests": "jest --runInBand",
     "test": "run-s clean:unit-tests \"run:unit-tests -- {1}\" --",
     "test:pattern": "run-s clean:unit-tests \"run:unit-tests -- --t {1}\" --",
