@@ -1,4 +1,4 @@
-name: ci
+name: Push to Main
 
 on:
   push:
@@ -47,9 +47,16 @@ jobs:
       - name: Run tests 🧪
         run: yarn test
 
+      - name: Build
+        run: yarn build
+
       - name: Deploy to Dev
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ""
+          heroku_app_name: "kd-github-search-dev"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          dontautocreate: true
+          healthcheck: true
+          delay: 5
+          # rollbackonhealthcheckfailed: true
