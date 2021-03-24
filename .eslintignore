@@ -1,0 +1,18 @@
+  
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Dist generate
+dist
+coverage
+static
+
+# IDE
+.idea
+
+# Mocks
+**/__mocks__/**
+**/__snapshots__/**
