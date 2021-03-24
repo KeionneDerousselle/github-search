@@ -150,5 +150,19 @@ module.exports = {
       }
     ],
     yoda: 'error'
-  }
+  },
+
+  overrides: [
+    {
+      files: ['**/*.spec.js'],
+      globals: {
+        mount: false,
+        mountPreMocked: false,
+        shallow: false,
+        shallowPreMocked: false,
+        routerPush: false,
+        mockTransitions: false
+      }
+    }
+  ]
 }
