@@ -54,7 +54,7 @@ jobs:
           heroku_app_name: "kd-github-search-dev"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           dontautocreate: true
-          healthcheck: true
+          healthcheck: "https://kd-github-search-dev.herokuapp.com"
           delay: 5
           # rollbackonhealthcheckfailed: true
         env:
