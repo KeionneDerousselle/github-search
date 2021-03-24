@@ -47,9 +47,6 @@ jobs:
       - name: Run tests 🧪
         run: yarn test
 
-      - name: Build
-        run: yarn build
-
       - name: Deploy to Dev
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
@@ -60,3 +57,6 @@ jobs:
           healthcheck: true
           delay: 5
           # rollbackonhealthcheckfailed: true
+        env:
+          NODE_ENV: "dev"
+          HOST: 0.0.0.0
