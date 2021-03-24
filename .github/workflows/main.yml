@@ -51,10 +51,10 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME_DEV}}
+          heroku_app_name: "${{secrets.HEROKU_APP_NAME}}-dev"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           dontautocreate: true
-          healthcheck: "https://kd-github-search-dev.herokuapp.com"
+          healthcheck: "https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com"
           delay: 5
           # rollbackonhealthcheckfailed: true
         env:
@@ -63,19 +63,40 @@ jobs:
           HD_NPM_CONFIG_PRODUCTION: "false"
 
       # Dev End-to-End Testing
-      # Dev performance testing
+      # Dev Performance testing
 
       - name: Deploy to Stage
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME_STAGE}}
+          heroku_app_name: "${{secrets.HEROKU_APP_NAME}}-stage"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           dontautocreate: true
-          healthcheck: "https://${{secrets.HEROKU_APP_NAME_STAGE}}.herokuapp.com"
+          healthcheck: "https://${{secrets.HEROKU_APP_NAME}}-stage.herokuapp.com"
           delay: 5
           # rollbackonhealthcheckfailed: true
         env:
           HD_NODE_ENV: "stage"
           HD_HOST: "0.0.0.0"
           HD_NPM_CONFIG_PRODUCTION: "false"
+
+      # Stage End-to-End Testing
+      # Stage Performance testing
+
+      - name: Deploy to Prod 🚀
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          dontautocreate: true
+          healthcheck: "https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com"
+          delay: 5
+          # rollbackonhealthcheckfailed: true
+        env:
+          HD_NODE_ENV: "production"
+          HD_HOST: "0.0.0.0"
+          HD_NPM_CONFIG_PRODUCTION: "false"
+      
+      # Prod End-to-End Testing
+      # Prod Performance testing
