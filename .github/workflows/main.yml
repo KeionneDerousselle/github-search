@@ -58,5 +58,6 @@ jobs:
           delay: 5
           # rollbackonhealthcheckfailed: true
         env:
-          HD_NODE_ENV: "production"
+          HD_NODE_ENV: "dev"
           HD_HOST: "0.0.0.0"
+          HD_NPM_CONFIG_PRODUCTION: "false"
