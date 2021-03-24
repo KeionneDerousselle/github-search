@@ -29,4 +29,12 @@ app.use((err, req, res, next) => {
 
 module.exports = app
 
-app.listen(PORT || 3001)
+// Start standalone server if directly running
+if (require.main === module) {
+  const port = PORT || 3001
+
+  app.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`API server listening on port ${port}`)
+  })
+}
