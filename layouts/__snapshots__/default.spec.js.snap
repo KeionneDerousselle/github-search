@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default Layout should render as expected 1`] = `
+<div id="kd-github-search-app" class="github-search-app">
+  <header id="kd-github-search-header" class="h-80 bg-indigo-600 github-search-header"></header>
+  <main id="kd-github-search-content" class="github-search-content">
+    <nuxt-stub></nuxt-stub>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="footer__content"><span>
+      Created with
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 inline-flex fill-current text-pink-900"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+      by <a id="footer-dev-link" href="https://www.keionne.com" class="footer__link">Keionne Derousselle</a>.
+    </span> <span>
+      Take a look at the code
+      <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" class="footer__link">here</a>!
+    </span></div>
+  </footer>
+</div>
+`;
