@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <textfield
       id="search-textfield"
       v-model="search"
@@ -42,7 +42,7 @@ export default {
           shouldApply: () => isFocused,
           classes: [
             'h-14',
-            'bg-indigo-600',
+            'bg-indigo-500',
             'text-white',
             'ring-4',
             'ring-indigo-300'
@@ -52,7 +52,7 @@ export default {
           shouldApply: () => true,
           classes: [
             'h-14',
-            'bg-indigo-600',
+            'bg-indigo-500',
             'text-white'
           ]
         }
@@ -105,13 +105,4 @@ export default {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 </style>
