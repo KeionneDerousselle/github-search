@@ -2,7 +2,7 @@
 
 exports[`Default Layout should render as expected 1`] = `
 <div id="kd-github-search-app" class="github-search-app">
-  <header id="kd-github-search-header" class="h-80 bg-indigo-600 github-search-header"></header>
+  <header id="kd-github-search-header" class="header github-search-header"></header>
   <main id="kd-github-search-content" class="github-search-content">
     <nuxt-stub></nuxt-stub>
   </main>

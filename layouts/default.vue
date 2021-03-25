@@ -2,9 +2,9 @@
   <div
     id="kd-github-search-app"
     class="github-search-app">
-    <header
+    <kd-github-search-header
       id="kd-github-search-header"
-      class="h-80 bg-indigo-600 github-search-header" />
+      class="github-search-header" />
 
     <main
       id="kd-github-search-content"
@@ -20,9 +20,12 @@
 
 <script>
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+
 export default {
   components: {
-    'kd-github-search-footer': Footer
+    'kd-github-search-footer': Footer,
+    'kd-github-search-header': Header
   }
 }
 </script>
