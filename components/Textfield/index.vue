@@ -221,7 +221,7 @@ export default {
   padding: 1.2rem;
   border-style: solid;
   border-width: 2.5px;
-  transition: all .5s;
+  transition: all 0.5s;
   font-weight: 400;
   align-items: center;
 
