@@ -9,14 +9,20 @@
         by <a
           id="footer-dev-link"
           href="https://www.keionne.com"
-          class="footer__link">Keionne Derousselle</a>.
+          class="footer__link"
+          target="_blank">
+          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span>.
+        </a>
       </span>
       <span>
         Take a look at the code
         <a
           id="footer-repo-link"
           href="https://www.github.com/KeionneDerousselle/github-search"
-          class="footer__link">here</a>!
+          class="footer__link"
+          target="_blank">
+          here<span class="sr-only">Opens the source code repository for this website in a new window.</span>.
+        </a>
       </span>
     </div>
   </footer>

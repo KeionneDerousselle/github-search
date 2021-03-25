@@ -20,7 +20,7 @@ describe('Footer', () => {
 
     expect(devLink.element).toBeVisible()
     expect(devLink.attributes().href).toBe('https://www.keionne.com')
-    expect(devLink.text()).toBe('Keionne Derousselle')
+    expect(devLink.text()).toContain('Keionne Derousselle')
   })
 
   it('should display a link to this project\'s repo', () => {
@@ -28,6 +28,6 @@ describe('Footer', () => {
 
     expect(repoLink.element).toBeVisible()
     expect(repoLink.attributes().href).toBe('https://www.github.com/KeionneDerousselle/github-search')
-    expect(repoLink.text()).toBe('here')
+    expect(repoLink.text()).toContain('here')
   })
 })
