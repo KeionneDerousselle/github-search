@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render as expected 1`] = `
+<footer class="footer">
+  <div class="footer__content"><span>
+      Created with
+      <heart-icon-stub class="w-4 inline-flex fill-current text-pink-900"></heart-icon-stub>
+      by <a id="footer-dev-link" href="https://www.keionne.com" class="footer__link">Keionne Derousselle</a>.
+    </span> <span>
+      Take a look at the code
+      <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" class="footer__link">here</a>!
+    </span></div>
+</footer>
+`;
