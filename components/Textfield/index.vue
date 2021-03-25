@@ -19,7 +19,7 @@
       class="textfield-container">
       <div
         tabindex="0"
-        :class="['textfield', 'rounded-lg', 'h-14', calcContainerClasses(errors, isFocused)]"
+        :class="['textfield', 'rounded-lg', calcContainerClasses(errors, isFocused)]"
         @focus="handleContainerFocused"
         @click="handleContainerFocused"
         @blur="blur">
