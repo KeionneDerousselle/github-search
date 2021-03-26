@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TextField when a left slot is not provided should render as expected 1`] = `
+<div class="attrs-fix">
+  <div class="input textfield-container"><label class="input__label sr-only">
+      My Label
+    </label>
+    <div tabindex="0" class="textfield rounded-lg">
+      <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
+    </div>
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`TextField when a left slot is provided should render as expected 1`] = `
+<div class="attrs-fix">
+  <div class="input textfield-container"><label class="input__label sr-only">
+      My Label
+    </label>
+    <div tabindex="0" class="textfield rounded-lg"><span class="textfield__left"><span id="left-slot">L</span></span> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
+    </div>
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
 exports[`TextField when a name is not provided should render as expected 1`] = `
 <div class="attrs-fix">
   <div class="input textfield-container"><label class="input__label sr-only">
@@ -7,6 +36,7 @@ exports[`TextField when a name is not provided should render as expected 1`] = `
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -21,6 +51,7 @@ exports[`TextField when a name is provided should render as expected 1`] = `
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="inputName" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -35,6 +66,7 @@ exports[`TextField when a placeholder is not provided should render as expected 
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -49,6 +81,36 @@ exports[`TextField when a placeholder is provided should render as expected 1`] 
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Placeholder" name="" type="text" class="textfield__input">
+      <!---->
+    </div>
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`TextField when a right slot is not provided should render as expected 1`] = `
+<div class="attrs-fix">
+  <div class="input textfield-container"><label class="input__label sr-only">
+      My Label
+    </label>
+    <div tabindex="0" class="textfield rounded-lg">
+      <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
+    </div>
+    <!---->
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`TextField when a right slot is provided should render as expected 1`] = `
+<div class="attrs-fix">
+  <div class="input textfield-container"><label class="input__label sr-only">
+      My Label
+    </label>
+    <div tabindex="0" class="textfield rounded-lg">
+      <!----> <input placeholder="My Label" name="" type="text" class="textfield__input"> <span class="textfield__right"><span id="right-slot">R</span></span>
     </div>
     <!---->
     <!---->
@@ -63,6 +125,7 @@ exports[`TextField when no props are provided should render as expected 1`] = `
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -77,6 +140,7 @@ exports[`TextField when the focus event is emitted from the container element sh
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -91,6 +155,7 @@ exports[`TextField when the input event is emitted from the input should render 
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -105,6 +170,7 @@ exports[`TextField when the text field is disabled should render as expected 1`]
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" disabled="disabled" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -119,6 +185,7 @@ exports[`TextField when the text field is enabled should render as expected 1`] 
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -133,6 +200,7 @@ exports[`TextField when the text field is not readonly should render as expected
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -147,6 +215,7 @@ exports[`TextField when the text field is readonly should render as expected 1`]
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" readonly="readonly" name="" type="text" class="textfield__input textfield__input--readonly">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -161,6 +230,7 @@ exports[`TextField when validation errors are not present should render as expec
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <!---->
@@ -175,6 +245,7 @@ exports[`TextField when validation errors are present should render as expected 
     </label>
     <div tabindex="0" class="textfield rounded-lg">
       <!----> <input placeholder="My Label" name="" type="text" class="textfield__input">
+      <!---->
     </div>
     <!---->
     <div class="input__errors"><span class="input__error text-error-400">

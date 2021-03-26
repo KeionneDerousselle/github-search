@@ -42,6 +42,12 @@
           @input="handleEvent"
           @blur="handleInputBlurred"
           @focus="focus">
+
+        <span
+          v-if="$slots.right"
+          class="textfield__right">
+          <slot name="right" />
+        </span>
       </div>
     </InputValidator>
   </div>
@@ -210,43 +216,47 @@ export default {
 .textfield-container,
 .textfield,
 .textfield__input {
-  width: 100%;
+  @apply w-full;
 }
 
 .textfield {
-  position: relative;
-  display: inline-flex;
-  overflow: hidden;
-  font-size: 1.4rem;
-  padding: 1.2rem;
-  border-style: solid;
-  border-width: 2.5px;
+  @apply relative inline-flex overflow-hidden border-solid border-2 items-center text-base p-4 font-normal;
+
   transition: all 0.5s;
-  font-weight: 400;
-  align-items: center;
 
   &__left {
-    margin-right: 1.2rem;
+    @apply mr-3;
+  }
+
+  &__right {
+    @apply ml-3;
   }
 }
 
 .textfield__input {
-  -webkit-appearance: none;
-  appearance: none;
+  @apply appearance-none pt-4 pr-4 pb-4 m-0 border-0 outline-none flex-1;
+
   background: inherit;
   color: inherit;
   font-family: inherit;
-  padding: 1.2rem 1.2rem 1.2rem 0;
-  margin: 0;
-  border: 0;
-  outline: 0;
   font-weight: inherit;
-  flex: 1;
 
   &::placeholder {
+    @apply font-normal;
+
     font-family: inherit;
-    font-size: 1.4rem;
-    font-weight: 400;
+  }
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    @apply hidden w-0 h-0;
+  }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    @apply appearance-none;
   }
 
   &:disabled,

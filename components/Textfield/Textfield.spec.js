@@ -721,4 +721,132 @@ describe('TextField', () => {
       expect(inputValidator.vm.hint).toBe(wrapper.vm.hint)
     })
   })
+
+  describe('when a right slot is provided', () => {
+    let rightSlotId
+
+    beforeAll(() => {
+      rightSlotId = 'right-slot'
+
+      wrapper = mountPreMocked(Textfield, {
+        slots: {
+          right: `<span id="${rightSlotId}">R</span>`
+        },
+
+        propsData: {
+          label
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should render the right content slot', () => {
+      expect(wrapper.get(`.textfield__right #${rightSlotId}`).element).toBeVisible()
+    })
+
+    it('should not render the left slot', () => {
+      expect(() => wrapper.get('.textfield__left')).toThrow()
+    })
+  })
+
+  describe('when a right slot is not provided', () => {
+    let rightSlotId
+
+    beforeAll(() => {
+      rightSlotId = 'right-slot'
+
+      wrapper = mountPreMocked(Textfield, {
+        propsData: {
+          label
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not render the right content slot', () => {
+      expect(() => wrapper.get(`.textfield__right #${rightSlotId}`)).toThrow()
+    })
+
+    it('should not render the left slot', () => {
+      expect(() => wrapper.get('.textfield__left')).toThrow()
+    })
+  })
+
+  describe('when a left slot is provided', () => {
+    let leftSlotId
+
+    beforeAll(() => {
+      leftSlotId = 'left-slot'
+
+      wrapper = mountPreMocked(Textfield, {
+        slots: {
+          left: `<span id="${leftSlotId}">L</span>`
+        },
+
+        propsData: {
+          label
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should render the left content slot', () => {
+      expect(wrapper.get(`.textfield__left #${leftSlotId}`).element).toBeVisible()
+    })
+
+    it('should not render the right slot', () => {
+      expect(() => wrapper.get('.textfield__right')).toThrow()
+    })
+  })
+
+  describe('when a left slot is not provided', () => {
+    let leftSlotId
+
+    beforeAll(() => {
+      leftSlotId = 'left-slot'
+
+      wrapper = mountPreMocked(Textfield, {
+        propsData: {
+          label
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not render the left content slot', () => {
+      expect(() => wrapper.get(`.textfield__left #${leftSlotId}`)).toThrow()
+    })
+
+    it('should not render the right slot', () => {
+      expect(() => wrapper.get('.textfield__right')).toThrow()
+    })
+  })
 })
