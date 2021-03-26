@@ -43,7 +43,9 @@ export default {
   }
 
   .footer__link {
-    @apply text-indigo-600 hover:text-indigo-900 border-b border-transparent hover:border-indigo-900;
+    @apply text-indigo-600 border-b border-transparent cursor-pointer;
+    @apply hover:text-indigo-900 hover:border-indigo-900;
+    @apply focus:text-indigo-900 focus:border-indigo-900 outline-none;
   }
 }
 </style>
