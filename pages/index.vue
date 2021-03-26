@@ -41,7 +41,15 @@
       </template>
     </form-validator>
 
-    <div class="results-box" />
+    <div class="results-box">
+      <li
+        v-for="user in users"
+        :id="`search-result-${user.id}`"
+        :key="user.id"
+        class="search__result">
+        {{ user.login }}
+      </li>
+    </div>
   </div>
 </template>
 
@@ -53,7 +61,7 @@ import CrossIcon from '@/components/Icons/Cross'
 import Button from '@/components/Button'
 import FormValidator from '@/components/FormValidator'
 
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -68,6 +76,10 @@ export default {
   data: () => ({
     searchTerm: ''
   }),
+
+  computed: {
+    ...mapGetters('users', ['users'])
+  },
 
   methods: {
     ...mapActions('users', ['search']),
@@ -139,6 +151,9 @@ export default {
     },
 
     handleSearchSubmitted(event) {
+      // TODO: Loading State
+      // TODO: Handle Errors
+
       return this.search({ simpleSearchTerm: this.searchTerm })
         .then(() => console.log('did it'))
         .catch(console.error)

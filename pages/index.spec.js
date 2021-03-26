@@ -36,6 +36,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -81,6 +84,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -133,6 +139,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: mockSearchAction
             }
@@ -181,6 +190,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -224,6 +236,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -261,6 +276,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -289,6 +307,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -323,6 +344,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -367,6 +391,9 @@ describe('Index Page', () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
+            getters: {
+              users: jest.fn().mockReturnValue([])
+            },
             actions: {
               search: jest.fn().mockResolvedValue([])
             }
@@ -404,6 +431,80 @@ describe('Index Page', () => {
 
     it('should display the results box', () => {
       expect(wrapper.get('.results-box').element).toBeVisible()
+    })
+  })
+
+  describe('when there are search results to be displayed', () => {
+    let users
+
+    beforeAll(() => {
+      users = [
+        { id: 1, login: 'user1' },
+        { id: 2, login: 'user2' },
+        { id: 3, login: 'user3' }
+      ]
+
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              users: jest.fn().mockReturnValue(users)
+            },
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should display a search result for each user', () => {
+      users.forEach(user => {
+        const userSearchResult = wrapper.get(`#search-result-${user.id}`)
+
+        expect(userSearchResult.element).toBeVisible()
+      })
+    })
+  })
+
+  describe('when there are no search results to be displayed', () => {
+    let users
+
+    beforeAll(() => {
+      users = []
+
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              users: jest.fn().mockReturnValue(users)
+            },
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display any search results ', () => {
+      expect(() => wrapper.get('.search__result')).toThrow()
     })
   })
 })
