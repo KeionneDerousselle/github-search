@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button when a left button slot is provided, and the button is loading should render as expected 1`] = `
+<button class="button button--loading">
+  <div class="button__content"><span class="button__content--left"><span class="button__spinner"></span></span> <span class="button__content--center"><span id="button-content-slot"></span></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when a left button slot is provided, but the button is not loading should render as expected 1`] = `
+<button class="button">
+  <div class="button__content"><span class="button__content--left"><span id="left-slot">L</span></span> <span class="button__content--center"><span id="button-content-slot"></span></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when a right and left button slot is provided should render as expected 1`] = `
+<button class="button">
+  <div class="button__content"><span class="button__content--left"><span id="left-slot">L</span></span> <span class="button__content--center"><span id="button-content-slot"></span></span> <span class="button__content--right"><span id="right-slot">R</span></span></div>
+</button>
+`;
+
+exports[`Button when a right and left button slot is provided, and the button is loading should render as expected 1`] = `
+<button class="button button--loading">
+  <div class="button__content"><span class="button__content--left"><span id="left-slot">L</span></span> <span class="button__content--center"><span id="button-content-slot"></span></span> <span class="button__content--right"><span class="button__spinner"></span></span></div>
+</button>
+`;
+
+exports[`Button when a right button slot is provided, and the button is loading should render as expected 1`] = `
+<button class="button button--loading">
+  <div class="button__content">
+    <!----> <span class="button__content--center"><span id="button-content-slot"></span></span> <span class="button__content--right"><span class="button__spinner"></span></span>
+  </div>
+</button>
+`;
+
+exports[`Button when a right button slot is provided, but the button is not loading should render as expected 1`] = `
+<button class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"><span id="button-content-slot"></span></span> <span class="button__content--right"><span id="right-slot">R</span></span>
+  </div>
+</button>
+`;
+
+exports[`Button when no left or right slot are provided, and the button is loading should render as expected 1`] = `
+<button class="button button--loading">
+  <div class="button__content">
+    <!----> <span class="button__content--center"></span> <span class="button__content--right"><span class="button__spinner"></span></span>
+  </div>
+</button>
+`;
+
+exports[`Button when no left or right slot are provided, and the button is not loading should render as expected 1`] = `
+<button class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when not providing the button with a default slot should render as expected 1`] = `
+<button class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when providing the button with a default slot should render as expected 1`] = `
+<button class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"><span id="button-content-slot"></span></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when the button is disabled should render as expected 1`] = `
+<button disabled="disabled" class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when the button is not disabled should render as expected 1`] = `
+<button class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"></span>
+    <!---->
+  </div>
+</button>
+`;
+
+exports[`Button when the button props are not provided should render as expected 1`] = `
+<button class="button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"></span>
+    <!---->
+  </div>
+</button>
+`;
