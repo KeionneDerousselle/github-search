@@ -59,7 +59,7 @@ describe('Index Page', () => {
 
     it('should contain the focused search container css classes', () => {
       expect(searchContainerClasses).toContain('ring-4')
-      expect(searchContainerClasses).toContain('ring-indigo-300')
+      expect(searchContainerClasses).toContain('ring-indigo-400')
     })
   })
 
@@ -88,7 +88,7 @@ describe('Index Page', () => {
 
     it('should not contain the focused search container css classes', () => {
       expect(searchContainerClasses).not.toContain('ring-4')
-      expect(searchContainerClasses).not.toContain('ring-indigo-300')
+      expect(searchContainerClasses).not.toContain('ring-indigo-400')
     })
   })
 
@@ -98,7 +98,7 @@ describe('Index Page', () => {
     beforeAll(() => {
       wrapper = mountPreMocked(IndexPage)
 
-      searchInputClasses = wrapper.get('#search-textfield').classes()
+      searchInputClasses = wrapper.get('#search-box').classes()
     })
 
     afterAll(() => {
@@ -111,6 +111,36 @@ describe('Index Page', () => {
 
     it('should contain the default search input css classes', () => {
       expect(searchInputClasses).toContain('placeholder-indigo-50')
+    })
+  })
+
+  describe('display', () => {
+    beforeAll(() => {
+      wrapper = mountPreMocked(IndexPage)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should display the search box', () => {
+      expect(wrapper.get('.search__box').element).toBeVisible()
+    })
+
+    it('should display the search button', () => {
+      expect(wrapper.get('.search__button').element).toBeVisible()
+    })
+
+    it('should render the search icon', () => {
+      expect(wrapper.get('.search__icon').element).toBeVisible()
+    })
+
+    it('should display the results box', () => {
+      expect(wrapper.get('.results-box').element).toBeVisible()
     })
   })
 })
