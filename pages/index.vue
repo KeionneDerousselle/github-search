@@ -1,12 +1,12 @@
 <template>
-  <div class="search-page">
+  <div class="container search-page">
     <form-validator
       class="search__form"
       @submit="handleSearchSubmitted">
       <template #default="{ pristine, invalid }">
         <textfield
           id="search-box"
-          v-model="search"
+          v-model="searchTerm"
           class="search__box"
           placeholder="Search"
           type="search"
@@ -22,7 +22,7 @@
 
           <template #right>
             <kd-github-search-button
-              v-show="search && search.length > 0"
+              v-show="searchTerm && searchTerm.length > 0"
               id="search-clear"
               class="search__clear"
               @click="clearSearch">
@@ -53,6 +53,8 @@ import CrossIcon from '@/components/Icons/Cross'
 import Button from '@/components/Button'
 import FormValidator from '@/components/FormValidator'
 
+import { mapActions } from 'vuex'
+
 export default {
   components: {
     Textfield,
@@ -64,10 +66,12 @@ export default {
   },
 
   data: () => ({
-    search: ''
+    searchTerm: ''
   }),
 
   methods: {
+    ...mapActions('users', ['search']),
+
     getSearchInputContainerClasses(errors, isFocused) {
       const classStrats = [
         {
@@ -131,11 +135,13 @@ export default {
     },
 
     clearSearch() {
-      this.search = ''
+      this.searchTerm = ''
     },
 
     handleSearchSubmitted(event) {
-      console.log(this.search)
+      return this.search({ simpleSearchTerm: this.searchTerm })
+        .then(() => console.log('did it'))
+        .catch(console.error)
     }
   }
 }
@@ -149,7 +155,7 @@ export default {
 */
 
 .search-page {
-  @apply flex flex-col h-full;
+  @apply container mx-auto flex flex-col h-full;
 }
 
 .search__form {
@@ -172,7 +178,7 @@ export default {
   }
 
   &__icon {
-    @apply text-xl w-5;
+    @apply text-xl w-5 h-5;
   }
 }
 

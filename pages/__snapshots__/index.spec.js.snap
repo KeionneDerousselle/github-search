@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index Page display should render as expected 1`] = `
-<div class="search-page">
+exports[`Index Page initial display should render as expected 1`] = `
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -25,7 +25,7 @@ exports[`Index Page display should render as expected 1`] = `
 `;
 
 exports[`Index Page when a search is performed without a search term should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -49,7 +49,7 @@ exports[`Index Page when a search is performed without a search term should rend
 `;
 
 exports[`Index Page when a valid search is performed should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -73,7 +73,7 @@ exports[`Index Page when a valid search is performed should render as expected 1
 `;
 
 exports[`Index Page when an invalid search is performed should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -99,7 +99,7 @@ exports[`Index Page when an invalid search is performed should render as expecte
 `;
 
 exports[`Index Page when clicking the clear search text button should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -125,7 +125,7 @@ exports[`Index Page when clicking the clear search text button should render as 
 `;
 
 exports[`Index Page when text is in the search bar should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -149,7 +149,7 @@ exports[`Index Page when text is in the search bar should render as expected 1`]
 `;
 
 exports[`Index Page when the search term container is focused should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -173,7 +173,7 @@ exports[`Index Page when the search term container is focused should render as e
 `;
 
 exports[`Index Page when the search term container is not focused and there are no search errors should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
@@ -197,7 +197,7 @@ exports[`Index Page when the search term container is not focused and there are 
 `;
 
 exports[`Index Page when the search term input is not focused and there are no errors should render as expected 1`] = `
-<div class="search-page">
+<div class="container search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">

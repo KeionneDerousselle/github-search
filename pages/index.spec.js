@@ -29,11 +29,19 @@ describe('Index Page', () => {
 
   describe('when a search is performed without a search term', () => {
     let searchButton
-    let searchSubmitSpy
+    let mockSearchAction
 
     beforeAll(async () => {
-      searchSubmitSpy = jest.spyOn(IndexPage.methods, 'handleSearchSubmitted')
-      wrapper = mountPreMocked(IndexPage)
+      mockSearchAction = jest.fn().mockResolvedValue([])
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       searchButton = wrapper.get('#search-button')
 
@@ -42,7 +50,7 @@ describe('Index Page', () => {
     })
 
     afterAll(() => {
-      searchSubmitSpy.mockRestore()
+      mockSearchAction.mockRestore()
       wrapper.destroy()
     })
 
@@ -58,19 +66,27 @@ describe('Index Page', () => {
       expect(searchButton.attributes().disabled).toBeTruthy()
     })
 
-    it('should not handle the search form submission', () => {
-      expect(searchSubmitSpy).not.toHaveBeenCalled()
+    it('should not call the search action', () => {
+      expect(mockSearchAction).not.toHaveBeenCalled()
     })
   })
 
   describe('when an invalid search is performed', () => {
     let searchButton
-    let searchSubmitSpy
+    let mockSearchAction
 
     // TODO: include validation rules
     beforeAll(async () => {
-      searchSubmitSpy = jest.spyOn(IndexPage.methods, 'handleSearchSubmitted')
-      wrapper = mountPreMocked(IndexPage)
+      mockSearchAction = jest.fn().mockResolvedValue([])
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       const searchBox = wrapper.get('#search-box')
 
@@ -84,7 +100,7 @@ describe('Index Page', () => {
     })
 
     afterAll(() => {
-      searchSubmitSpy.mockRestore()
+      mockSearchAction.mockRestore()
       wrapper.destroy()
     })
 
@@ -100,25 +116,35 @@ describe('Index Page', () => {
       expect(searchButton.attributes().disabled).toBeTruthy()
     })
 
-    it('should not handle the search form submission', () => {
-      expect(searchSubmitSpy).not.toHaveBeenCalled()
+    it('should not call the search action', () => {
+      expect(mockSearchAction).not.toHaveBeenCalled()
     })
   })
 
   describe('when a valid search is performed', () => {
     let searchButton
-    let searchSubmitSpy
+    let mockSearchAction
+    let searchTerm
 
     // TODO: include validation rules
     beforeAll(async () => {
-      searchSubmitSpy = jest.spyOn(IndexPage.methods, 'handleSearchSubmitted')
-      wrapper = mountPreMocked(IndexPage)
+      searchTerm = 'test'
+      mockSearchAction = jest.fn().mockResolvedValue([])
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: mockSearchAction
+            }
+          }
+        }
+      })
 
       const searchBox = wrapper.get('#search-box')
 
       searchButton = wrapper.get('#search-button')
 
-      searchBox.setValue('test')
+      searchBox.setValue(searchTerm)
       searchBox.trigger('blur')
       await flushValidationUpdates(wrapper)
 
@@ -127,7 +153,7 @@ describe('Index Page', () => {
     })
 
     afterAll(() => {
-      searchSubmitSpy.mockRestore()
+      mockSearchAction.mockRestore()
       wrapper.destroy()
     })
 
@@ -143,8 +169,8 @@ describe('Index Page', () => {
       expect(searchButton.attributes().disabled).toBeFalsy()
     })
 
-    it('should handle the search form submission', () => {
-      expect(searchSubmitSpy).toHaveBeenCalled()
+    it('should call the search action', () => {
+      expect(mockSearchAction).toHaveBeenCalledWith(expect.any(Object), { simpleSearchTerm: searchTerm })
     })
   })
 
@@ -152,7 +178,15 @@ describe('Index Page', () => {
     let searchContainerClasses
 
     beforeAll(async () => {
-      wrapper = mountPreMocked(IndexPage)
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       const searchContainer = wrapper.get('.textfield')
 
@@ -187,7 +221,15 @@ describe('Index Page', () => {
     let searchContainerClasses
 
     beforeAll(() => {
-      wrapper = mountPreMocked(IndexPage)
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       searchContainerClasses = wrapper.get('.textfield').classes()
     })
@@ -216,7 +258,15 @@ describe('Index Page', () => {
     let searchInputClasses
 
     beforeAll(() => {
-      wrapper = mountPreMocked(IndexPage)
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       searchInputClasses = wrapper.get('#search-box').classes()
     })
@@ -236,7 +286,15 @@ describe('Index Page', () => {
 
   describe('when text is in the search bar', () => {
     beforeAll(async () => {
-      wrapper = mountPreMocked(IndexPage)
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       const searchBox = wrapper.get('#search-box')
 
@@ -262,7 +320,15 @@ describe('Index Page', () => {
     let searchBox
 
     beforeAll(async () => {
-      wrapper = mountPreMocked(IndexPage)
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
 
       searchBox = wrapper.get('#search-box')
       searchBox.setValue('test')
@@ -291,14 +357,22 @@ describe('Index Page', () => {
     })
 
     it('should clear the search text from the search box', () => {
-      expect(wrapper.vm.search).toBe('')
+      expect(wrapper.vm.searchTerm).toBe('')
       expect(searchBox.element.value).toBe('')
     })
   })
 
-  describe('display', () => {
+  describe('initial display', () => {
     beforeAll(() => {
-      wrapper = mountPreMocked(IndexPage)
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            actions: {
+              search: jest.fn().mockResolvedValue([])
+            }
+          }
+        }
+      })
     })
 
     afterAll(() => {
