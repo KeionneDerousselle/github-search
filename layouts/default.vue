@@ -32,20 +32,22 @@ export default {
 
 <style lang="scss">
 body {
-  @apply bg-gray-100;
+  @apply bg-gray-100 h-screen;
 }
 
 .github-search-app {
-  @apply relative w-full flex flex-col h-screen;
+  @apply w-full flex flex-col h-screen;
+}
+
+.github-search-header {
+  @apply flex-none;
 }
 
 .github-search-content {
-  flex: 1 0 auto;
-
-  @apply w-full p-6;
+  @apply w-full p-6 flex-1 overflow-y-auto;
 }
 
 .github-search-footer {
-  @apply flex-shrink-0 pb-6 pl-6 pr-6 w-full;
+  @apply flex-none pb-6 pl-6 pr-6 w-full;
 }
 </style>
