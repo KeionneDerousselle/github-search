@@ -19,6 +19,16 @@
           <template #left>
             <search-icon class="search__icon" />
           </template>
+
+          <template #right>
+            <kd-github-search-button
+              v-show="search && search.length > 0"
+              id="search-clear"
+              class="search__clear"
+              @click="clearSearch">
+              <cross-icon class="search__clear__icon" />
+            </kd-github-search-button>
+          </template>
         </textfield>
 
         <kd-github-search-button
@@ -39,6 +49,7 @@
 import Textfield from '@/components/Textfield'
 import SearchIcon from '@/components/Icons/Search'
 import CheckIcon from '@/components/Icons/Check'
+import CrossIcon from '@/components/Icons/Cross'
 import Button from '@/components/Button'
 import FormValidator from '@/components/FormValidator'
 
@@ -47,8 +58,9 @@ export default {
     Textfield,
     SearchIcon,
     CheckIcon,
-    'kd-github-search-button': Button,
-    FormValidator
+    CrossIcon,
+    FormValidator,
+    'kd-github-search-button': Button
   },
 
   data: () => ({
@@ -111,11 +123,15 @@ export default {
 
         {
           shouldApply: () => true,
-          classes: ['placeholder-indigo-50']
+          classes: [ 'placeholder-indigo-50', 'text-xl', 'placeholder-text-lg' ]
         }
       ]
 
       return classStrats.find(cs => cs.shouldApply()).classes
+    },
+
+    clearSearch() {
+      this.search = ''
     },
 
     handleSearchSubmitted(event) {
@@ -145,7 +161,19 @@ export default {
 }
 
 .search__icon {
-  @apply text-4xl w-6;
+  @apply text-xl w-5;
+}
+
+.search__clear {
+  @apply bg-transparent border-2 border-transparent m-0 p-0.5 outline-none rounded-full;
+
+  &:hover {
+    @apply border-2 border-white;
+  }
+
+  &__icon {
+    @apply text-xl w-5;
+  }
 }
 
 .search__button {
@@ -155,7 +183,7 @@ export default {
     @apply bg-indigo-300 shadow-2xl;
   }
 
-  &:focus:not(:active):not(:disabled) {
+  &:focus:not(:active) {
     @apply shadow-2xl ring-indigo-400 ring-4;
   }
 
