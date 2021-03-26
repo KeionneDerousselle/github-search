@@ -1,26 +1,36 @@
 <template>
   <div class="search-page">
-    <div class="search__bar">
-      <textfield
-        id="search-box"
-        v-model="search"
-        class="search__box"
-        placeholder="Search"
-        type="search"
-        rules="required"
-        label="Search Term"
-        name="Search Term"
-        vee-validate-name="A search term"
-        :calc-input-classes="getSearchInputClasses"
-        :calc-container-classes="getSearchInputContainerClasses">
-        <template #left>
-          <search-icon class="search__icon" />
-        </template>
-      </textfield>
-      <kd-github-search-button class="search__button">
-        <check-icon class="search__button__icon" />
-      </kd-github-search-button>
-    </div>
+    <form-validator
+      class="search__form"
+      @submit="handleSearchSubmitted">
+      <template #default="{ pristine, invalid }">
+        <textfield
+          id="search-box"
+          v-model="search"
+          class="search__box"
+          placeholder="Search"
+          type="search"
+          rules="required"
+          label="Search Term"
+          name="Search Term"
+          vee-validate-name="A search term"
+          :calc-input-classes="getSearchInputClasses"
+          :calc-container-classes="getSearchInputContainerClasses">
+          <template #left>
+            <search-icon class="search__icon" />
+          </template>
+        </textfield>
+
+        <kd-github-search-button
+          id="search-button"
+          class="search__button"
+          type="submit"
+          :disabled="pristine || invalid">
+          <check-icon class="search__button__icon" />
+        </kd-github-search-button>
+      </template>
+    </form-validator>
+
     <div class="results-box" />
   </div>
 </template>
@@ -30,13 +40,15 @@ import Textfield from '@/components/Textfield'
 import SearchIcon from '@/components/Icons/Search'
 import CheckIcon from '@/components/Icons/Check'
 import Button from '@/components/Button'
+import FormValidator from '@/components/FormValidator'
 
 export default {
   components: {
     Textfield,
     SearchIcon,
     CheckIcon,
-    'kd-github-search-button': Button
+    'kd-github-search-button': Button,
+    FormValidator
   },
 
   data: () => ({
@@ -104,6 +116,10 @@ export default {
       ]
 
       return classStrats.find(cs => cs.shouldApply()).classes
+    },
+
+    handleSearchSubmitted(event) {
+      console.log(this.search)
     }
   }
 }
@@ -120,7 +136,7 @@ export default {
   @apply flex flex-col h-full;
 }
 
-.search__bar {
+.search__form {
   @apply flex items-start justify-between;
 }
 
@@ -134,8 +150,18 @@ export default {
 
 .search__button {
   @apply shadow-lg border-transparent bg-indigo-200 h-14 w-14 flex-none;
-  @apply hover:bg-indigo-300 hover:shadow-2xl;
-  @apply focus:shadow-2xl focus:ring-indigo-400 focus:ring-4;
+
+  &:hover:not(:disabled) {
+    @apply bg-indigo-300 shadow-2xl;
+  }
+
+  &:focus:not(:active):not(:disabled) {
+    @apply shadow-2xl ring-indigo-400 ring-4;
+  }
+
+  &:disabled {
+    @apply bg-gray-300;
+  }
 
   &__icon {
     @apply text-gray-600 text-xl w-5 h-5 font-bold;

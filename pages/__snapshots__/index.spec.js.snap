@@ -2,7 +2,7 @@
 
 exports[`Index Page display should render as expected 1`] = `
 <div class="search-page">
-  <div class="search__bar">
+  <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
           Search Term
@@ -11,20 +11,20 @@ exports[`Index Page display should render as expected 1`] = `
         <!---->
         <!---->
       </div>
-    </div> <button class="search__button button">
+    </div> <button id="search-button" type="submit" disabled="disabled" class="search__button button">
       <div class="button__content">
         <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
-  </div>
+  </form>
   <div class="results-box"></div>
 </div>
 `;
 
 exports[`Index Page when a search is performed without a search term should render as expected 1`] = `
 <div class="search-page">
-  <div class="search__bar">
+  <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
           Search Term
@@ -33,20 +33,66 @@ exports[`Index Page when a search is performed without a search term should rend
         <!---->
         <!---->
       </div>
-    </div> <button class="search__button button">
+    </div> <button id="search-button" type="submit" disabled="disabled" class="search__button button">
       <div class="button__content">
         <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
-  </div>
+  </form>
+  <div class="results-box"></div>
+</div>
+`;
+
+exports[`Index Page when a valid search is performed should render as expected 1`] = `
+<div class="search-page">
+  <form class="form search__form">
+    <div class="attrs-fix search__box">
+      <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
+          Search Term
+        </label>
+        <div tabindex="0" class="textfield rounded-lg h-14 shadow-lg bg-indigo-500 text-white"><span class="textfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="search__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input placeholder="Search" name="Search Term" type="search" id="search-box" class="textfield__input placeholder-indigo-50"></div>
+        <!---->
+        <!---->
+      </div>
+    </div> <button id="search-button" type="submit" class="search__button button">
+      <div class="button__content">
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+        <!---->
+      </div>
+    </button>
+  </form>
+  <div class="results-box"></div>
+</div>
+`;
+
+exports[`Index Page when an invalid search is performed should render as expected 1`] = `
+<div class="search-page">
+  <form class="form search__form">
+    <div class="attrs-fix search__box">
+      <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
+          Search Term
+        </label>
+        <div tabindex="0" class="textfield rounded-lg h-14 shadow-lg bg-indigo-500 text-white"><span class="textfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="search__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input placeholder="Search" name="Search Term" type="search" id="search-box" class="textfield__input placeholder-indigo-50"></div>
+        <!---->
+        <div class="input__errors"><span class="input__error text-error-400">
+        A search term is not valid.
+      </span></div>
+      </div>
+    </div> <button id="search-button" type="submit" disabled="disabled" class="search__button button">
+      <div class="button__content">
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+        <!---->
+      </div>
+    </button>
+  </form>
   <div class="results-box"></div>
 </div>
 `;
 
 exports[`Index Page when the search term container is focused should render as expected 1`] = `
 <div class="search-page">
-  <div class="search__bar">
+  <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
           Search Term
@@ -55,20 +101,20 @@ exports[`Index Page when the search term container is focused should render as e
         <!---->
         <!---->
       </div>
-    </div> <button class="search__button button">
+    </div> <button id="search-button" type="submit" disabled="disabled" class="search__button button">
       <div class="button__content">
         <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
-  </div>
+  </form>
   <div class="results-box"></div>
 </div>
 `;
 
 exports[`Index Page when the search term container is not focused and there are no search errors should render as expected 1`] = `
 <div class="search-page">
-  <div class="search__bar">
+  <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
           Search Term
@@ -77,20 +123,20 @@ exports[`Index Page when the search term container is not focused and there are 
         <!---->
         <!---->
       </div>
-    </div> <button class="search__button button">
+    </div> <button id="search-button" type="submit" disabled="disabled" class="search__button button">
       <div class="button__content">
         <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
-  </div>
+  </form>
   <div class="results-box"></div>
 </div>
 `;
 
 exports[`Index Page when the search term input is not focused and there are no errors should render as expected 1`] = `
 <div class="search-page">
-  <div class="search__bar">
+  <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input textfield-container"><label for="search-box" class="input__label sr-only">
           Search Term
@@ -99,13 +145,13 @@ exports[`Index Page when the search term input is not focused and there are no e
         <!---->
         <!---->
       </div>
-    </div> <button class="search__button button">
+    </div> <button id="search-button" type="submit" disabled="disabled" class="search__button button">
       <div class="button__content">
         <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
-  </div>
+  </form>
   <div class="results-box"></div>
 </div>
 `;

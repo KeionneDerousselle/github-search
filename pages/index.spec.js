@@ -6,16 +6,43 @@ import IndexPage from '.'
 describe('Index Page', () => {
   let wrapper
 
+  /**
+   * https://vee-validate.logaretm.com/v3/advanced/testing.html#testing-error-messages
+   */
+  const flushValidationUpdates = async wrapper => {
+    await flushPromises()
+    jest.runAllTimers()
+    await flushPromises()
+    await wrapper.vm.$nextTick()
+  }
+
   beforeAll(() => {
     extend('required', required)
+    console.log = jest.fn()
+    jest.useFakeTimers()
+  })
+
+  afterAll(() => {
+    console.log.mockRestore()
+    jest.useRealTimers()
   })
 
   describe('when a search is performed without a search term', () => {
-    beforeAll(() => {
+    let searchButton
+    let searchSubmitSpy
+
+    beforeAll(async () => {
+      searchSubmitSpy = jest.spyOn(IndexPage.methods, 'handleSearchSubmitted')
       wrapper = mountPreMocked(IndexPage)
+
+      searchButton = wrapper.get('#search-button')
+
+      searchButton.trigger('click')
+      await flushValidationUpdates(wrapper)
     })
 
     afterAll(() => {
+      searchSubmitSpy.mockRestore()
       wrapper.destroy()
     })
 
@@ -25,6 +52,99 @@ describe('Index Page', () => {
 
     it('should display an error message about the search term being required', () => {
 
+    })
+
+    it('should disable the search submit button', () => {
+      expect(searchButton.attributes().disabled).toBeTruthy()
+    })
+
+    it('should not handle the search form submission', () => {
+      expect(searchSubmitSpy).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('when an invalid search is performed', () => {
+    let searchButton
+    let searchSubmitSpy
+
+    // TODO: include validation rules
+    beforeAll(async () => {
+      searchSubmitSpy = jest.spyOn(IndexPage.methods, 'handleSearchSubmitted')
+      wrapper = mountPreMocked(IndexPage)
+
+      const searchBox = wrapper.get('#search-box')
+
+      searchButton = wrapper.get('#search-button')
+
+      searchBox.setValue('')
+      searchBox.trigger('blur')
+      searchButton.trigger('click')
+
+      await flushValidationUpdates(wrapper)
+    })
+
+    afterAll(() => {
+      searchSubmitSpy.mockRestore()
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should display an error message about the search term being invalid', () => {
+
+    })
+
+    it('should disable the search submit button', () => {
+      expect(searchButton.attributes().disabled).toBeTruthy()
+    })
+
+    it('should not handle the search form submission', () => {
+      expect(searchSubmitSpy).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('when a valid search is performed', () => {
+    let searchButton
+    let searchSubmitSpy
+
+    // TODO: include validation rules
+    beforeAll(async () => {
+      searchSubmitSpy = jest.spyOn(IndexPage.methods, 'handleSearchSubmitted')
+      wrapper = mountPreMocked(IndexPage)
+
+      const searchBox = wrapper.get('#search-box')
+
+      searchButton = wrapper.get('#search-button')
+
+      searchBox.setValue('test')
+      searchBox.trigger('blur')
+      await flushValidationUpdates(wrapper)
+
+      searchButton.trigger('click')
+      await flushValidationUpdates(wrapper)
+    })
+
+    afterAll(() => {
+      searchSubmitSpy.mockRestore()
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display an error message about the search term being invalid', () => {
+
+    })
+
+    it('should not disable the search submit button', () => {
+      expect(searchButton.attributes().disabled).toBeFalsy()
+    })
+
+    it('should handle the search form submission', () => {
+      expect(searchSubmitSpy).toHaveBeenCalled()
     })
   })
 
@@ -131,8 +251,11 @@ describe('Index Page', () => {
       expect(wrapper.get('.search__box').element).toBeVisible()
     })
 
-    it('should display the search button', () => {
-      expect(wrapper.get('.search__button').element).toBeVisible()
+    it('should display a disabled the search button', () => {
+      const searchButton = wrapper.get('.search__button')
+
+      expect(searchButton.element).toBeVisible()
+      expect(searchButton.attributes().disabled).toBeTruthy()
     })
 
     it('should render the search icon', () => {
