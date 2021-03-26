@@ -66,7 +66,7 @@ export default {
 
   &__content--left,
   &__content--right {
-    @apply text-sm font-normal;
+    @apply text-base font-normal;
   }
 
   &__content--left {
