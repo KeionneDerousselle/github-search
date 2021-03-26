@@ -18,7 +18,7 @@
         </template>
       </textfield>
       <kd-github-search-button class="search__button">
-        Hi
+        <check-icon class="search__button__icon" />
       </kd-github-search-button>
     </div>
     <div class="results-box" />
@@ -28,12 +28,14 @@
 <script>
 import Textfield from '@/components/Textfield'
 import SearchIcon from '@/components/Icons/Search'
+import CheckIcon from '@/components/Icons/Check'
 import Button from '@/components/Button'
 
 export default {
   components: {
     Textfield,
     SearchIcon,
+    CheckIcon,
     'kd-github-search-button': Button
   },
 
@@ -134,6 +136,10 @@ export default {
   @apply shadow-lg border-transparent bg-indigo-200 h-14 w-14 flex-none;
   @apply hover:bg-indigo-300 hover:shadow-2xl;
   @apply focus:shadow-2xl focus:ring-indigo-400 focus:ring-4;
+
+  &__icon {
+    @apply text-gray-600 text-xl w-5 h-5 font-bold;
+  }
 }
 
 .results-box {

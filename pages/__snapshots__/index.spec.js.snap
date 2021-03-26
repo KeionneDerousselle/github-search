@@ -13,9 +13,7 @@ exports[`Index Page display should render as expected 1`] = `
       </div>
     </div> <button class="search__button button">
       <div class="button__content">
-        <!----> <span class="button__content--center">
-      Hi
-    </span>
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
@@ -37,9 +35,7 @@ exports[`Index Page when a search is performed without a search term should rend
       </div>
     </div> <button class="search__button button">
       <div class="button__content">
-        <!----> <span class="button__content--center">
-      Hi
-    </span>
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
@@ -61,9 +57,7 @@ exports[`Index Page when the search term container is focused should render as e
       </div>
     </div> <button class="search__button button">
       <div class="button__content">
-        <!----> <span class="button__content--center">
-      Hi
-    </span>
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
@@ -85,9 +79,7 @@ exports[`Index Page when the search term container is not focused and there are 
       </div>
     </div> <button class="search__button button">
       <div class="button__content">
-        <!----> <span class="button__content--center">
-      Hi
-    </span>
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
@@ -109,9 +101,7 @@ exports[`Index Page when the search term input is not focused and there are no e
       </div>
     </div> <button class="search__button button">
       <div class="button__content">
-        <!----> <span class="button__content--center">
-      Hi
-    </span>
+        <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
         <!---->
       </div>
     </button>
