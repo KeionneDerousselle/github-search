@@ -17,6 +17,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    [ '@nuxtjs/dotenv', { only: ['BASE_URL'] } ],
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
@@ -33,7 +34,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+  },
 
   /*
   ** Server Middleware
