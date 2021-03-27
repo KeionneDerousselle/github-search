@@ -23,10 +23,10 @@
           id="search-button"
           class="search__button"
           type="submit"
-          :disabled="invalid || peformingSearch"
+          :disabled="invalid || performingSearch"
           :loading="performingSearch">
           <check-icon
-            v-show="!peformingSearch"
+            v-show="!performingSearch"
             class="search__button__icon" />
         </kd-github-search-button>
       </template>
@@ -65,7 +65,7 @@ export default {
 
   data: () => ({
     searchTerm: '',
-    peformingSearch: false
+    performingSearch: false
   }),
 
   computed: {
@@ -140,13 +140,12 @@ export default {
     handleSearchSubmitted(event) {
       // TODO: Loading State
       // TODO: Handle Errors
-      this.peformingSearch = true
+      this.performingSearch = true
 
       return this.search({ simpleSearchTerm: this.searchTerm })
-        .then(console.log)
         .catch(console.error)
         .finally(() => {
-          this.peformingSearch = false
+          this.performingSearch = false
         })
     }
   }

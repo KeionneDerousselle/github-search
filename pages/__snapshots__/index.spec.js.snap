@@ -238,13 +238,22 @@ exports[`Index Page when there are search results to be displayed should render 
 </button></form>
 <div id="results-box" class="results-box">
   <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
-    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user1</span></div>
+    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user1</span></div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+      </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
   </li>
   <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
-    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user2</span></div>
+    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user2</span></div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+      </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
   </li>
   <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
-    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user3</span></div>
+    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user3</span></div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+      </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
   </li>
 </div>
 </div>
