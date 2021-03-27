@@ -82,7 +82,8 @@ export default {
         {
           shouldApply: () => isFocused,
           classes: [
-            'h-14',
+            'h-12',
+            'md:h-14',
             'shadow-lg',
             'bg-indigo-500',
             'text-white',
@@ -93,7 +94,8 @@ export default {
         {
           shouldApply: () => true,
           classes: [
-            'h-14',
+            'h-12',
+            'md:h-14',
             'shadow-lg',
             'bg-indigo-500',
             'text-white'
@@ -132,7 +134,9 @@ export default {
 
         {
           shouldApply: () => true,
-          classes: [ 'placeholder-indigo-50', 'text-xl', 'placeholder-text-lg' ]
+          classes: [
+            'placeholder-indigo-50', 'text-sm', 'md:text-base', 'lg:text-lg', 'xl:text-xl', 'placeholder-text-lg'
+          ]
         }
       ]
 
@@ -164,11 +168,15 @@ export default {
 }
 
 .search__box {
-  @apply flex-grow w-11/12 mr-4;
+  @apply flex-grow w-11/12;
+  @apply mr-3;
+  @apply md:mr-4;
 }
 
 .search__button {
-  @apply shadow-lg border-0 bg-indigo-200 h-14 w-14 flex-none text-indigo-800;
+  @apply shadow-lg border-0 bg-indigo-200 flex-none text-indigo-800;
+  @apply h-12 w-12;
+  @apply md:h-14 md:w-14;
 
   &:hover:not(:disabled) {
     @apply bg-indigo-300 shadow-2xl;
@@ -187,7 +195,9 @@ export default {
   }
 
   &__icon {
-    @apply text-xl w-5 h-5 font-bold;
+    @apply font-bold;
+    @apply w-4 h-4;
+    @apply md:w-5 md:h-5;
   }
 }
 

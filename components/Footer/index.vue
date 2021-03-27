@@ -39,7 +39,10 @@ export default {
 <style lang="scss">
 .footer {
   .footer__content {
-    @apply text-base border-t-2 border-gray-200 pt-6;
+    @apply border-t-2 border-gray-200;
+    @apply text-xs pt-2;
+    @apply md:text-sm md:pt-2;
+    @apply lg:text-base lg:pt-6;
   }
 
   .footer__link {

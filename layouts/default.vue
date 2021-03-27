@@ -2,19 +2,21 @@
   <div
     id="kd-github-search-app"
     class="github-search-app">
-    <kd-github-search-header
-      id="kd-github-search-header"
-      class="github-search-header" />
+    <div class="github-search-container">
+      <kd-github-search-header
+        id="kd-github-search-header"
+        class="github-search-header" />
 
-    <main
-      id="kd-github-search-content"
-      class="github-search-content">
-      <Nuxt />
-    </main>
+      <main
+        id="kd-github-search-content"
+        class="github-search-content">
+        <Nuxt />
+      </main>
 
-    <kd-github-search-footer
-      id="kd-github-search-footer"
-      class="github-search-footer" />
+      <kd-github-search-footer
+        id="kd-github-search-footer"
+        class="github-search-footer" />
+    </div>
   </div>
 </template>
 
@@ -32,11 +34,19 @@ export default {
 
 <style lang="scss">
 body {
-  @apply bg-gray-100 h-full overflow-hidden;
+  @apply bg-gray-100 overflow-hidden;
 }
 
 .github-search-app {
-  @apply w-full flex flex-col h-screen;
+  @apply w-full flex flex-col h-screen absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.github-search-container {
+  @apply flex flex-col min-h-0 flex-grow;
 }
 
 .github-search-header {

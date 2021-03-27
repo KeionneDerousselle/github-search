@@ -237,20 +237,24 @@ export default {
 
 .searchfield {
   @apply relative inline-flex overflow-hidden items-center text-base p-4 font-normal;
+  @apply p-3;
+  @apply md:p-4;
 
   transition: all 0.5s;
 
   &__left {
-    @apply mr-3;
+    @apply mr-2.5;
   }
 
   &__right {
-    @apply ml-3;
+    @apply ml-2.5;
   }
 }
 
 .searchfield__input {
   @apply appearance-none pt-4 pr-4 pb-4 m-0 border-0 outline-none flex-1;
+  @apply pt-3 pr-3 pb-3;
+  @apply md:pt-4 md:pr-4 md:pb-4;
 
   background: inherit;
   color: inherit;
@@ -282,19 +286,24 @@ export default {
 }
 
 .searchfield__icon {
-  @apply text-xl w-5;
+  @apply w-4 h-4;
+  @apply md:w-5 md:h-5;
 }
 
 .searchfield__clear {
-  @apply bg-transparent border-2 border-transparent m-0 p-0.5 outline-none rounded-full;
+  @apply bg-transparent border-transparent m-0 p-0.5 outline-none rounded-full;
+  @apply border;
+  @apply md:border-2;
 
   &:hover,
   &:focus {
-    @apply border-2 border-white;
+    @apply border border-white;
+    @apply md:border-2;
   }
 
   &__icon {
-    @apply text-xl w-5 h-5;
+    @apply w-4 h-4;
+    @apply md:w-5 md:h-5;
   }
 }
 </style>

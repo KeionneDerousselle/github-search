@@ -228,7 +228,8 @@ describe('Index Page', () => {
     })
 
     it('should contain the default search container css classes', () => {
-      expect(searchContainerClasses).toContain('h-14')
+      expect(searchContainerClasses).toContain('h-12')
+      expect(searchContainerClasses).toContain('md:h-14')
       expect(searchContainerClasses).toContain('bg-indigo-500')
       expect(searchContainerClasses).toContain('text-white')
     })
@@ -270,7 +271,8 @@ describe('Index Page', () => {
     })
 
     it('should contain the default search container css classes', () => {
-      expect(searchContainerClasses).toContain('h-14')
+      expect(searchContainerClasses).toContain('h-12')
+      expect(searchContainerClasses).toContain('md:h-14')
       expect(searchContainerClasses).toContain('bg-indigo-500')
       expect(searchContainerClasses).toContain('text-white')
     })
