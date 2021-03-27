@@ -8,7 +8,8 @@ describe('User List Item', () => {
     user = {
       name: 'Test',
       login: 'test_user',
-      avatar_url: 'https://some.fake.com/avatar.png'
+      avatar_url: 'https://some.fake.com/avatar.png',
+      html_url: 'https://www.some.external.link.com'
     }
 
     wrapper = shallowPreMocked(UserListItem, {
@@ -46,5 +47,12 @@ describe('User List Item', () => {
 
     expect(name.element).toBeVisible()
     expect(name.text()).toBe(user.name)
+  })
+
+  it('should render an external link to the user\'s GitHub page', () => {
+    const externalLink = wrapper.get('.user-list-item__link')
+
+    expect(externalLink.attributes().href).toBe(user.html_url)
+    expect(externalLink.attributes().target).toBe('_blank')
   })
 })

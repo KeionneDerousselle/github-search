@@ -2,6 +2,8 @@
 
 exports[`User List Item should render as expected 1`] = `
 <li class="user-list-item"><img src="https://some.fake.com/avatar.png" alt="Profile picture for test_user" class="user-list-item__avatar">
-  <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">test_user</span></div>
+  <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">test_user</span></div> <a href="https://www.some.external.link.com" target="_blank" class="user-list-item__link">
+    <link-icon-stub aria-hidden="true" class="user-list-item__link__icon"></link-icon-stub> <span class="sr-only"> Opens link to test_user's GitHub Account in a new window.</span>
+  </a>
 </li>
 `;
