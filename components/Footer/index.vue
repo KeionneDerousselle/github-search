@@ -40,8 +40,8 @@ export default {
 .footer {
   .footer__content {
     @apply border-t-2 border-gray-200;
-    @apply text-xs pt-2;
-    @apply md:text-sm md:pt-2;
+    @apply text-xs pt-4;
+    @apply md:text-sm;
     @apply lg:text-base lg:pt-6;
   }
 

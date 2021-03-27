@@ -55,7 +55,7 @@ body {
 
 .github-search-content {
   @apply w-full p-6 flex-1 overflow-y-auto;
-  @apply -mt-48;
+  @apply -mt-40;
   @apply md:-mt-60;
 }
 
