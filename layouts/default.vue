@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
 body {
-  @apply bg-gray-100 h-screen;
+  @apply bg-gray-100 h-full overflow-hidden;
 }
 
 .github-search-app {
