@@ -1,5 +1,5 @@
 <template>
-  <div class="container search-page">
+  <div class="search-page">
     <form-validator
       class="search__form"
       @submit="handleSearchSubmitted">
@@ -36,6 +36,7 @@
 
     <div
       id="results-box"
+      ref="results"
       class="results-box">
       <user-list-item
         v-for="user in users"
@@ -67,12 +68,19 @@ export default {
 
   data: () => ({
     searchTerm: '',
-    performingSearch: false
+    performingSearch: false,
+    currentScroll: 0,
+    maxScrollHeight: 0
   }),
 
   computed: {
     ...mapGetters('users', ['users'])
   },
+
+  // mounted() {
+  //   this.$refs.results.addEventListener('scroll', this.handleElScrolled)
+  //   window.addEventListener('resize', this.handleWindoResized)
+  // },
 
   methods: {
     ...mapActions('users', ['search']),
@@ -138,13 +146,37 @@ export default {
           this.performingSearch = false
         })
     }
+
+    // handleElScrolled(event) {
+    //   this.currentScroll = this.$refs.results.scrollTop
+    //   // console.log('Scroll Top: ', this.$refs.results.scrollTop)
+    //   // console.log('Offset Height: ', this.$refs.results.offsetHeight)
+    //   // console.log('Scroll Height: ', this.$refs.results.scrollHeight)
+    //   // console.log('Client Height: ', this.$refs.results.clientHeight)
+
+    //   // the bottom of the scroll: (this.$refs.results.scrollHeight - this.$refs.results.scrollTop)
+    //   // how many pages: (this.$refs.results.offsetHeight * 3)
+    //   if ((this.$refs.results.scrollHeight - this.$refs.results.scrollTop) < (this.$refs.results.offsetHeight * 3)) {
+    //     // set the maxium scrolled position to the bottom of the container (containing all items)
+    //     if (this.$refs.results.scrollHeight !== this.maxScrollHeight) {
+    //       console.log('fetch dat data')
+
+    //       // in the then
+    //       this.maxScrollHeight = this.$refs.results.scrollHeight
+    //     }
+    //   }
+    // },
+
+    // handleWindoResized(event) {
+    //   console.log('window resize')
+    // }
   }
 }
 </script>
 
 <style lang="scss">
 .search-page {
-  @apply container mx-auto flex flex-col h-full;
+  @apply max-w-2xl mx-auto flex flex-col h-full;
 }
 
 .search__form {
