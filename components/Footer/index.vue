@@ -5,7 +5,7 @@
     <div class="footer__content">
       <span>
         Created with
-        <heart-icon class="w-4 inline-flex fill-current text-pink-900" />
+        <heart-icon class="w-5 h-5 inline-flex fill-current text-pink-500" />
         by <a
           id="footer-dev-link"
           href="https://www.keionne.com"
@@ -38,17 +38,22 @@ export default {
 </script>
 <style lang="scss">
 .footer {
+  @apply pb-6 pl-6 pr-6 w-full;
+
   .footer__content {
-    @apply border-t-2 border-gray-200;
-    @apply text-xs pt-4;
-    @apply md:text-sm;
-    @apply lg:text-base lg:pt-6;
+    @apply border-t-2 border-indigo-500 text-indigo-100;
+    @apply text-sm pt-4;
+    @apply md:text-base;
+    @apply lg:text-lg lg:pt-6;
   }
 
   .footer__link {
-    @apply text-indigo-600 border-b border-transparent cursor-pointer;
-    @apply hover:text-indigo-900 hover:border-indigo-900;
-    @apply focus:text-indigo-900 focus:border-indigo-900 outline-none;
+    @apply text-white border-b border-white cursor-pointer font-bold;
+
+    &:hover,
+    &:focus {
+      @apply border-pink-500 outline-none;
+    }
   }
 }
 </style>

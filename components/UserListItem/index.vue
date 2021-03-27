@@ -71,7 +71,7 @@ export default {
   @apply md:pt-4 md:pb-4 md:pl-6 md:pr-6;
 
   &:not(:last-of-type) {
-    @apply border-b border-gray-300;
+    @apply border-b border-indigo-200;
   }
 
   &:hover {

@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss">
 body {
-  @apply bg-gray-100 overflow-hidden;
+  @apply bg-indigo-900 overflow-hidden;
 }
 
 .github-search-app {
@@ -60,6 +60,6 @@ body {
 }
 
 .github-search-footer {
-  @apply flex-none pb-6 pl-6 pr-6 w-full;
+  @apply flex-none;
 }
 </style>
