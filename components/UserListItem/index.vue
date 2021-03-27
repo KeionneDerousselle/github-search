@@ -77,7 +77,13 @@ export default {
   }
 
   &__link {
-    @apply ml-auto;
+    @apply ml-auto border-2 border-transparent p-1 text-center flex justify-center items-center;
+
+    transition: all 0.3s ease-out;
+  }
+
+  &__link:hover {
+    @apply border-indigo-500 rounded-full;
   }
 
   &__link__icon {
