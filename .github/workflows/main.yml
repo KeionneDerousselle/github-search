@@ -62,7 +62,7 @@ jobs:
           HD_HOST: "0.0.0.0"
           HD_NPM_CONFIG_PRODUCTION: "false"
           HD_BASE_URL: "https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com"
-          HD_KD_GITHUB_ACCESS_TOKEN: ${{secrets.KD_GITHUB_SEARCH_ACCESS_TOKEN}}
+          HD_KD_GITHUB_SEARCH_ACCESS_TOKEN: ${{secrets.KD_GITHUB_SEARCH_ACCESS_TOKEN}}
 
       # Dev End-to-End Testing
       # Dev Performance testing
@@ -82,7 +82,7 @@ jobs:
           HD_HOST: "0.0.0.0"
           HD_NPM_CONFIG_PRODUCTION: "false"
           HD_BASE_URL: "https://${{secrets.HEROKU_APP_NAME}}-stage.herokuapp.com"
-          HD_KD_GITHUB_ACCESS_TOKEN: ${{secrets.KD_GITHUB_SEARCH_ACCESS_TOKEN}}
+          HD_KD_GITHUB_SEARCH_ACCESS_TOKEN: ${{secrets.KD_GITHUB_SEARCH_ACCESS_TOKEN}}
 
       # Stage End-to-End Testing
       # Stage Performance testing
@@ -102,6 +102,6 @@ jobs:
           HD_HOST: "0.0.0.0"
           HD_NPM_CONFIG_PRODUCTION: "false"
           HD_BASE_URL: "https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com"
-          HD_KD_GITHUB_ACCESS_TOKEN: ${{secrets.KD_GITHUB_SEARCH_ACCESS_TOKEN}}
+          HD_KD_GITHUB_SEARCH_ACCESS_TOKEN: ${{secrets.KD_GITHUB_SEARCH_ACCESS_TOKEN}}
       # Prod End-to-End Testing
       # Prod Performance testing
