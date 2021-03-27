@@ -23,8 +23,11 @@
           id="search-button"
           class="search__button"
           type="submit"
-          :disabled="invalid">
-          <check-icon class="search__button__icon" />
+          :disabled="invalid || peformingSearch"
+          :loading="performingSearch">
+          <check-icon
+            v-show="!peformingSearch"
+            class="search__button__icon" />
         </kd-github-search-button>
       </template>
     </form-validator>
@@ -32,13 +35,12 @@
     <div
       id="results-box"
       class="results-box">
-      <li
+      <user-list-item
         v-for="user in users"
         :id="`search-result-${user.id}`"
         :key="user.id"
-        class="search__result">
-        {{ user.login }}
-      </li>
+        :user="user"
+        class="search__result" />
     </div>
   </div>
 </template>
@@ -48,6 +50,7 @@ import CheckIcon from '@/components/Icons/Check'
 import Button from '@/components/Button'
 import FormValidator from '@/components/FormValidator'
 import Searchfield from '@/components/Searchfield'
+import UserListItem from '@/components/UserListItem'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -56,11 +59,13 @@ export default {
     CheckIcon,
     FormValidator,
     Searchfield,
+    UserListItem,
     'kd-github-search-button': Button
   },
 
   data: () => ({
-    searchTerm: ''
+    searchTerm: '',
+    peformingSearch: false
   }),
 
   computed: {
@@ -135,10 +140,14 @@ export default {
     handleSearchSubmitted(event) {
       // TODO: Loading State
       // TODO: Handle Errors
+      this.peformingSearch = true
 
       return this.search({ simpleSearchTerm: this.searchTerm })
-        .then(() => console.log('did it'))
+        .then(console.log)
         .catch(console.error)
+        .finally(() => {
+          this.peformingSearch = false
+        })
     }
   }
 }
@@ -158,7 +167,7 @@ export default {
 }
 
 .search__button {
-  @apply shadow-lg border-transparent bg-indigo-200 h-14 w-14 flex-none;
+  @apply shadow-lg border-0 bg-indigo-200 h-14 w-14 flex-none text-indigo-800;
 
   &:hover:not(:disabled) {
     @apply bg-indigo-300 shadow-2xl;
@@ -172,12 +181,16 @@ export default {
     @apply bg-gray-300;
   }
 
+  &:disabled .search__button__icon {
+    @apply text-gray-600;
+  }
+
   &__icon {
-    @apply text-gray-600 text-xl w-5 h-5 font-bold;
+    @apply text-xl w-5 h-5 font-bold;
   }
 }
 
 .results-box {
-  @apply flex-1 shadow-lg bg-white rounded-lg p-6 mt-6 overflow-y-auto;
+  @apply flex-1 shadow-lg bg-white rounded-lg mt-6 overflow-y-auto;
 }
 </style>

@@ -64,7 +64,7 @@ exports[`Index Page when a valid search is performed should render as expected 1
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon" style=""><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
     <!---->
   </div>
 </button></form>
@@ -237,14 +237,14 @@ exports[`Index Page when there are search results to be displayed should render 
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <li id="search-result-1" class="search__result">
-    user1
+  <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
+    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user1</span></div>
   </li>
-  <li id="search-result-2" class="search__result">
-    user2
+  <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
+    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user2</span></div>
   </li>
-  <li id="search-result-3" class="search__result">
-    user3
+  <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
+    <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">user3</span></div>
   </li>
 </div>
 </div>
