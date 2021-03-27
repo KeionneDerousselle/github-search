@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User List Item should render as expected 1`] = `
+<li class="user-list-item"><img src="https://some.fake.com/avatar.png" alt="Profile picture for test_user" class="user-list-item__avatar">
+  <div class="user-list-item__details"><span class="user-list-item__details__name">Test</span> <span class="user-list-item__details__login">test_user</span></div>
+</li>
+`;
