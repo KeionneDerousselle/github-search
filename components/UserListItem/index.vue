@@ -77,18 +77,26 @@ export default {
   }
 
   &__link {
-    @apply ml-auto border-2 border-transparent p-1 text-center flex justify-center items-center;
+    @apply ml-auto rounded-full border-2 border-transparent p-1 text-center flex justify-center items-center;
 
-    transition: all 0.3s ease-out;
+    transition: border-color 0.3s ease-out;
   }
 
   &__link:hover,
-  &__link:focus {
-    @apply border-indigo-500 rounded-full outline-none;
+  &__link:focus,
+  &__link:active {
+    @apply border-indigo-500 outline-none;
+
+    box-shadow: none;
   }
 
   &__link__icon {
     @apply w-5 h-5 text-indigo-500;
+  }
+
+  &__link__icon:hover,
+  &__link__icon:focus {
+    @apply outline-none border-0;
   }
 
   &__avatar {

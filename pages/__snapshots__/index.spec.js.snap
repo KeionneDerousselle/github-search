@@ -16,7 +16,9 @@ exports[`Index Page initial display should render as expected 1`] = `
     </div>
 </div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -40,7 +42,9 @@ exports[`Index Page when a search is performed without a search term should rend
     </div>
 </div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -64,7 +68,9 @@ exports[`Index Page when a valid search is performed should render as expected 1
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon" style=""><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon" style="">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -88,7 +94,9 @@ exports[`Index Page when an invalid search is performed should render as expecte
     </div>
 </div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -112,7 +120,9 @@ exports[`Index Page when clicking the clear search text button should render as 
     </div>
 </div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -136,7 +146,9 @@ exports[`Index Page when the search term container is focused should render as e
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -160,7 +172,9 @@ exports[`Index Page when the search term container is not focused and there are 
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -184,7 +198,9 @@ exports[`Index Page when the search term input is not focused and there are no e
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -208,7 +224,9 @@ exports[`Index Page when there are no search results to be displayed should rend
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>
@@ -232,7 +250,9 @@ exports[`Index Page when there are search results to be displayed should render 
     </div>
 </div> <button id="search-button" type="submit" class="search__button button">
   <div class="button__content">
-    <!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search__button__icon"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg></span>
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
     <!---->
   </div>
 </button></form>

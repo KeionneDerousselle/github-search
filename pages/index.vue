@@ -25,9 +25,11 @@
           type="submit"
           :disabled="invalid || performingSearch"
           :loading="performingSearch">
+          <span class="sr-only">Submit</span>
           <check-icon
             v-show="!performingSearch"
-            class="search__button__icon" />
+            class="search__button__icon"
+            aria-hidden="true" />
         </kd-github-search-button>
       </template>
     </form-validator>
