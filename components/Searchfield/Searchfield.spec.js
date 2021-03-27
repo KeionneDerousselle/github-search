@@ -455,6 +455,97 @@ describe('Searchfield', () => {
     })
   })
 
+  describe('when text is in the search bar', () => {
+    beforeAll(async () => {
+      wrapper = mountPreMocked(Searchfield, {
+        propsData: {
+          label
+        }
+      })
+
+      const input = wrapper.get('.searchfield__input')
+
+      input.setValue('abc')
+      await flushPromises()
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should display the clear search text button', () => {
+      expect(wrapper.get('.searchfield__clear').element).toBeVisible()
+    })
+  })
+
+  describe('when text is not in the search bar', () => {
+    beforeAll(() => {
+      wrapper = mountPreMocked(Searchfield, {
+        propsData: {
+          label
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display the clear search text button', () => {
+      expect(wrapper.get('.searchfield__clear').element).not.toBeVisible()
+    })
+  })
+
+  describe('when clicking the clear search text button', () => {
+    let searchClearButton
+    let searchBox
+
+    beforeAll(async () => {
+      wrapper = mountPreMocked(Searchfield, {
+        propsData: {
+          label
+        }
+      })
+
+      searchBox = wrapper.get('.searchfield__input')
+
+      searchBox.setValue('abc')
+      await flushPromises()
+      await wrapper.vm.$nextTick()
+
+      searchClearButton = wrapper.get('.searchfield__clear')
+      searchClearButton.trigger('click')
+      await flushPromises()
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display the clear search text button', () => {
+      expect(searchClearButton.element).not.toBeVisible()
+    })
+
+    it('should clear the search text from the search box', () => {
+      expect(wrapper.vm.searchTerm).toBe('')
+      expect(searchBox.element.value).toBe('')
+    })
+  })
+
   describe('when the input event is emitted from the input', () => {
     beforeAll(async () => {
       wrapper = mountPreMocked(Searchfield, {
