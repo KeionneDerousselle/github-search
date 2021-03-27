@@ -6,6 +6,8 @@
 
 <style lang="scss">
 .header {
-  @apply w-full h-80 bg-indigo-600;
+  @apply w-full bg-indigo-600;
+
+  height: 25rem;
 }
 </style>

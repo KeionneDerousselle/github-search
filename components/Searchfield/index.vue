@@ -236,7 +236,7 @@ export default {
 }
 
 .searchfield {
-  @apply relative inline-flex overflow-hidden border-solid border-2 items-center text-base p-4 font-normal;
+  @apply relative inline-flex overflow-hidden items-center text-base p-4 font-normal;
 
   transition: all 0.5s;
 

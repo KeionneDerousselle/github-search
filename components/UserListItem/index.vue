@@ -82,8 +82,9 @@ export default {
     transition: all 0.3s ease-out;
   }
 
-  &__link:hover {
-    @apply border-indigo-500 rounded-full;
+  &__link:hover,
+  &__link:focus {
+    @apply border-indigo-500 rounded-full outline-none;
   }
 
   &__link__icon {
