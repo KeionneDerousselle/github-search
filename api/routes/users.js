@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const { KD_GITHUB_SEARCH_ACCESS_TOKEN } = process.env
 const { Octokit } = require('@octokit/rest')
+const axios = require('axios')
 const router = Router()
 
 router.get('/', async (req, res) => {
@@ -18,9 +19,33 @@ router.get('/', async (req, res) => {
     res.json(data)
   } catch (e) {
     res
-      .status(e.status || 500)
+      .status(e.response.status || 500)
       .json({
-        message: e.message || 'Unknown server error occurred!',
+        message: e.response.data || 'Unknown server error occurred!',
+        status: e.status || 500,
+        stack: e.stack
+      })
+  }
+})
+
+router.get('/:username', async (req, res) => {
+  const username = req.params.username
+
+  try {
+    const { data } = await axios.get(`https://api.github.com/users/${username}`, {
+      headers: {
+        authorization: `token ${KD_GITHUB_SEARCH_ACCESS_TOKEN}`
+      }
+    })
+
+    res.json(data)
+  } catch (e) {
+    // TODO: handle 403 rate limit exceeded
+    // https://github.com/axios/axios#handling-errors
+    res
+      .status(e.response.status || 500)
+      .json({
+        message: e.response.data || 'Unknown server error occurred!',
         status: e.status || 500,
         stack: e.stack
       })
