@@ -228,15 +228,12 @@ describe('Index Page', () => {
     })
 
     it('should contain the default search container css classes', () => {
-      expect(searchContainerClasses).toContain('h-12')
-      expect(searchContainerClasses).toContain('md:h-14')
-      expect(searchContainerClasses).toContain('bg-indigo-500')
-      expect(searchContainerClasses).toContain('text-white')
+      expect(searchContainerClasses).toContain('search__container')
     })
 
     it('should contain the focused search container css classes', () => {
-      expect(searchContainerClasses).toContain('ring-4')
-      expect(searchContainerClasses).toContain('ring-indigo-400')
+      expect(searchContainerClasses).toContain('search__container')
+      expect(searchContainerClasses).toContain('search__container--focused')
     })
   })
 
@@ -271,15 +268,11 @@ describe('Index Page', () => {
     })
 
     it('should contain the default search container css classes', () => {
-      expect(searchContainerClasses).toContain('h-12')
-      expect(searchContainerClasses).toContain('md:h-14')
-      expect(searchContainerClasses).toContain('bg-indigo-500')
-      expect(searchContainerClasses).toContain('text-white')
+      expect(searchContainerClasses).toContain('search__container')
     })
 
     it('should not contain the focused search container css classes', () => {
-      expect(searchContainerClasses).not.toContain('ring-4')
-      expect(searchContainerClasses).not.toContain('ring-indigo-400')
+      expect(searchContainerClasses).not.toContain('search__container--focused')
     })
   })
 
@@ -314,7 +307,7 @@ describe('Index Page', () => {
     })
 
     it('should contain the default search input css classes', () => {
-      expect(searchInputClasses).toContain('placeholder-indigo-50')
+      expect(searchInputClasses).toContain('search__input')
     })
   })
 

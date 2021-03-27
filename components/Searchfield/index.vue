@@ -261,6 +261,17 @@ export default {
   font-family: inherit;
   font-weight: inherit;
 
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active,
+  &:-internal-autofill-selected {
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    background-clip: text;
+  }
+
   &::placeholder {
     @apply font-normal;
 

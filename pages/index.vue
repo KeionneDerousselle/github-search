@@ -81,25 +81,11 @@ export default {
       const classStrats = [
         {
           shouldApply: () => isFocused,
-          classes: [
-            'h-12',
-            'md:h-14',
-            'shadow-lg',
-            'bg-indigo-500',
-            'text-white',
-            'ring-4',
-            'ring-indigo-400'
-          ]
+          classes: [ 'search__container', 'search__container--focused' ]
         },
         {
           shouldApply: () => true,
-          classes: [
-            'h-12',
-            'md:h-14',
-            'shadow-lg',
-            'bg-indigo-500',
-            'text-white'
-          ]
+          classes: ['search__container']
         }
       ]
 
@@ -134,9 +120,7 @@ export default {
 
         {
           shouldApply: () => true,
-          classes: [
-            'placeholder-indigo-50', 'text-sm', 'md:text-base', 'lg:text-lg', 'xl:text-xl', 'placeholder-text-lg'
-          ]
+          classes: ['search__input']
         }
       ]
 
@@ -171,6 +155,31 @@ export default {
   @apply flex-grow w-11/12;
   @apply mr-3;
   @apply md:mr-4;
+}
+
+.search__container {
+  @apply shadow-lg bg-indigo-500 text-white;
+  @apply h-12;
+  @apply md:h-14;
+
+  &--focused {
+    @apply ring-4 ring-indigo-400;
+  }
+}
+
+.search__input {
+  @apply placeholder-indigo-50 text-sm md:text-base lg:text-lg xl:text-xl;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active,
+  &:-internal-autofill-selected {
+    @apply bg-indigo-500 text-white;
+
+    -webkit-text-fill-color: white;
+    caret-color: white;
+  }
 }
 
 .search__button {

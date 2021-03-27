@@ -7,7 +7,7 @@
 <style lang="scss">
 .header {
   @apply w-full bg-indigo-600;
-
-  height: 25rem;
+  @apply h-72;
+  @apply md:h-96;
 }
 </style>
