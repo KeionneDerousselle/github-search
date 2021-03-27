@@ -48,12 +48,14 @@ export default {
 .button {
   @apply flex appearance-none items-center justify-center align-middle cursor-pointer font-bold text-center no-underline select-none text-base pt-2 pb-2 pl-4 pr-4 border border-gray-400 bg-gray-100 rounded-lg;
 
+  color: inherit;
   font-family: inherit;
   transition: all 0.3s ease-out;
 
   &__content {
     @apply mr-0 ml-0;
 
+    color: inherit;
     transition: margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
@@ -78,8 +80,9 @@ export default {
   }
 
   &__spinner {
-    @apply hidden w-4 h-4 bg-transparent border-solid border-2 border-r-0 rounded-full text-center normal-case text-base not-italic font-normal;
+    @apply hidden w-4 h-4 bg-transparent border-solid border-2 border-r-0 rounded-full text-center normal-case text-base not-italic font-normal border-gray-600;
 
+    color: inherit;
     transition: all 0.3s ease-in-out;
   }
 
