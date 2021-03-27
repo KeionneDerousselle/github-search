@@ -200,7 +200,7 @@ describe('Index Page', () => {
         }
       })
 
-      const searchContainer = wrapper.get('.textfield')
+      const searchContainer = wrapper.get('.searchfield')
 
       searchContainer.trigger('focus')
       await flushPromises()
@@ -246,7 +246,7 @@ describe('Index Page', () => {
         }
       })
 
-      searchContainerClasses = wrapper.get('.textfield').classes()
+      searchContainerClasses = wrapper.get('.searchfield').classes()
     })
 
     afterAll(() => {
@@ -302,40 +302,6 @@ describe('Index Page', () => {
     })
   })
 
-  describe('when text is in the search bar', () => {
-    beforeAll(async () => {
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              users: jest.fn().mockReturnValue([])
-            },
-            actions: {
-              search: jest.fn().mockResolvedValue([])
-            }
-          }
-        }
-      })
-
-      const searchBox = wrapper.get('#search-box')
-
-      searchBox.setValue('test')
-      await flushValidationUpdates(wrapper)
-    })
-
-    afterAll(() => {
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should display the clear search text button', () => {
-      expect(wrapper.get('#search-clear').element).toBeVisible()
-    })
-  })
-
   describe('when clicking the clear search text button', () => {
     let searchClearButton
     let searchBox
@@ -359,7 +325,7 @@ describe('Index Page', () => {
       searchBox.trigger('blur')
       await flushValidationUpdates(wrapper)
 
-      searchClearButton = wrapper.get('#search-clear')
+      searchClearButton = wrapper.get('.searchfield__clear')
       searchClearButton.trigger('click')
       await flushValidationUpdates(wrapper)
     })
@@ -372,22 +338,13 @@ describe('Index Page', () => {
       expect(wrapper).toMatchSnapshot()
     })
 
-    it('should not display the clear search text button', () => {
-      expect(searchClearButton.element).not.toBeVisible()
-    })
-
     it('should disable the search submit button', () => {
       expect(wrapper.get('#search-button').attributes().disabled).toBeTruthy()
-    })
-
-    it('should clear the search text from the search box', () => {
-      expect(wrapper.vm.searchTerm).toBe('')
-      expect(searchBox.element.value).toBe('')
     })
   })
 
   describe('initial display', () => {
-    beforeAll(() => {
+    beforeAll(async () => {
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
@@ -400,6 +357,8 @@ describe('Index Page', () => {
           }
         }
       })
+
+      await flushValidationUpdates(wrapper)
     })
 
     afterAll(() => {
@@ -415,22 +374,14 @@ describe('Index Page', () => {
     })
 
     it('should display a disabled the search button', () => {
-      const searchButton = wrapper.get('.search__button')
+      const searchButton = wrapper.get('#search-button')
 
       expect(searchButton.element).toBeVisible()
       expect(searchButton.attributes().disabled).toBeTruthy()
     })
 
-    it('should render the search icon', () => {
-      expect(wrapper.get('.search__icon').element).toBeVisible()
-    })
-
-    it('should not display the clear search text button', () => {
-      expect(wrapper.get('#search-clear').element).not.toBeVisible()
-    })
-
     it('should display the results box', () => {
-      expect(wrapper.get('.results-box').element).toBeVisible()
+      expect(wrapper.get('#results-box').element).toBeVisible()
     })
   })
 

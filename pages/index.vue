@@ -3,45 +3,35 @@
     <form-validator
       class="search__form"
       @submit="handleSearchSubmitted">
-      <template #default="{ pristine, invalid }">
-        <textfield
+      <template #default="{ invalid }">
+        <searchfield
           id="search-box"
           v-model="searchTerm"
           class="search__box"
           placeholder="Search"
-          type="search"
           rules="required"
           label="Search Term"
           name="Search Term"
           vee-validate-name="A search term"
+          mode="aggressive"
+          immediate
+          :show-errors="false"
           :calc-input-classes="getSearchInputClasses"
-          :calc-container-classes="getSearchInputContainerClasses">
-          <template #left>
-            <search-icon class="search__icon" />
-          </template>
-
-          <template #right>
-            <kd-github-search-button
-              v-show="searchTerm && searchTerm.length > 0"
-              id="search-clear"
-              class="search__clear"
-              @click="clearSearch">
-              <cross-icon class="search__clear__icon" />
-            </kd-github-search-button>
-          </template>
-        </textfield>
+          :calc-container-classes="getSearchInputContainerClasses" />
 
         <kd-github-search-button
           id="search-button"
           class="search__button"
           type="submit"
-          :disabled="pristine || invalid">
+          :disabled="invalid">
           <check-icon class="search__button__icon" />
         </kd-github-search-button>
       </template>
     </form-validator>
 
-    <div class="results-box">
+    <div
+      id="results-box"
+      class="results-box">
       <li
         v-for="user in users"
         :id="`search-result-${user.id}`"
@@ -54,22 +44,18 @@
 </template>
 
 <script>
-import Textfield from '@/components/Textfield'
-import SearchIcon from '@/components/Icons/Search'
 import CheckIcon from '@/components/Icons/Check'
-import CrossIcon from '@/components/Icons/Cross'
 import Button from '@/components/Button'
 import FormValidator from '@/components/FormValidator'
+import Searchfield from '@/components/Searchfield'
 
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
-    Textfield,
-    SearchIcon,
     CheckIcon,
-    CrossIcon,
     FormValidator,
+    Searchfield,
     'kd-github-search-button': Button
   },
 
@@ -146,10 +132,6 @@ export default {
       return classStrats.find(cs => cs.shouldApply()).classes
     },
 
-    clearSearch() {
-      this.searchTerm = ''
-    },
-
     handleSearchSubmitted(event) {
       // TODO: Loading State
       // TODO: Handle Errors
@@ -163,12 +145,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-
 .search-page {
   @apply container mx-auto flex flex-col h-full;
 }
@@ -179,22 +155,6 @@ export default {
 
 .search__box {
   @apply flex-grow w-11/12 mr-4;
-}
-
-.search__icon {
-  @apply text-xl w-5;
-}
-
-.search__clear {
-  @apply bg-transparent border-2 border-transparent m-0 p-0.5 outline-none rounded-full;
-
-  &:hover {
-    @apply border-2 border-white;
-  }
-
-  &__icon {
-    @apply text-xl w-5 h-5;
-  }
 }
 
 .search__button {

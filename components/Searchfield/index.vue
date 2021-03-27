@@ -222,7 +222,6 @@ export default {
     },
 
     clearSearch() {
-      console.log('clear')
       this.searchTerm = ''
     }
   }

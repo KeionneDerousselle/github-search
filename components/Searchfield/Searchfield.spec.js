@@ -53,6 +53,14 @@ describe('Searchfield', () => {
     it('should not add the name to the search field', () => {
       expect(wrapper.get('.searchfield__input').attributes().name).toBe('')
     })
+
+    it('should render the search icon', () => {
+      expect(wrapper.get('.searchfield__icon').element).toBeVisible()
+    })
+
+    it('should not display the clear search text button', () => {
+      expect(wrapper.get('.searchfield__clear').element).not.toBeVisible()
+    })
   })
 
   describe('when a placeholder is provided', () => {
