@@ -30,6 +30,12 @@ describe('state', () => {
 
     expect(numberOfResults).toBe(0)
   })
+
+  it('should have an empty cache of user detail results on the default state', () => {
+    const { userDetailsCache } = defaultState
+
+    expect(userDetailsCache).toEqual({})
+  })
 })
 
 describe('mutations', () => {
@@ -62,6 +68,28 @@ describe('mutations', () => {
 
     it('should assign the number of user search results to the number of results on the state', () => {
       expect(currentState.numberOfResults).toEqual(numberOfResults)
+    })
+  })
+
+  describe('SET_USER_DETAILS', () => {
+    let currentState
+    let userDetails
+
+    beforeAll(() => {
+      currentState = { userDetailsCache: {} }
+      userDetails = {
+        username: 'test_user',
+        data: {
+          name: 'Test User'
+        },
+        expiresAt: 1234
+      }
+
+      mutations.SET_USER_DETAILS(currentState, userDetails)
+    })
+
+    it('should insert the user details into the cache by username', () => {
+      expect(currentState.userDetailsCache[userDetails.username]).toEqual(userDetails)
     })
   })
 })
@@ -133,6 +161,133 @@ describe('actions', () => {
       expect(commit).toHaveBeenCalledWith('SET_NUMBER_OF_TOTAL_RESULTS', mockNumOfTotalResults)
     })
   })
+
+  describe('when getting user details for a user that is not in the cache', () => {
+    let currentState
+    let username
+    let mockedUserDetails
+
+    beforeAll(async () => {
+      username = 'test_user'
+      mockedUserDetails = {
+        name: 'Test User'
+      }
+      currentState = {
+        userDetailsCache: {}
+      }
+
+      $axios.get = jest.fn().mockResolvedValue({
+        data: mockedUserDetails
+      })
+
+      await actions.get({ commit, state: currentState }, { username })
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      $axios.get.mockReset()
+    })
+
+    it('should make a get request to get a user\'s details', () => {
+      expect($axios.get).toHaveBeenCalledWith(`/api/users/${username}`)
+    })
+
+    it('should perform the SET_USER_DETAILS mutation with the user details results', () => {
+      expect(commit).toHaveBeenCalledWith('SET_USER_DETAILS', {
+        username,
+        data: mockedUserDetails,
+        expiresAt: expect.any(Number)
+      })
+    })
+  })
+
+  describe('when getting user details for a user that is in the cache', () => {
+    let currentState
+    let username
+    let mockedUserDetails
+
+    beforeAll(async () => {
+      username = 'test_user'
+      mockedUserDetails = {
+        name: 'Test User'
+      }
+      currentState = {
+        userDetailsCache: {
+          [username]: mockedUserDetails
+        }
+      }
+
+      $axios.get = jest.fn().mockResolvedValue()
+
+      await actions.get({ commit, state: currentState }, { username })
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      $axios.get.mockReset()
+    })
+
+    it('should not make a get request to get a user\'s details', () => {
+      expect($axios.get).not.toHaveBeenCalled()
+    })
+
+    it('should not perform the SET_USER_DETAILS mutation with the user details results', () => {
+      expect(commit).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('when getting user details for a user that is in the cache, but the cached data is expired', () => {
+    let currentState
+    let username
+    let mockedUserDetails
+
+    beforeAll(async () => {
+      jest.useFakeTimers()
+
+      username = 'test_user'
+      mockedUserDetails = {
+        name: 'Test User'
+      }
+      currentState = {
+        userDetailsCache: {}
+      }
+
+      $axios.get = jest.fn().mockResolvedValue({
+        data: mockedUserDetails
+      })
+
+      await actions.get({ commit, state: currentState }, { username })
+
+      jest.advanceTimersByTime(10 * 60000)
+
+      await actions.get({ commit, state: currentState }, { username })
+    })
+
+    afterAll(() => {
+      jest.useRealTimers()
+      commit.mockReset()
+      $axios.get.mockReset()
+    })
+
+    it('should make two get requests to get a user\'s details', () => {
+      expect($axios.get).toHaveBeenNthCalledWith(1, `/api/users/${username}`)
+      expect($axios.get).toHaveBeenNthCalledWith(2, `/api/users/${username}`)
+    })
+
+    it('should perform the SET_USER_DETAILS mutation twice with the user details results', () => {
+      expect(commit).toHaveBeenNthCalledWith(1, 'SET_USER_DETAILS', {
+        username,
+        data: mockedUserDetails,
+        expiresAt: expect.any(Number)
+      })
+
+      expect(commit).toHaveBeenNthCalledWith(2, 'SET_USER_DETAILS', {
+        username,
+        data: mockedUserDetails,
+        expiresAt: expect.any(Number)
+      })
+    })
+  })
 })
 
 describe('getters', () => {
@@ -147,6 +302,28 @@ describe('getters', () => {
 
     it('should return the users from the state', () => {
       expect(getters.users(currentState)).toBe(currentState.users)
+    })
+  })
+
+  describe('userDetailsByUsername', () => {
+    let username
+    let userDetails
+
+    beforeAll(() => {
+      username = 'test_user'
+      userDetails = {
+        name: 'Test User'
+      }
+
+      currentState = {
+        userDetailsCache: {
+          [username]: userDetails
+        }
+      }
+    })
+
+    it('should return the user\'s details by username from the state', () => {
+      expect(getters.userDetailsByUsername(currentState)(username)).toBe(currentState.userDetailsCache[username])
     })
   })
 })

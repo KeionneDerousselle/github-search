@@ -33,14 +33,17 @@ describe('Index Page', () => {
 
     beforeAll(async () => {
       mockSearchAction = jest.fn().mockResolvedValue([])
+
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -85,10 +88,13 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -140,10 +146,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: mockSearchAction
+              search: mockSearchAction,
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -191,10 +199,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -237,10 +247,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -277,10 +289,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -311,10 +325,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -349,10 +365,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([])
+              users: jest.fn().mockReturnValue([]),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -399,10 +417,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue(users)
+              users: jest.fn().mockReturnValue(users),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }
@@ -436,10 +456,12 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue(users)
+              users: jest.fn().mockReturnValue(users),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
-              search: jest.fn().mockResolvedValue([])
+              search: jest.fn().mockResolvedValue([]),
+              get: jest.fn().mockResolvedValue()
             }
           }
         }

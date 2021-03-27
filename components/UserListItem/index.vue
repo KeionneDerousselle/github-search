@@ -9,7 +9,9 @@
       class="user-list-item__avatar">
 
     <div class="user-list-item__details">
-      <span class="user-list-item__details__name">Test</span>
+      <span
+        v-if="userDetails"
+        class="user-list-item__details__name">{{ userDetails.name }}</span>
       <span class="user-list-item__details__login">{{ user.login }}</span>
     </div>
 
@@ -26,6 +28,7 @@
 </template>
 <script>
 import LinkIcon from '@/components/Icons/Link'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -37,6 +40,27 @@ export default {
       type: Object,
       required: true
     }
+  },
+
+  data: () => ({
+    userDetails: null
+  }),
+
+  computed: {
+    ...mapGetters('users', ['userDetailsByUsername'])
+  },
+
+  beforeMount() {
+    this.get({ username: this.user.login })
+      .then(() => {
+        const result = this.userDetailsByUsername(this.user.login)
+
+        this.userDetails = result ? result.data : null
+      })
+  },
+
+  methods: {
+    ...mapActions('users', ['get'])
   }
 }
 </script>
