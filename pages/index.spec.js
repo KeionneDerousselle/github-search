@@ -40,7 +40,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -89,8 +91,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
-
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -153,7 +156,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: mockSetSearchTermAction,
@@ -217,7 +222,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue('test'),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: mockSetSearchTermAction,
@@ -273,7 +280,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -322,7 +331,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -364,7 +375,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -403,7 +416,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -446,7 +461,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -516,7 +533,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue(results),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(1)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -560,7 +579,9 @@ describe('Index Page', () => {
             getters: {
               results: jest.fn().mockReturnValue([]),
               currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -595,7 +616,9 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('')
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -631,7 +654,9 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('')
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -667,7 +692,9 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('')
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -702,7 +729,9 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('')
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -746,7 +775,9 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('')
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -790,7 +821,9 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('')
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -824,6 +857,77 @@ describe('Index Page', () => {
 
     it('should not set the max scroll position to the height of the scrollable content', () => {
       expect(wrapper.vm.maxScrollPosition).not.toBe(mockedResultsScrollBox.scrollHeight)
+    })
+  })
+
+  describe('when the next page of results is clicked', () => {
+    let results
+
+    beforeAll(async () => {
+      results = [
+        {
+          id: 1,
+          page: 1,
+          users: [
+            { id: 1, login: 'user1' },
+            { id: 2, login: 'user2' },
+            { id: 3, login: 'user3' }
+          ]
+        },
+        {
+          id: 2,
+          page: 2,
+          users: [
+            { id: 4, login: 'user4' },
+            { id: 5, login: 'user5' },
+            { id: 6, login: 'user6' }
+          ]
+        },
+        {
+          id: 3,
+          page: 3,
+          users: [
+            { id: 7, login: 'user7' },
+            { id: 8, login: 'user8' },
+            { id: 9, login: 'user9' }
+          ]
+        }
+      ]
+
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue(results),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(9),
+              resultsPerPage: jest.fn().mockReturnValue(1)
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
+              get: jest.fn().mockResolvedValue()
+            }
+          }
+        }
+      })
+
+      wrapper.get('.page__link--2').trigger('click')
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should set the pagination page to the next page', () => {
+      expect(wrapper.vm.currentPaginationPage).toBe(2)
     })
   })
 })

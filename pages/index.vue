@@ -52,8 +52,16 @@
             class="search__result" />
         </ul>
       </div>
-      <div class="pagination">
-        TEST
+      <div
+        v-show="numberOfResults"
+        class="results-toolbar">
+        <pagination
+          id="results-pagination"
+          class="results__pagination"
+          :total-items="numberOfResults"
+          :items-per-page="resultsPerPage"
+          :current-page="currentPaginationPage"
+          @change="handlePageChanged" />
       </div>
     </div>
   </div>
@@ -65,6 +73,7 @@ import Button from '@/components/Button'
 import FormValidator from '@/components/FormValidator'
 import Searchfield from '@/components/Searchfield'
 import UserListItem from '@/components/UserListItem'
+import Pagination from '@/components/Pagination'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -74,6 +83,7 @@ export default {
     FormValidator,
     Searchfield,
     UserListItem,
+    Pagination,
     'kd-github-search-button': Button
   },
 
@@ -81,11 +91,14 @@ export default {
     searchTerm: '',
     performingSearch: false,
     maxScrollPosition: 0,
-    fetchingTheNextPage: false
+    fetchingTheNextPage: false,
+    currentPaginationPage: 1
   }),
 
   computed: {
-    ...mapGetters('users', [ 'results', 'currentSearchTerm' ])
+    ...mapGetters('users', [
+      'results', 'currentSearchTerm', 'numberOfResults', 'resultsPerPage'
+    ])
   },
 
   mounted() {
@@ -192,6 +205,10 @@ export default {
           })
         }
       }
+    },
+
+    handlePageChanged(page) {
+      this.currentPaginationPage = page
     }
   }
 }
@@ -267,7 +284,9 @@ export default {
   @apply flex-1 overflow-y-auto h-full;
 }
 
-.pagination {
-  @apply flex-none;
+.results-toolbar {
+  @apply flex-none bg-indigo-500 p-4 text-white text-sm md:text-base flex justify-center items-center;
+
+  transition: all 0.3s ease-in;
 }
 </style>
