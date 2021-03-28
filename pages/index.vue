@@ -38,12 +38,17 @@
       id="results-box"
       ref="results"
       class="results-box">
-      <user-list-item
-        v-for="user in users"
-        :id="`search-result-${user.id}`"
-        :key="user.id"
-        :user="user"
-        class="search__result" />
+      <ul
+        v-for="result in results"
+        :id="`page-${result.page}`"
+        :key="result.id">
+        <user-list-item
+          v-for="user in result.users"
+          :id="`search-result-${user.id}`"
+          :key="user.id"
+          :user="user"
+          class="search__result" />
+      </ul>
     </div>
   </div>
 </template>
@@ -69,21 +74,24 @@ export default {
   data: () => ({
     searchTerm: '',
     performingSearch: false,
-    currentScroll: 0,
-    maxScrollHeight: 0
+    maxScrollPosition: 0,
+    fetchingTheNextPage: false
   }),
 
   computed: {
-    ...mapGetters('users', ['users'])
+    ...mapGetters('users', [ 'results', 'currentSearchTerm' ])
   },
 
-  // mounted() {
-  //   this.$refs.results.addEventListener('scroll', this.handleElScrolled)
-  //   window.addEventListener('resize', this.handleWindoResized)
-  // },
+  mounted() {
+    this.addScrollListener(this.$refs.results)
+  },
+
+  beforeDestroy() {
+    this.removeScrollListener(this.$refs.results)
+  },
 
   methods: {
-    ...mapActions('users', ['search']),
+    ...mapActions('users', [ 'setSearchTerm', 'search', 'next' ]),
 
     getSearchInputContainerClasses(errors, isFocused) {
       const classStrats = [
@@ -135,41 +143,50 @@ export default {
       return classStrats.find(cs => cs.shouldApply()).classes
     },
 
-    handleSearchSubmitted(event) {
+    handleSearchSubmitted() {
       // TODO: Loading State
       // TODO: Handle Errors
-      this.performingSearch = true
 
-      return this.search({ simpleSearchTerm: this.searchTerm })
-        .catch(console.error)
-        .finally(() => {
-          this.performingSearch = false
-        })
+      if (this.searchTerm && (this.searchTerm.toLowerCase() !== this.currentSearchTerm.toLowerCase())) {
+        this.performingSearch = true
+
+        return this.setSearchTerm(this.searchTerm).then(() => this.search()
+          .catch(console.error)
+          .finally(() => {
+            this.performingSearch = false
+          }))
+      }
+    },
+
+    handleResultsScrolled() {
+      this.handleScrollHelper(this.$refs.results)
+    },
+
+    addScrollListener(el) {
+      el.addEventListener('scroll', this.handleResultsScrolled)
+    },
+
+    removeScrollListener(el) {
+      el.removeEventListener('scroll', this.handleResultsScrolled)
+    },
+
+    handleScrollHelper(el) {
+      // when height of content under the view window (the bottom of the scroll: (this.$refs.results.scrollHeight - this.$refs.results.scrollTop))
+      // is less than 1.5 pages: (this.$refs.results.offsetHeight * 1.5)
+      if ((el.scrollHeight - el.scrollTop) < (el.offsetHeight * 1.5)) {
+        // if the bottom of the content is not the same as the max position we've scrolled to
+        if ((el.scrollHeight !== this.maxScrollPosition) && !this.fetchingTheNextPage) {
+          this.fetchingTheNextPage = true
+
+          return this.next().then(() => {
+            // set the maxium scrolled position to the bottom of the newly drawn content (containing all items)
+            this.maxScrollPosition = el.scrollHeight
+          }).finally(() => {
+            this.fetchingTheNextPage = false
+          })
+        }
+      }
     }
-
-    // handleElScrolled(event) {
-    //   this.currentScroll = this.$refs.results.scrollTop
-    //   // console.log('Scroll Top: ', this.$refs.results.scrollTop)
-    //   // console.log('Offset Height: ', this.$refs.results.offsetHeight)
-    //   // console.log('Scroll Height: ', this.$refs.results.scrollHeight)
-    //   // console.log('Client Height: ', this.$refs.results.clientHeight)
-
-    //   // the bottom of the scroll: (this.$refs.results.scrollHeight - this.$refs.results.scrollTop)
-    //   // how many pages: (this.$refs.results.offsetHeight * 3)
-    //   if ((this.$refs.results.scrollHeight - this.$refs.results.scrollTop) < (this.$refs.results.offsetHeight * 3)) {
-    //     // set the maxium scrolled position to the bottom of the container (containing all items)
-    //     if (this.$refs.results.scrollHeight !== this.maxScrollHeight) {
-    //       console.log('fetch dat data')
-
-    //       // in the then
-    //       this.maxScrollHeight = this.$refs.results.scrollHeight
-    //     }
-    //   }
-    // },
-
-    // handleWindoResized(event) {
-    //   console.log('window resize')
-    // }
   }
 }
 </script>

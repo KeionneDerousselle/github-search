@@ -38,11 +38,14 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -62,10 +65,6 @@ describe('Index Page', () => {
 
     it('should render as expected', () => {
       expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should display an error message about the search term being required', () => {
-
     })
 
     it('should disable the search submit button', () => {
@@ -88,12 +87,15 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
 
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -136,21 +138,27 @@ describe('Index Page', () => {
   describe('when a valid search is performed', () => {
     let searchButton
     let mockSearchAction
+    let mockSetSearchTermAction
     let searchTerm
 
     // TODO: include validation rules
     beforeAll(async () => {
       searchTerm = 'test'
       mockSearchAction = jest.fn().mockResolvedValue([])
+      mockSetSearchTermAction = jest.fn().mockResolvedValue()
+
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: mockSetSearchTermAction,
               search: mockSearchAction,
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -178,16 +186,80 @@ describe('Index Page', () => {
       expect(wrapper).toMatchSnapshot()
     })
 
-    it('should not display an error message about the search term being invalid', () => {
+    it('should not disable the search submit button', () => {
+      expect(searchButton.attributes().disabled).toBeFalsy()
+    })
 
+    it('should set the current search term in the store', () => {
+      expect(mockSetSearchTermAction).toHaveBeenCalledWith(expect.any(Object), searchTerm)
+    })
+
+    it('should call the search action', () => {
+      expect(mockSearchAction).toHaveBeenCalledWith(expect.any(Object), undefined)
+    })
+  })
+
+  describe('when a search is performed that matches the current search term', () => {
+    let searchButton
+    let mockSearchAction
+    let mockSetSearchTermAction
+    let searchTerm
+
+    // TODO: include validation rules
+    beforeAll(async () => {
+      searchTerm = 'test'
+      mockSearchAction = jest.fn().mockResolvedValue([])
+      mockSetSearchTermAction = jest.fn().mockResolvedValue()
+
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('test'),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+            },
+            actions: {
+              setSearchTerm: mockSetSearchTermAction,
+              search: mockSearchAction,
+              next: jest.fn().mockResolvedValue(),
+              get: jest.fn().mockResolvedValue()
+            }
+          }
+        }
+      })
+
+      const searchBox = wrapper.get('#search-box')
+
+      searchButton = wrapper.get('#search-button')
+
+      searchBox.setValue(searchTerm)
+      searchBox.trigger('blur')
+      await flushValidationUpdates(wrapper)
+
+      searchButton.trigger('click')
+      await flushValidationUpdates(wrapper)
+    })
+
+    afterAll(() => {
+      mockSearchAction.mockRestore()
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
     })
 
     it('should not disable the search submit button', () => {
       expect(searchButton.attributes().disabled).toBeFalsy()
     })
 
-    it('should call the search action', () => {
-      expect(mockSearchAction).toHaveBeenCalledWith(expect.any(Object), { simpleSearchTerm: searchTerm })
+    it('should not set the current search term in the store', () => {
+      expect(mockSetSearchTermAction).not.toHaveBeenCalled()
+    })
+
+    it('should not call the search action', () => {
+      expect(mockSearchAction).not.toHaveBeenCalled()
     })
   })
 
@@ -199,11 +271,14 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -245,11 +320,14 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -284,11 +362,14 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -320,11 +401,14 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -360,11 +444,14 @@ describe('Index Page', () => {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue([]),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -399,24 +486,42 @@ describe('Index Page', () => {
   })
 
   describe('when there are search results to be displayed', () => {
-    let users
+    let results
 
     beforeAll(() => {
-      users = [
-        { id: 1, login: 'user1' },
-        { id: 2, login: 'user2' },
-        { id: 3, login: 'user3' }
+      results = [
+        {
+          id: 1,
+          page: 1,
+          users: [
+            { id: 1, login: 'user1' },
+            { id: 2, login: 'user2' },
+            { id: 3, login: 'user3' }
+          ]
+        },
+        {
+          id: 2,
+          page: 2,
+          users: [
+            { id: 4, login: 'user4' },
+            { id: 5, login: 'user5' },
+            { id: 6, login: 'user6' }
+          ]
+        }
       ]
 
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue(users),
+              results: jest.fn().mockReturnValue(results),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -433,29 +538,34 @@ describe('Index Page', () => {
     })
 
     it('should display a search result for each user', () => {
-      users.forEach(user => {
-        const userSearchResult = wrapper.get(`#search-result-${user.id}`)
+      results.forEach(result => {
+        const resultList = wrapper.get(`#page-${result.page}`)
 
-        expect(userSearchResult.element).toBeVisible()
+        expect(resultList.element).toBeVisible()
+
+        result.users.forEach(user => {
+          const userSearchResult = wrapper.get(`#search-result-${user.id}`)
+
+          expect(userSearchResult.element).toBeVisible()
+        })
       })
     })
   })
 
   describe('when there are no search results to be displayed', () => {
-    let users
-
     beforeAll(() => {
-      users = []
-
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
             getters: {
-              users: jest.fn().mockReturnValue(users),
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
             },
             actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
               search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue()
             }
           }
@@ -473,6 +583,247 @@ describe('Index Page', () => {
 
     it('should not display any search results ', () => {
       expect(() => wrapper.get('.search__result')).toThrow()
+    })
+  })
+
+  describe('when the adding the scroll listener', () => {
+    let mockedResultsScrollBox
+
+    beforeAll(() => {
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('')
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue()
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        addEventListener: jest.fn()
+      }
+
+      wrapper.vm.addScrollListener(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should add an event listener to the element that is passed in', () => {
+      expect(mockedResultsScrollBox.addEventListener).toHaveBeenCalledWith('scroll', wrapper.vm.handleResultsScrolled)
+    })
+  })
+
+  describe('when removing the scroll listener', () => {
+    let mockedResultsScrollBox
+
+    beforeAll(() => {
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('')
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue()
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        removeEventListener: jest.fn()
+      }
+
+      wrapper.vm.removeScrollListener(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should remove an event listener to the element that is passed in', () => {
+      expect(mockedResultsScrollBox.removeEventListener).toHaveBeenCalledWith('scroll', wrapper.vm.handleResultsScrolled)
+    })
+  })
+
+  describe('handleResultsScrolled', () => {
+    let handleScrollHelperSpy
+
+    beforeAll(() => {
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('')
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: jest.fn().mockResolvedValue()
+            }
+          }
+        }
+      })
+      handleScrollHelperSpy = jest.spyOn(wrapper.vm, 'handleScrollHelper')
+
+      wrapper.vm.handleResultsScrolled()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should remove an event listener to the element that is passed in', () => {
+      expect(handleScrollHelperSpy).toHaveBeenCalledWith(wrapper.vm.$refs.results)
+    })
+  })
+
+  describe('when scrolling and the scrollable content under the results box is greater than 1.5 pages', () => {
+    let mockedResultsScrollBox
+    let mockedNextAction
+
+    beforeAll(async () => {
+      mockedNextAction = jest.fn().mockResolvedValue()
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('')
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: mockedNextAction
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        scrollHeight: 770,
+        scrollTop: 0,
+        offsetHeight: 500
+      }
+
+      await wrapper.vm.handleScrollHelper(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should not fetch the next page of results', () => {
+      expect(mockedNextAction).not.toHaveBeenCalled()
+    })
+
+    it('should not set the max scroll position to the height of the scrollable content', () => {
+      expect(wrapper.vm.maxScrollPosition).not.toBe(mockedResultsScrollBox.scrollHeight)
+    })
+  })
+
+  describe('when scrolling and the scrollable content under the results box is less than 1.5 pages', () => {
+    let mockedResultsScrollBox
+    let mockedNextAction
+
+    beforeAll(async () => {
+      mockedNextAction = jest.fn().mockResolvedValue()
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('')
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: mockedNextAction
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        scrollHeight: 500,
+        scrollTop: 300,
+        offsetHeight: 500
+      }
+
+      await wrapper.vm.handleScrollHelper(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should fetch the next page of results', () => {
+      expect(mockedNextAction).toHaveBeenCalled()
+    })
+
+    it('should set the max scroll position to the height of the scrollable content', () => {
+      expect(wrapper.vm.maxScrollPosition).toBe(mockedResultsScrollBox.scrollHeight)
+    })
+  })
+
+  describe('when scrolling and the scrollable content under the results box is less than 1.5 pages, but we are already fetching the next page', () => {
+    let mockedResultsScrollBox
+    let mockedNextAction
+
+    beforeAll(async () => {
+      mockedNextAction = jest.fn().mockResolvedValue()
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue('')
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              next: mockedNextAction
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        scrollHeight: 500,
+        scrollTop: 300,
+        offsetHeight: 500
+      }
+
+      wrapper.setData({
+        fetchingTheNextPage: true
+      })
+
+      await wrapper.vm.handleScrollHelper(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should not fetch the next page of results', () => {
+      expect(mockedNextAction).not.toHaveBeenCalled()
+    })
+
+    it('should not set the max scroll position to the height of the scrollable content', () => {
+      expect(wrapper.vm.maxScrollPosition).not.toBe(mockedResultsScrollBox.scrollHeight)
     })
   })
 })
