@@ -7,10 +7,10 @@ describe('state', () => {
     defaultState = state()
   })
 
-  it('should have an empty results array on the default state', () => {
+  it('should have an empty results object on the default state', () => {
     const { results } = defaultState
 
-    expect(results).toEqual([])
+    expect(results).toEqual({})
   })
 
   it('should have a default number of user search results per page on the default state', () => {
@@ -45,19 +45,59 @@ describe('state', () => {
 })
 
 describe('mutations', () => {
-  describe('ADD_SEARCH_RESULTS', () => {
+  describe('ADD_SEARCH_RESULTS - when there is no data in the cache', () => {
     let currentState
     let result
 
     beforeAll(() => {
-      currentState = { results: [] }
-      result = { id: 1, totalCount: 5000, Term: 1, usersOnPage: 15, users: [] }
+      currentState = { results: {} }
+      result = { cacheKey: '/search/usersTest25', id: 1, totalCount: 5000, page: 1, usersOnPage: 15, users: [], expiresAt: 1234 }
 
       mutations.ADD_SEARCH_RESULTS(currentState, result)
     })
 
     it('should add the result to the list of search results', () => {
-      expect(currentState.results).toContainEqual(result)
+      const { cacheKey, ...results } = result
+
+      expect(currentState.results).toEqual({
+        [cacheKey]: {
+          1: results
+        }
+      })
+    })
+  })
+
+  describe('ADD_SEARCH_RESULTS - when there is data in the cache', () => {
+    let currentState
+    let result1
+    let result2
+
+    beforeAll(() => {
+      result1 = { cacheKey: '/search/usersTest25', id: 1, totalCount: 5000, page: 1, usersOnPage: 15, users: [], expiresAt: 1234 }
+      result2 = { cacheKey: '/search/usersTest25', id: 2, totalCount: 5000, page: 2, usersOnPage: 15, users: [], expiresAt: 1234 }
+      const { cacheKey, ...results1 } = result1
+
+      currentState = {
+        results: {
+          [result1.cacheKey]: {
+            1: results1
+          }
+        }
+      }
+
+      mutations.ADD_SEARCH_RESULTS(currentState, result2)
+    })
+
+    it('should add the result to the list of search results', () => {
+      const { cacheKey, ...results1 } = result1
+      const { cacheKey: cacheKey2, ...results2 } = result2
+
+      expect(currentState.results).toEqual({
+        [cacheKey]: {
+          1: results1,
+          2: results2
+        }
+      })
     })
   })
 
@@ -168,6 +208,25 @@ describe('mutations', () => {
       expect(currentState.currentPage).toEqual(1)
     })
   })
+
+  describe('SET_CURRENT_PAGE', () => {
+    let currentState
+    let page
+
+    beforeAll(() => {
+      currentState = {
+        currentPage: 32
+      }
+
+      page = 2
+
+      mutations.SET_CURRENT_PAGE(currentState, page)
+    })
+
+    it('should set the current page to the passed in page', () => {
+      expect(currentState.currentPage).toEqual(page)
+    })
+  })
 })
 
 describe('actions', () => {
@@ -247,19 +306,29 @@ describe('actions', () => {
     })
   })
 
-  describe('when a successful search action call is made', () => {
+  describe('when a search action call is made for results that have not been cached', () => {
     let mockReturnedUsers
     let mockNumOfTotalResults
     let currentState
+    let currentPage
+    let resultsPerPage
+    let currentSearchTerm
+    let cacheKey
 
     beforeAll(async () => {
       mockReturnedUsers = [{ foo: 'bar' }]
+      currentSearchTerm = 'foo'
+      resultsPerPage = 15
+      currentPage = 1
+      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+
       currentState = {
-        currentSearchTerm: 'foo',
-        resultsPerPage: 15,
-        currentPage: 1
+        currentSearchTerm,
+        resultsPerPage,
+        currentPage,
+        results: {}
       }
-      mockNumOfTotalResults = 1
+      mockNumOfTotalResults = 25
 
       $axios.get = jest.fn().mockResolvedValue({
         data: {
@@ -288,11 +357,147 @@ describe('actions', () => {
 
     it('should perform the SET_USERS mutation with the search results', () => {
       expect(commit).toHaveBeenCalledWith('ADD_SEARCH_RESULTS', {
+        cacheKey,
         id: expect.any(String),
         totalCount: mockNumOfTotalResults,
         page: currentState.currentPage,
         usersOnPage: mockReturnedUsers.length,
-        users: mockReturnedUsers
+        users: mockReturnedUsers,
+        expiresAt: expect.any(Number)
+      })
+    })
+
+    it('should perform the SET_NUMBER_OF_TOTAL_RESULTS mutation with the number of total returned search results', () => {
+      expect(commit).toHaveBeenCalledWith('SET_NUMBER_OF_TOTAL_RESULTS', mockNumOfTotalResults)
+    })
+  })
+
+  describe('when a search action call is made for results that have been cached', () => {
+    let mockReturnedUsers
+    let mockNumOfTotalResults
+    let currentState
+    let currentPage
+    let resultsPerPage
+    let currentSearchTerm
+    let cacheKey
+
+    beforeAll(async () => {
+      mockReturnedUsers = [{ foo: 'bar' }]
+      currentSearchTerm = 'foo'
+      resultsPerPage = 15
+      currentPage = 1
+      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+
+      currentState = {
+        currentSearchTerm,
+        resultsPerPage,
+        currentPage,
+        results: {
+          [cacheKey]: {
+            1: {
+              page: 1,
+              users: [],
+              expiresAt: new Date(new Date().getTime() + 60 * 60000).getTime()
+            }
+          }
+        }
+      }
+      mockNumOfTotalResults = 25
+
+      $axios.get = jest.fn().mockResolvedValue({
+        data: {
+          total_count: mockNumOfTotalResults,
+          items: mockReturnedUsers
+        }
+      })
+
+      await actions.search({ commit, state: currentState })
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      $axios.get.mockReset()
+    })
+
+    it('should not make a get request to get users using the simple search term', () => {
+      expect($axios.get).not.toHaveBeenCalled()
+    })
+
+    it('should not perform the SET_USERS mutation with the search results', () => {
+      expect(commit).not.toHaveBeenCalled()
+    })
+
+    it('should not perform the SET_NUMBER_OF_TOTAL_RESULTS mutation with the number of total returned search results', () => {
+      expect(commit).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('when a search action call is made for results that have been cached and are expired', () => {
+    let mockReturnedUsers
+    let mockNumOfTotalResults
+    let currentState
+    let currentPage
+    let resultsPerPage
+    let currentSearchTerm
+    let cacheKey
+
+    beforeAll(async () => {
+      mockReturnedUsers = [{ foo: 'bar' }]
+      currentSearchTerm = 'foo'
+      resultsPerPage = 15
+      currentPage = 1
+      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+
+      currentState = {
+        currentSearchTerm,
+        resultsPerPage,
+        currentPage,
+        results: {
+          [cacheKey]: {
+            1: {
+              page: 1,
+              users: [],
+              expiresAt: new Date(2021, 1, 1).getTime()
+            }
+          }
+        }
+      }
+      mockNumOfTotalResults = 25
+
+      $axios.get = jest.fn().mockResolvedValue({
+        data: {
+          total_count: mockNumOfTotalResults,
+          items: mockReturnedUsers
+        }
+      })
+
+      await actions.search({ commit, state: currentState })
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      $axios.get.mockReset()
+    })
+
+    it('should make a get request to get users using the simple search term', () => {
+      expect($axios.get).toHaveBeenCalledWith('/api/users', expect.objectContaining({
+        params: {
+          q: currentState.currentSearchTerm,
+          per_page: currentState.resultsPerPage,
+          page: currentState.currentPage
+        }
+      }))
+    })
+
+    it('should perform the SET_USERS mutation with the search results', () => {
+      expect(commit).toHaveBeenCalledWith('ADD_SEARCH_RESULTS', {
+        cacheKey,
+        id: expect.any(String),
+        totalCount: mockNumOfTotalResults,
+        page: currentState.currentPage,
+        usersOnPage: mockReturnedUsers.length,
+        users: mockReturnedUsers,
+        expiresAt: expect.any(Number)
       })
     })
 
@@ -430,7 +635,7 @@ describe('actions', () => {
 
   describe('when getting the next page of search results', () => {
     beforeAll(async () => {
-      await actions.next({ commit, dispatch })
+      await actions.fetchNextPage({ commit, dispatch })
     })
 
     afterAll(() => {
@@ -446,20 +651,99 @@ describe('actions', () => {
       expect(dispatch).toHaveBeenCalledWith('search')
     })
   })
+
+  describe('when fetching a page of search results', () => {
+    let page
+
+    beforeAll(async () => {
+      page = 4
+      await actions.fetchPage({ commit, dispatch }, page)
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      dispatch.mockReset()
+    })
+
+    it('should make a commit to set the current page', () => {
+      expect(commit).toHaveBeenCalledWith('SET_CURRENT_PAGE', page)
+    })
+
+    it('should dispatch the search action', () => {
+      expect(dispatch).toHaveBeenCalledWith('search')
+    })
+  })
+
+  describe('when setting the current page of search results', () => {
+    let page
+
+    beforeAll(async () => {
+      page = 4
+      await actions.setPage({ commit, dispatch }, page)
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      dispatch.mockReset()
+    })
+
+    it('should make a commit to set the current page', () => {
+      expect(commit).toHaveBeenCalledWith('SET_CURRENT_PAGE', page)
+    })
+
+    it('should not dispatch the search action', () => {
+      expect(dispatch).not.toHaveBeenCalled()
+    })
+  })
 })
 
 describe('getters', () => {
   let currentState
 
-  describe('results', () => {
+  describe('when getting results, and results for the current search term exist', () => {
+    let currentSearchTerm
+    let resultsPerPage
+    let cacheKey
+
     beforeAll(() => {
+      currentSearchTerm = 'Test'
+      resultsPerPage = 25
+      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+
       currentState = {
-        results: [ { id: 1, page: 1, users: [] }, { id: 2, page: 2, users: [] } ]
+        currentSearchTerm,
+        resultsPerPage,
+        results: {
+          [cacheKey]: {
+            1: { id: 1, page: 1, users: [] },
+            2: { id: 2, page: 2, users: [] }
+          }
+        }
       }
     })
 
     it('should return the search results from the state', () => {
-      expect(getters.results(currentState)).toBe(currentState.results)
+      expect(getters.results(currentState)).toEqual(Object.values(currentState.results[cacheKey]))
+    })
+  })
+
+  describe('when getting results, and results for the current search term don\'t exist', () => {
+    let currentSearchTerm
+    let resultsPerPage
+
+    beforeAll(() => {
+      currentSearchTerm = 'Test'
+      resultsPerPage = 25
+
+      currentState = {
+        currentSearchTerm,
+        resultsPerPage,
+        results: {}
+      }
+    })
+
+    it('should return an empty array of search results from the state', () => {
+      expect(getters.results(currentState)).toEqual([])
     })
   })
 
@@ -518,6 +802,18 @@ describe('getters', () => {
 
     it('should return the number of results per page from the state', () => {
       expect(getters.resultsPerPage(currentState)).toBe(currentState.resultsPerPage)
+    })
+  })
+
+  describe('currentPage', () => {
+    beforeAll(() => {
+      currentState = {
+        currentPage: 25
+      }
+    })
+
+    it('should return the current page from the state', () => {
+      expect(getters.currentPage(currentState)).toBe(currentState.currentPage)
     })
   })
 })
