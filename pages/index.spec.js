@@ -917,10 +917,11 @@ describe('Index Page', () => {
     let mockedFetchPage
     let mockedSetPage
     let clickedPage
-    let __getElementByID
+    let getElementByIdSpy
 
     beforeAll(async () => {
-      __getElementByID = global.window.document.getElementById
+      getElementByIdSpy = jest.spyOn(global.window.document, 'getElementById')
+      getElementByIdSpy.mockImplementation(() => ({}))
 
       results = [
         {
@@ -979,19 +980,13 @@ describe('Index Page', () => {
         }
       })
 
-      Object.defineProperty(global.document, 'getElementById', {
-        value: jest.fn().mockImplementation(() => ({}))
-      })
-
       wrapper.get(`.page__link--${clickedPage}`).trigger('click')
       await flushPromises()
       await wrapper.vm.$nextTick()
     })
 
     afterAll(() => {
-      Object.defineProperty(global.document, 'getElementById', {
-        value: __getElementByID
-      })
+      getElementByIdSpy.mockRestore()
       mockedSetPage.mockReset()
       mockedFetchPage.mockReset()
       wrapper.destroy()
@@ -1028,10 +1023,11 @@ describe('Index Page', () => {
     let mockedFetchPage
     let mockedSetPage
     let clickedPage
-    let __getElementByID
+    let getElementByIdSpy
 
     beforeAll(async () => {
-      __getElementByID = global.window.document.getElementById
+      getElementByIdSpy = jest.spyOn(global.window.document, 'getElementById')
+      getElementByIdSpy.mockImplementation(() => undefined)
 
       results = [
         {
@@ -1072,19 +1068,13 @@ describe('Index Page', () => {
         }
       })
 
-      Object.defineProperty(global.document, 'getElementById', {
-        value: jest.fn().mockImplementation(() => ({}))
-      })
-
       wrapper.get(`.page__link--${clickedPage}`).trigger('click')
       await flushPromises()
       await wrapper.vm.$nextTick()
     })
 
     afterAll(() => {
-      Object.defineProperty(global.document, 'getElementById', {
-        value: __getElementByID
-      })
+      getElementByIdSpy.mockRestore()
       mockedFetchPage.mockReset()
       mockedSetPage.mockReset()
       wrapper.destroy()
