@@ -989,6 +989,7 @@ describe('Index Page', () => {
       getElementByIdSpy.mockRestore()
       mockedSetPage.mockReset()
       mockedFetchPage.mockReset()
+      VueScrollTo.scrollTo.mockReset()
       wrapper.destroy()
     })
 
@@ -1004,7 +1005,7 @@ describe('Index Page', () => {
       expect(mockedSetPage).toHaveBeenCalledWith(expect.any(Object), clickedPage)
     })
 
-    it('should set the pagination page to the next page', () => {
+    it('should scroll to the clicked page', () => {
       expect(VueScrollTo.scrollTo).toHaveBeenCalledWith(`#page-${clickedPage}`, 500, {
         container: '#results',
         easing: 'ease-in',
@@ -1077,6 +1078,7 @@ describe('Index Page', () => {
       getElementByIdSpy.mockRestore()
       mockedFetchPage.mockReset()
       mockedSetPage.mockReset()
+      VueScrollTo.scrollTo.mockReset()
       wrapper.destroy()
     })
 
@@ -1092,7 +1094,7 @@ describe('Index Page', () => {
       expect(mockedSetPage).not.toHaveBeenCalled()
     })
 
-    it('should set the pagination page to the next page', () => {
+    it('should scroll to the clicked page', () => {
       expect(VueScrollTo.scrollTo).toHaveBeenCalledWith(`#page-${clickedPage}`, 500, {
         container: '#results',
         easing: 'ease-in',
@@ -1103,6 +1105,108 @@ describe('Index Page', () => {
         x: false,
         y: true
       })
+    })
+  })
+
+  describe('when the next page of results is clicked, but another scroll is taking place', () => {
+    let results
+    let mockedFetchPage
+    let mockedSetPage
+    let clickedPage
+    let getElementByIdSpy
+
+    beforeAll(async () => {
+      getElementByIdSpy = jest.spyOn(global.window.document, 'getElementById')
+      getElementByIdSpy.mockImplementation(() => undefined)
+
+      results = [
+        {
+          id: 1,
+          page: 1,
+          users: [
+            { id: 1, login: 'user1' },
+            { id: 2, login: 'user2' },
+            { id: 3, login: 'user3' }
+          ]
+        },
+        {
+          id: 2,
+          page: 2,
+          users: [
+            { id: 4, login: 'user4' },
+            { id: 5, login: 'user5' },
+            { id: 6, login: 'user6' }
+          ]
+        },
+        {
+          id: 3,
+          page: 3,
+          users: [
+            { id: 7, login: 'user7' },
+            { id: 8, login: 'user8' },
+            { id: 9, login: 'user9' }
+          ]
+        }
+      ]
+
+      clickedPage = 2
+      mockedFetchPage = jest.fn().mockResolvedValue()
+      mockedSetPage = jest.fn().mockResolvedValue()
+
+      wrapper = mountPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue(results),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+              numberOfResults: jest.fn().mockReturnValue(9),
+              resultsPerPage: jest.fn().mockReturnValue(3),
+              currentPage: jest.fn().mockReturnValue(1)
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              fetchNextPage: jest.fn().mockResolvedValue(),
+              get: jest.fn().mockResolvedValue(),
+              fetchPage: mockedFetchPage,
+              setPage: mockedSetPage
+            }
+          }
+        }
+      })
+
+      wrapper.setData({ currentScrollCancellation: {} })
+      await flushPromises()
+      await wrapper.vm.$nextTick()
+
+      wrapper.get(`.page__link--${clickedPage}`).trigger('click')
+      await flushPromises()
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      getElementByIdSpy.mockRestore()
+      mockedSetPage.mockReset()
+      mockedFetchPage.mockReset()
+      VueScrollTo.scrollTo.mockReset()
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not fetch the page of results', () => {
+      expect(mockedFetchPage).not.toHaveBeenCalled()
+    })
+
+    it('should not call the set page action', () => {
+      expect(mockedSetPage).not.toHaveBeenCalled()
+    })
+
+    it('should not scroll to the page', () => {
+      expect(VueScrollTo.scrollTo).not.toHaveBeenCalled()
     })
   })
 })
