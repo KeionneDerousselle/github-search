@@ -36,19 +36,25 @@
 
     <div
       id="results-box"
-      ref="results"
       class="results-box">
-      <ul
-        v-for="result in results"
-        :id="`page-${result.page}`"
-        :key="result.id">
-        <user-list-item
-          v-for="user in result.users"
-          :id="`search-result-${user.id}`"
-          :key="user.id"
-          :user="user"
-          class="search__result" />
-      </ul>
+      <div
+        ref="results"
+        class="results">
+        <ul
+          v-for="result in results"
+          :id="`page-${result.page}`"
+          :key="result.id">
+          <user-list-item
+            v-for="user in result.users"
+            :id="`search-result-${user.id}`"
+            :key="user.id"
+            :user="user"
+            class="search__result" />
+        </ul>
+      </div>
+      <div class="pagination">
+        TEST
+      </div>
     </div>
   </div>
 </template>
@@ -193,11 +199,11 @@ export default {
 
 <style lang="scss">
 .search-page {
-  @apply max-w-2xl mx-auto flex flex-col h-full;
+  @apply max-w-md flex flex-col h-full;
 }
 
 .search__form {
-  @apply flex items-start justify-between;
+  @apply flex items-start justify-between flex-none;
 }
 
 .search__box {
@@ -208,8 +214,6 @@ export default {
 
 .search__container {
   @apply shadow-lg bg-indigo-500 text-white;
-  @apply h-12;
-  @apply md:h-14;
 
   &--focused {
     @apply ring-4 ring-indigo-400;
@@ -217,7 +221,7 @@ export default {
 }
 
 .search__input {
-  @apply placeholder-indigo-50 text-sm md:text-base lg:text-lg xl:text-xl;
+  @apply placeholder-indigo-50 text-sm md:text-base;
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -232,9 +236,7 @@ export default {
 }
 
 .search__button {
-  @apply shadow-lg border-0 bg-indigo-200 flex-none text-indigo-800;
-  @apply h-12 w-12;
-  @apply md:h-14 md:w-14;
+  @apply shadow-lg border-0 bg-indigo-200 flex-none text-indigo-800 h-full;
 
   &:hover:not(:disabled) {
     @apply bg-indigo-300 shadow-2xl;
@@ -253,13 +255,19 @@ export default {
   }
 
   &__icon {
-    @apply font-bold;
-    @apply w-4 h-4;
-    @apply md:w-5 md:h-5;
+    @apply font-bold w-4 h-4;
   }
 }
 
 .results-box {
-  @apply flex-1 shadow-lg bg-white rounded-lg mt-6 overflow-y-auto;
+  @apply shadow-lg bg-white rounded-lg mt-6 flex flex-1 flex-col h-full overflow-hidden;
+}
+
+.results {
+  @apply flex-1 overflow-y-auto h-full;
+}
+
+.pagination {
+  @apply flex-none;
 }
 </style>

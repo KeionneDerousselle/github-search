@@ -16,7 +16,7 @@ describe('state', () => {
   it('should have a default number of user search results per page on the default state', () => {
     const { resultsPerPage } = defaultState
 
-    expect(resultsPerPage).toBe(15)
+    expect(resultsPerPage).toBe(25)
   })
 
   it('should have the current page of user search results on the default state', () => {
@@ -152,6 +152,22 @@ describe('mutations', () => {
       expect(currentState.results).toEqual([])
     })
   })
+
+  describe('RESET_CURRENT_PAGE', () => {
+    let currentState
+
+    beforeAll(() => {
+      currentState = {
+        currentPage: 32
+      }
+
+      mutations.RESET_CURRENT_PAGE(currentState)
+    })
+
+    it('should increment the current page', () => {
+      expect(currentState.currentPage).toEqual(1)
+    })
+  })
 })
 
 describe('actions', () => {
@@ -198,6 +214,14 @@ describe('actions', () => {
 
     it('should make a commit to reset search results', () => {
       expect(commit).toBeCalledWith('RESET_RESULTS')
+    })
+
+    it('should make a commit to reset search results', () => {
+      expect(commit).toBeCalledWith('RESET_CURRENT_PAGE')
+    })
+
+    it('should make a commit to reset search results', () => {
+      expect(commit).toBeCalledWith('SET_NUMBER_OF_TOTAL_RESULTS', 0)
     })
   })
 

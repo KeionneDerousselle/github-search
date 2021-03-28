@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 export const state = () => ({
   results: [],
   userDetailsCache: {},
-  resultsPerPage: 15,
+  resultsPerPage: 25,
   currentPage: 1,
   numberOfResults: 0,
   currentSearchTerm: ''
@@ -33,6 +33,10 @@ export const mutations = {
 
   RESET_RESULTS(state) {
     state.results = []
+  },
+
+  RESET_CURRENT_PAGE(state) {
+    state.currentPage = 1
   }
 }
 
@@ -43,6 +47,8 @@ export const actions = {
     if (searchTerm.toLowerCase() !== currentSearchTerm.toLowerCase()) {
       commit('SET_SEARCH_TERM', searchTerm)
       commit('RESET_RESULTS')
+      commit('RESET_CURRENT_PAGE')
+      commit('SET_NUMBER_OF_TOTAL_RESULTS', 0)
     }
   },
 
