@@ -496,4 +496,28 @@ describe('getters', () => {
       expect(getters.currentSearchTerm(currentState)).toBe(currentState.currentSearchTerm)
     })
   })
+
+  describe('numberOfResults', () => {
+    beforeAll(() => {
+      currentState = {
+        numberOfResults: 100
+      }
+    })
+
+    it('should return the total number of results from the state', () => {
+      expect(getters.numberOfResults(currentState)).toBe(currentState.numberOfResults)
+    })
+  })
+
+  describe('resultsPerPage', () => {
+    beforeAll(() => {
+      currentState = {
+        resultsPerPage: 25
+      }
+    })
+
+    it('should return the number of results per page from the state', () => {
+      expect(getters.resultsPerPage(currentState)).toBe(currentState.resultsPerPage)
+    })
+  })
 })

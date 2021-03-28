@@ -90,5 +90,7 @@ export const actions = {
 export const getters = {
   results: ({ results }) => results,
   userDetailsByUsername: ({ userDetailsCache }) => username => userDetailsCache[username],
-  currentSearchTerm: ({ currentSearchTerm }) => currentSearchTerm
+  currentSearchTerm: ({ currentSearchTerm }) => currentSearchTerm,
+  numberOfResults: ({ numberOfResults }) => numberOfResults,
+  resultsPerPage: ({ resultsPerPage }) => resultsPerPage
 }
