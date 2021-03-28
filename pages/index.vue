@@ -38,6 +38,7 @@
       id="results-box"
       class="results-box">
       <div
+        id="results"
         ref="results"
         class="results">
         <ul
@@ -60,7 +61,7 @@
           class="results__pagination"
           :total-items="numberOfResults"
           :items-per-page="resultsPerPage"
-          :current-page="currentPaginationPage"
+          :current-page="currentPage"
           @change="handlePageChanged" />
       </div>
     </div>
@@ -77,6 +78,8 @@ import Pagination from '@/components/Pagination'
 
 import { mapActions, mapGetters } from 'vuex'
 
+import VueScrollTo from 'vue-scrollto'
+
 export default {
   components: {
     CheckIcon,
@@ -92,12 +95,16 @@ export default {
     performingSearch: false,
     maxScrollPosition: 0,
     fetchingTheNextPage: false,
-    currentPaginationPage: 1
+    currentScrollCancellation: null
   }),
 
   computed: {
     ...mapGetters('users', [
-      'results', 'currentSearchTerm', 'numberOfResults', 'resultsPerPage'
+      'results',
+      'currentSearchTerm',
+      'numberOfResults',
+      'resultsPerPage',
+      'currentPage'
     ])
   },
 
@@ -110,7 +117,13 @@ export default {
   },
 
   methods: {
-    ...mapActions('users', [ 'setSearchTerm', 'search', 'next' ]),
+    ...mapActions('users', [
+      'setSearchTerm',
+      'search',
+      'fetchNextPage',
+      'fetchPage',
+      'setPage'
+    ]),
 
     getSearchInputContainerClasses(errors, isFocused) {
       const classStrats = [
@@ -197,9 +210,9 @@ export default {
         if ((el.scrollHeight !== this.maxScrollPosition) && !this.fetchingTheNextPage) {
           this.fetchingTheNextPage = true
 
-          return this.next().then(() => {
+          return this.fetchNextPage().then(() => {
             // set the maxium scrolled position to the bottom of the newly drawn content (containing all items)
-            this.maxScrollPosition = el.scrollHeight
+            this.setMaxScollHeight(el.scrollHeight)
           }).finally(() => {
             this.fetchingTheNextPage = false
           })
@@ -207,8 +220,50 @@ export default {
       }
     },
 
+    setMaxScollHeight(el) {
+      this.maxScrollPosition = el.scrollHeight
+    },
+
     handlePageChanged(page) {
-      this.currentPaginationPage = page
+      const pageId = `#page-${page}`
+
+      if (!this.currentScrollCancellation) {
+        if (document.getElementById(pageId)) {
+          return this.performScroll(pageId, page)
+        } else {
+          this.fetchingTheNextPage = true
+
+          return this.fetchPage(page)
+            .then(() => {
+              this.performScroll(pageId, page).then(() => {
+                this.setMaxScollHeight(this.$refs.results)
+              })
+            }).finally(() => {
+              this.currentScrollCancellation = null
+              this.fetchingTheNextPage = false
+            })
+        }
+      }
+    },
+
+    performScroll(pageId, page) {
+      this.currentScrollCancellation = this.scrollToPage(pageId)
+      return this.setPage(page).then(() => {
+        this.currentScrollCancellation = null
+      })
+    },
+
+    scrollToPage(pageId) {
+      return VueScrollTo.scrollTo(pageId, 500, {
+        container: '#results',
+        easing: 'ease-in',
+        lazy: false,
+        offset: 0,
+        force: true,
+        cancelable: true,
+        x: false,
+        y: true
+      })
     }
   }
 }
