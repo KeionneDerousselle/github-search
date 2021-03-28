@@ -2,21 +2,21 @@
   <div
     id="kd-github-search-app"
     class="github-search-app">
-    <div class="github-search-container">
-      <kd-github-search-header
-        id="kd-github-search-header"
-        class="github-search-header" />
+    <kd-github-search-header
+      id="kd-github-search-header"
+      class="github-search-header" />
 
-      <main
-        id="kd-github-search-content"
-        class="github-search-content">
+    <main
+      id="kd-github-search-content"
+      class="github-search-content">
+      <div class="github-search-container">
         <Nuxt />
-      </main>
+      </div>
+    </main>
 
-      <kd-github-search-footer
-        id="kd-github-search-footer"
-        class="github-search-footer" />
-    </div>
+    <kd-github-search-footer
+      id="kd-github-search-footer"
+      class="github-search-footer" />
   </div>
 </template>
 
@@ -38,15 +38,7 @@ body {
 }
 
 .github-search-app {
-  @apply w-full flex flex-col h-screen absolute;
-
-  top: 0;
-  left: 0;
-  bottom: 0;
-}
-
-.github-search-container {
-  @apply flex flex-col min-h-0 flex-grow;
+  @apply w-full flex flex-col h-screen;
 }
 
 .github-search-header {
@@ -54,9 +46,20 @@ body {
 }
 
 .github-search-content {
-  @apply w-full p-6 flex-1 overflow-y-auto;
+  @apply w-full p-4 flex-1 min-h-0 h-full;
+  @apply md:p-6;
+}
+
+.github-search-container {
+  @apply flex flex-col;
   @apply -mt-40;
   @apply md:-mt-60;
+
+  height: calc(100% + 10rem);
+
+  @media (min-width: 768px) {
+    height: calc(100% + 15rem);
+  }
 }
 
 .github-search-footer {

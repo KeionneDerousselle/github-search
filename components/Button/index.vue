@@ -46,7 +46,7 @@ export default {
 </script>
 <style lang="scss">
 .button {
-  @apply flex appearance-none items-center justify-center align-middle cursor-pointer font-bold text-center no-underline select-none text-base pt-2 pb-2 pl-4 pr-4 border border-gray-400 bg-gray-100 rounded-lg;
+  @apply flex appearance-none items-center justify-center align-middle cursor-pointer font-bold text-center no-underline select-none text-base p-4 border border-gray-400 bg-gray-100 rounded-lg;
 
   color: inherit;
   font-family: inherit;

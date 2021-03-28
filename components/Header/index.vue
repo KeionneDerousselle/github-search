@@ -30,9 +30,9 @@ export default {
 
 <style lang="scss">
 .header {
-  @apply w-full bg-indigo-600 p-6;
+  @apply w-full bg-indigo-600 p-4;
   @apply h-72;
-  @apply md:h-96;
+  @apply md:h-96 md:p-6;
 
   &__content {
     @apply border-b-2 border-indigo-500;

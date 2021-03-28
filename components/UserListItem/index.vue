@@ -66,9 +66,7 @@ export default {
 </script>
 <style lang="scss">
 .user-list-item {
-  @apply list-none flex items-center w-full border-b border-indigo-200;
-  @apply pt-3 pb-3 pl-4 pr-4;
-  @apply md:pt-4 md:pb-4 md:pl-6 md:pr-6;
+  @apply list-none flex items-center w-full border-b border-indigo-200 p-4;
 
   &:hover {
     @apply bg-indigo-50;
@@ -77,7 +75,6 @@ export default {
   &__link {
     @apply ml-auto rounded-full border-transparent p-1 text-center flex justify-center items-center;
     @apply border;
-    @apply md:border-2;
 
     transition: border-color 0.3s ease-out;
   }
@@ -93,7 +90,6 @@ export default {
   &__link__icon {
     @apply text-indigo-500;
     @apply w-4 h-4;
-    @apply md:w-5 md:h-5;
   }
 
   &__link__icon:hover,
@@ -104,7 +100,6 @@ export default {
   &__avatar {
     @apply inline-flex rounded-full mr-2.5;
     @apply w-9 h-9;
-    @apply md:w-10 md:h-10;
   }
 
   &__details {
@@ -114,16 +109,12 @@ export default {
       @apply text-gray-800 block;
       @apply text-sm;
       @apply md:text-base;
-      @apply lg:text-lg;
-      @apply xl:text-xl;
     }
 
     &__login {
       @apply text-gray-600 block;
       @apply text-xs;
       @apply md:text-sm;
-      @apply lg:text-base;
-      @apply xl:text-lg;
     }
   }
 }

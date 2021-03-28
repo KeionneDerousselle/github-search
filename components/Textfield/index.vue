@@ -220,25 +220,21 @@ export default {
 }
 
 .textfield {
-  @apply relative inline-flex overflow-hidden items-center text-base p-4 font-normal;
-  @apply p-3;
-  @apply md:p-4;
+  @apply relative p-3 inline-flex overflow-hidden items-center text-base p-4 font-normal;
 
   transition: all 0.5s;
 
   &__left {
-    @apply mr-2.5;
+    @apply mr-2.5 inline-flex;
   }
 
   &__right {
-    @apply ml-2.5;
+    @apply ml-2.5 inline-flex;
   }
 }
 
 .textfield__input {
-  @apply appearance-none pt-4 pr-4 pb-4 m-0 border-0 outline-none flex-1;
-  @apply pt-3 pr-3 pb-3;
-  @apply md:pt-4 md:pr-4 md:pb-4;
+  @apply appearance-none m-0 border-0 outline-none flex-1;
 
   background: inherit;
   color: inherit;

@@ -35,7 +35,8 @@ export default {
 </script>
 <style lang="scss">
 .footer {
-  @apply pb-6 pl-6 pr-6 w-full;
+  @apply pb-4 pl-4 pr-4 w-full;
+  @apply md:pb-6 md:pl-6 md:pr-6;
 
   .footer__content {
     @apply border-t-2 border-indigo-500 text-indigo-100 flex justify-center;
