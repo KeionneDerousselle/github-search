@@ -23,7 +23,7 @@ exports[`Index Page initial display should render as expected 1`] = `
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -63,7 +63,7 @@ exports[`Index Page when a search is performed that matches the current search t
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -103,7 +103,7 @@ exports[`Index Page when a search is performed without a search term should rend
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -143,7 +143,7 @@ exports[`Index Page when a valid search is performed should render as expected 1
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -183,7 +183,7 @@ exports[`Index Page when an invalid search is performed should render as expecte
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -223,7 +223,7 @@ exports[`Index Page when clicking the clear search text button should render as 
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -240,7 +240,7 @@ exports[`Index Page when clicking the clear search text button should render as 
 </div>
 `;
 
-exports[`Index Page when the next page of results is clicked should render as expected 1`] = `
+exports[`Index Page when the next page of results is clicked, and the results have already been fetched should render as expected 1`] = `
 <div class="search-page">
   <form class="form search__form">
     <div class="attrs-fix search__box">
@@ -263,7 +263,7 @@ exports[`Index Page when the next page of results is clicked should render as ex
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results">
+  <div id="results" class="results">
     <ul id="page-1">
       <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
         <div class="user-list-item__details">
@@ -346,13 +346,217 @@ exports[`Index Page when the next page of results is clicked should render as ex
   <div class="results-toolbar">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" class="page__link page__link--1">
+        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
             1
           </a></li>
-        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2 page__link--active" disabled="disabled">
+        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+            2
+          </a></li>
+        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+            3
+          </a></li>
+        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</div>
+`;
+
+exports[`Index Page when the next page of results is clicked, and the results have not already been fetched should render as expected 1`] = `
+<div class="search-page">
+  <form class="form search__form">
+    <div class="attrs-fix search__box">
+      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+          Search Term
+        </label>
+        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+          <!---->
+        </div></button></span>
+      </div>
+      <!---->
+      <!---->
+    </div>
+</div> <button id="search-button" type="submit" class="search__button button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
+    <!---->
+  </div>
+</button></form>
+<div id="results-box" class="results-box">
+  <div id="results" class="results">
+    <ul id="page-1">
+      <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user1</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user2</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user3</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
+      </li>
+    </ul>
+  </div>
+  <div class="results-toolbar">
+    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
+      <ul class="pagination">
+        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+            1
+          </a></li>
+        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+            2
+          </a></li>
+        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+            3
+          </a></li>
+        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</div>
+`;
+
+exports[`Index Page when the next page of results is clicked, but another scroll is taking place should render as expected 1`] = `
+<div class="search-page">
+  <form class="form search__form">
+    <div class="attrs-fix search__box">
+      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+          Search Term
+        </label>
+        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+          <!---->
+        </div></button></span>
+      </div>
+      <!---->
+      <!---->
+    </div>
+</div> <button id="search-button" type="submit" class="search__button button">
+  <div class="button__content">
+    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+    </svg></span>
+    <!---->
+  </div>
+</button></form>
+<div id="results-box" class="results-box">
+  <div id="results" class="results">
+    <ul id="page-1">
+      <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user1</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user2</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user3</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
+      </li>
+    </ul>
+    <ul id="page-2">
+      <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user4</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user5</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user6</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
+      </li>
+    </ul>
+    <ul id="page-3">
+      <li id="search-result-7" class="user-list-item search__result"><img alt="Profile picture for user7" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user7</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-8" class="user-list-item search__result"><img alt="Profile picture for user8" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user8</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
+      </li>
+      <li id="search-result-9" class="user-list-item search__result"><img alt="Profile picture for user9" class="user-list-item__avatar">
+        <div class="user-list-item__details">
+          <!----> <span class="user-list-item__details__login">user9</span>
+        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+          </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
+      </li>
+    </ul>
+  </div>
+  <div class="results-toolbar">
+    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
+      <ul class="pagination">
+        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+            1
+          </a></li>
+        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
             2
           </a></li>
         <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
@@ -391,7 +595,7 @@ exports[`Index Page when the search term container is focused should render as e
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -431,7 +635,7 @@ exports[`Index Page when the search term container is not focused and there are 
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -471,7 +675,7 @@ exports[`Index Page when the search term input is not focused and there are no e
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -511,7 +715,7 @@ exports[`Index Page when there are no search results to be displayed should rend
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results"></div>
+  <div id="results" class="results"></div>
   <div class="results-toolbar" style="display: none;">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
@@ -551,7 +755,7 @@ exports[`Index Page when there are search results to be displayed should render 
   </div>
 </button></form>
 <div id="results-box" class="results-box">
-  <div class="results">
+  <div id="results" class="results">
     <ul id="page-1">
       <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
         <div class="user-list-item__details">
