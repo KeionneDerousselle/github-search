@@ -66,13 +66,9 @@ export default {
 </script>
 <style lang="scss">
 .user-list-item {
-  @apply list-none flex items-center w-full;
+  @apply list-none flex items-center w-full border-b border-indigo-200;
   @apply pt-3 pb-3 pl-4 pr-4;
   @apply md:pt-4 md:pb-4 md:pl-6 md:pr-6;
-
-  &:not(:last-of-type) {
-    @apply border-b border-indigo-200;
-  }
 
   &:hover {
     @apply bg-indigo-50;
