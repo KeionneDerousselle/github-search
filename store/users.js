@@ -1,16 +1,18 @@
 import Vue from 'vue'
+import { v4 as uuid } from 'uuid'
 
 export const state = () => ({
-  users: [],
+  results: [],
   userDetailsCache: {},
   resultsPerPage: 15,
   currentPage: 1,
-  numberOfResults: 0
+  numberOfResults: 0,
+  currentSearchTerm: ''
 })
 
 export const mutations = {
-  SET_USERS(state, users) {
-    state.users = users
+  ADD_SEARCH_RESULTS(state, results) {
+    state.results.push(results)
   },
 
   SET_NUMBER_OF_TOTAL_RESULTS(state, numberOfResults) {
@@ -19,16 +21,35 @@ export const mutations = {
 
   SET_USER_DETAILS(state, userDetails) {
     Vue.set(state.userDetailsCache, userDetails.username, userDetails)
+  },
+
+  INCREMENT_CURRENT_PAGE(state) {
+    state.currentPage++
+  },
+
+  SET_SEARCH_TERM(state, searchTerm) {
+    state.currentSearchTerm = searchTerm
+  },
+
+  RESET_RESULTS(state) {
+    state.results = []
   }
 }
 
 const addMinutes = (date, minutes) => new Date(date.getTime() + minutes * 60000).getTime()
 
 export const actions = {
-  search({ commit, state: { resultsPerPage, currentPage } }, { simpleSearchTerm }) {
+  setSearchTerm({ commit, state: { currentSearchTerm } }, searchTerm) {
+    if (searchTerm.toLowerCase() !== currentSearchTerm.toLowerCase()) {
+      commit('SET_SEARCH_TERM', searchTerm)
+      commit('RESET_RESULTS')
+    }
+  },
+
+  search({ commit, state: { resultsPerPage, currentPage, currentSearchTerm } }) {
     return this.$axios.get('/api/users', {
       params: {
-        q: simpleSearchTerm,
+        q: currentSearchTerm,
         per_page: resultsPerPage,
         page: currentPage
       }
@@ -36,7 +57,7 @@ export const actions = {
       // eslint-disable-next-line camelcase
       const { total_count, items } = data
 
-      commit('SET_USERS', items)
+      commit('ADD_SEARCH_RESULTS', { id: uuid(), totalCount: total_count, page: currentPage, usersOnPage: items.length, users: items })
       commit('SET_NUMBER_OF_TOTAL_RESULTS', total_count)
       return items
     })
@@ -51,10 +72,17 @@ export const actions = {
 
       commit('SET_USER_DETAILS', { username, data, expiresAt: addMinutes(new Date(), 10) })
     }
+  },
+
+  next({ commit, dispatch }) {
+    commit('INCREMENT_CURRENT_PAGE')
+
+    return dispatch('search')
   }
 }
 
 export const getters = {
-  users: ({ users }) => users,
-  userDetailsByUsername: ({ userDetailsCache }) => username => userDetailsCache[username]
+  results: ({ results }) => results,
+  userDetailsByUsername: ({ userDetailsCache }) => username => userDetailsCache[username],
+  currentSearchTerm: ({ currentSearchTerm }) => currentSearchTerm
 }

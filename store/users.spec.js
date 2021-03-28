@@ -7,10 +7,10 @@ describe('state', () => {
     defaultState = state()
   })
 
-  it('should have an empty users array on the default state', () => {
-    const { users } = defaultState
+  it('should have an empty results array on the default state', () => {
+    const { results } = defaultState
 
-    expect(users).toEqual([])
+    expect(results).toEqual([])
   })
 
   it('should have a default number of user search results per page on the default state', () => {
@@ -36,22 +36,28 @@ describe('state', () => {
 
     expect(userDetailsCache).toEqual({})
   })
+
+  it('should set the current search term to an empty string', () => {
+    const { currentSearchTerm } = defaultState
+
+    expect(currentSearchTerm).toBe('')
+  })
 })
 
 describe('mutations', () => {
-  describe('SET_USERS', () => {
+  describe('ADD_SEARCH_RESULTS', () => {
     let currentState
-    let users
+    let result
 
     beforeAll(() => {
-      currentState = { users: [] }
-      users = [{ a: 'b' }]
+      currentState = { results: [] }
+      result = { id: 1, totalCount: 5000, Term: 1, usersOnPage: 15, users: [] }
 
-      mutations.SET_USERS(currentState, users)
+      mutations.ADD_SEARCH_RESULTS(currentState, result)
     })
 
-    it('should assign the returned users to the users on the users on the state', () => {
-      expect(currentState.users).toEqual(users)
+    it('should add the result to the list of search results', () => {
+      expect(currentState.results).toContainEqual(result)
     })
   })
 
@@ -92,14 +98,70 @@ describe('mutations', () => {
       expect(currentState.userDetailsCache[userDetails.username]).toEqual(userDetails)
     })
   })
+
+  describe('INCREMENT_CURRENT_PAGE', () => {
+    let currentState
+    let currentPage
+
+    beforeAll(() => {
+      currentPage = 0
+
+      currentState = {
+        currentPage
+      }
+
+      mutations.INCREMENT_CURRENT_PAGE(currentState)
+    })
+
+    it('should increment the current page', () => {
+      expect(currentState.currentPage).toBe(currentPage + 1)
+    })
+  })
+
+  describe('SET_SEARCH_TERM', () => {
+    let currentState
+    let searchTerm
+
+    beforeAll(() => {
+      searchTerm = 'Test'
+
+      currentState = {
+        currentSearchTerm: ''
+      }
+
+      mutations.SET_SEARCH_TERM(currentState, searchTerm)
+    })
+
+    it('should increment the current page', () => {
+      expect(currentState.currentSearchTerm).toBe(searchTerm)
+    })
+  })
+
+  describe('RESET_RESULTS', () => {
+    let currentState
+
+    beforeAll(() => {
+      currentState = {
+        results: [{ id: 1, totalCount: 100, page: 2, usersOnPage: 50, users: [] }]
+      }
+
+      mutations.RESET_RESULTS(currentState)
+    })
+
+    it('should increment the current page', () => {
+      expect(currentState.results).toEqual([])
+    })
+  })
 })
 
 describe('actions', () => {
+  let dispatch
   let commit
   let $axios
 
   beforeAll(() => {
     commit = jest.fn()
+    dispatch = jest.fn()
 
     $axios = {
       get: jest.fn().mockResolvedValue(),
@@ -113,20 +175,67 @@ describe('actions', () => {
     })
   })
 
+  describe('when setting a new search term', () => {
+    let searchTerm
+    let currentState
+
+    beforeAll(async () => {
+      searchTerm = 'Test'
+      currentState = {
+        currentSearchTerm: ''
+      }
+
+      await actions.setSearchTerm({ commit, state: currentState }, searchTerm)
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+    })
+
+    it('should make a commit to set the new search term', () => {
+      expect(commit).toBeCalledWith('SET_SEARCH_TERM', searchTerm)
+    })
+
+    it('should make a commit to reset search results', () => {
+      expect(commit).toBeCalledWith('RESET_RESULTS')
+    })
+  })
+
+  describe('when setting a search term that matches the current search term ', () => {
+    let searchTerm
+    let currentState
+
+    beforeAll(async () => {
+      searchTerm = 'Test'
+      currentState = {
+        currentSearchTerm: 'test'
+      }
+
+      await actions.setSearchTerm({ commit, state: currentState }, searchTerm)
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+    })
+
+    it('should not make a commit to set the new search term or reset the search results', () => {
+      expect(commit).not.toBeCalled()
+    })
+  })
+
   describe('when a successful search action call is made', () => {
-    let simpleSearchTerm
     let mockReturnedUsers
     let mockNumOfTotalResults
     let currentState
 
     beforeAll(async () => {
-      simpleSearchTerm = 'test'
-      mockReturnedUsers = []
+      mockReturnedUsers = [{ foo: 'bar' }]
       currentState = {
+        currentSearchTerm: 'foo',
         resultsPerPage: 15,
         currentPage: 1
       }
-      mockNumOfTotalResults = 30
+      mockNumOfTotalResults = 1
 
       $axios.get = jest.fn().mockResolvedValue({
         data: {
@@ -135,7 +244,7 @@ describe('actions', () => {
         }
       })
 
-      await actions.search({ commit, state: currentState }, { simpleSearchTerm })
+      await actions.search({ commit, state: currentState })
     })
 
     afterAll(() => {
@@ -146,7 +255,7 @@ describe('actions', () => {
     it('should make a get request to get users using the simple search term', () => {
       expect($axios.get).toHaveBeenCalledWith('/api/users', expect.objectContaining({
         params: {
-          q: simpleSearchTerm,
+          q: currentState.currentSearchTerm,
           per_page: currentState.resultsPerPage,
           page: currentState.currentPage
         }
@@ -154,7 +263,13 @@ describe('actions', () => {
     })
 
     it('should perform the SET_USERS mutation with the search results', () => {
-      expect(commit).toHaveBeenCalledWith('SET_USERS', mockReturnedUsers)
+      expect(commit).toHaveBeenCalledWith('ADD_SEARCH_RESULTS', {
+        id: expect.any(String),
+        totalCount: mockNumOfTotalResults,
+        page: currentState.currentPage,
+        usersOnPage: mockReturnedUsers.length,
+        users: mockReturnedUsers
+      })
     })
 
     it('should perform the SET_NUMBER_OF_TOTAL_RESULTS mutation with the number of total returned search results', () => {
@@ -288,20 +403,39 @@ describe('actions', () => {
       })
     })
   })
+
+  describe('when getting the next page of search results', () => {
+    beforeAll(async () => {
+      await actions.next({ commit, dispatch })
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+      dispatch.mockReset()
+    })
+
+    it('should make a commit to increment the current page', () => {
+      expect(commit).toHaveBeenCalledWith('INCREMENT_CURRENT_PAGE')
+    })
+
+    it('should dispatch the search action', () => {
+      expect(dispatch).toHaveBeenCalledWith('search')
+    })
+  })
 })
 
 describe('getters', () => {
   let currentState
 
-  describe('users', () => {
+  describe('results', () => {
     beforeAll(() => {
       currentState = {
-        users: []
+        results: [ { id: 1, page: 1, users: [] }, { id: 2, page: 2, users: [] } ]
       }
     })
 
-    it('should return the users from the state', () => {
-      expect(getters.users(currentState)).toBe(currentState.users)
+    it('should return the search results from the state', () => {
+      expect(getters.results(currentState)).toBe(currentState.results)
     })
   })
 
@@ -324,6 +458,18 @@ describe('getters', () => {
 
     it('should return the user\'s details by username from the state', () => {
       expect(getters.userDetailsByUsername(currentState)(username)).toBe(currentState.userDetailsCache[username])
+    })
+  })
+
+  describe('currentSearchTerm', () => {
+    beforeAll(() => {
+      currentState = {
+        currentSearchTerm: 'Test'
+      }
+    })
+
+    it('should return the current search term from the state', () => {
+      expect(getters.currentSearchTerm(currentState)).toBe(currentState.currentSearchTerm)
     })
   })
 })
