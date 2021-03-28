@@ -229,6 +229,7 @@ export default {
 
       if (!this.currentScrollCancellation) {
         if (document.getElementById(pageId)) {
+          console.log('hi')
           return this.setPage(page)
             .then(() => {
               this.currentScrollCancellation = this.scrollToPage(pageId)

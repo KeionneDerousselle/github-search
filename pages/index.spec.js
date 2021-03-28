@@ -917,8 +917,11 @@ describe('Index Page', () => {
     let mockedFetchPage
     let mockedSetPage
     let clickedPage
+    let __getElementByID
 
     beforeAll(async () => {
+      __getElementByID = global.window.document.getElementById
+
       results = [
         {
           id: 1,
@@ -976,12 +979,19 @@ describe('Index Page', () => {
         }
       })
 
+      Object.defineProperty(global.document, 'getElementById', {
+        value: jest.fn().mockImplementation(() => ({}))
+      })
+
       wrapper.get(`.page__link--${clickedPage}`).trigger('click')
       await flushPromises()
       await wrapper.vm.$nextTick()
     })
 
     afterAll(() => {
+      Object.defineProperty(global.document, 'getElementById', {
+        value: __getElementByID
+      })
       mockedSetPage.mockReset()
       mockedFetchPage.mockReset()
       wrapper.destroy()
@@ -1018,8 +1028,11 @@ describe('Index Page', () => {
     let mockedFetchPage
     let mockedSetPage
     let clickedPage
+    let __getElementByID
 
     beforeAll(async () => {
+      __getElementByID = global.window.document.getElementById
+
       results = [
         {
           id: 1,
@@ -1059,12 +1072,19 @@ describe('Index Page', () => {
         }
       })
 
+      Object.defineProperty(global.document, 'getElementById', {
+        value: jest.fn().mockImplementation(() => ({}))
+      })
+
       wrapper.get(`.page__link--${clickedPage}`).trigger('click')
       await flushPromises()
       await wrapper.vm.$nextTick()
     })
 
     afterAll(() => {
+      Object.defineProperty(global.document, 'getElementById', {
+        value: __getElementByID
+      })
       mockedFetchPage.mockReset()
       mockedSetPage.mockReset()
       wrapper.destroy()
