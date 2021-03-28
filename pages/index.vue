@@ -212,7 +212,7 @@ export default {
 
           return this.fetchNextPage().then(() => {
             // set the maxium scrolled position to the bottom of the newly drawn content (containing all items)
-            this.setMaxScollHeight(el.scrollHeight)
+            this.setMaxScollHeight(el)
           }).finally(() => {
             this.fetchingTheNextPage = false
           })
@@ -229,28 +229,25 @@ export default {
 
       if (!this.currentScrollCancellation) {
         if (document.getElementById(pageId)) {
-          return this.performScroll(pageId, page)
+          return this.setPage(page)
+            .then(() => {
+              this.currentScrollCancellation = this.scrollToPage(pageId)
+            }).finally(() => {
+              this.currentScrollCancellation = null
+            })
         } else {
           this.fetchingTheNextPage = true
 
           return this.fetchPage(page)
             .then(() => {
-              this.performScroll(pageId, page).then(() => {
-                this.setMaxScollHeight(this.$refs.results)
-              })
+              this.setMaxScollHeight(this.$refs.results)
+              this.currentScrollCancellation = this.scrollToPage(pageId)
             }).finally(() => {
               this.currentScrollCancellation = null
               this.fetchingTheNextPage = false
             })
         }
       }
-    },
-
-    performScroll(pageId, page) {
-      this.currentScrollCancellation = this.scrollToPage(pageId)
-      return this.setPage(page).then(() => {
-        this.currentScrollCancellation = null
-      })
     },
 
     scrollToPage(pageId) {

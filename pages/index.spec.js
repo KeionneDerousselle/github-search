@@ -4,7 +4,7 @@ import { extend } from 'vee-validate'
 import { required } from 'vee-validate/dist/rules'
 import IndexPage from '.'
 
-jest.mock('VueScrollTo')
+jest.mock('vue-scrollto')
 
 describe('Index Page', () => {
   let wrapper
@@ -299,7 +299,6 @@ describe('Index Page', () => {
               numberOfResults: jest.fn().mockReturnValue(0),
               resultsPerPage: jest.fn().mockReturnValue(25),
               currentPage: jest.fn().mockReturnValue(1)
-
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -615,7 +614,8 @@ describe('Index Page', () => {
               currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25)
+              resultsPerPage: jest.fn().mockReturnValue(25),
+              currentPage: jest.fn().mockReturnValue(1)
             },
             actions: {
               setSearchTerm: jest.fn().mockResolvedValue(),
@@ -914,6 +914,9 @@ describe('Index Page', () => {
 
   describe('when the next page of results is clicked, and the results have already been fetched', () => {
     let results
+    let mockedFetchPage
+    let mockedSetPage
+    let clickedPage
 
     beforeAll(async () => {
       results = [
@@ -946,6 +949,10 @@ describe('Index Page', () => {
         }
       ]
 
+      clickedPage = 2
+      mockedFetchPage = jest.fn().mockResolvedValue()
+      mockedSetPage = jest.fn().mockResolvedValue()
+
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
@@ -954,7 +961,7 @@ describe('Index Page', () => {
               currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(9),
-              resultsPerPage: jest.fn().mockReturnValue(1),
+              resultsPerPage: jest.fn().mockReturnValue(3),
               currentPage: jest.fn().mockReturnValue(1)
             },
             actions: {
@@ -962,19 +969,21 @@ describe('Index Page', () => {
               search: jest.fn().mockResolvedValue([]),
               fetchNextPage: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue(),
-              fetchPage: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
+              fetchPage: mockedFetchPage,
+              setPage: mockedSetPage
             }
           }
         }
       })
 
-      wrapper.get('.page__link--2').trigger('click')
+      wrapper.get(`.page__link--${clickedPage}`).trigger('click')
       await flushPromises()
       await wrapper.vm.$nextTick()
     })
 
     afterAll(() => {
+      mockedSetPage.mockReset()
+      mockedFetchPage.mockReset()
       wrapper.destroy()
     })
 
@@ -982,8 +991,16 @@ describe('Index Page', () => {
       expect(wrapper).toMatchSnapshot()
     })
 
+    it('should not fetch the page of results', () => {
+      expect(mockedFetchPage).not.toHaveBeenCalled()
+    })
+
+    it('should call the set page action', () => {
+      expect(mockedSetPage).toHaveBeenCalledWith(expect.any(Object), clickedPage)
+    })
+
     it('should set the pagination page to the next page', () => {
-      expect(VueScrollTo.scrollTo).toHaveBeenCalledWith('#page-2', 500, {
+      expect(VueScrollTo.scrollTo).toHaveBeenCalledWith(`#page-${clickedPage}`, 500, {
         container: '#results',
         easing: 'ease-in',
         lazy: false,
@@ -996,10 +1013,11 @@ describe('Index Page', () => {
     })
   })
 
-  describe('when the next page of results is clicked, and the results have already not been fetched', () => {
+  describe('when the next page of results is clicked, and the results have not already been fetched', () => {
     let results
     let mockedFetchPage
     let mockedSetPage
+    let clickedPage
 
     beforeAll(async () => {
       results = [
@@ -1014,6 +1032,10 @@ describe('Index Page', () => {
         }
       ]
 
+      clickedPage = 2
+      mockedFetchPage = jest.fn().mockResolvedValue()
+      mockedSetPage = jest.fn().mockResolvedValue()
+
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
@@ -1022,7 +1044,7 @@ describe('Index Page', () => {
               currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(9),
-              resultsPerPage: jest.fn().mockReturnValue(1),
+              resultsPerPage: jest.fn().mockReturnValue(3),
               currentPage: jest.fn().mockReturnValue(1)
             },
             actions: {
@@ -1030,19 +1052,21 @@ describe('Index Page', () => {
               search: jest.fn().mockResolvedValue([]),
               fetchNextPage: jest.fn().mockResolvedValue(),
               get: jest.fn().mockResolvedValue(),
-              fetchPage: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
+              fetchPage: mockedFetchPage,
+              setPage: mockedSetPage
             }
           }
         }
       })
 
-      wrapper.get('.page__link--2').trigger('click')
+      wrapper.get(`.page__link--${clickedPage}`).trigger('click')
       await flushPromises()
       await wrapper.vm.$nextTick()
     })
 
     afterAll(() => {
+      mockedFetchPage.mockReset()
+      mockedSetPage.mockReset()
       wrapper.destroy()
     })
 
@@ -1051,11 +1075,15 @@ describe('Index Page', () => {
     })
 
     it('should fetch the page of results', () => {
-      expect()
+      expect(mockedFetchPage).toHaveBeenCalledWith(expect.any(Object), clickedPage)
+    })
+
+    it('should not call the set page action', () => {
+      expect(mockedSetPage).not.toHaveBeenCalled()
     })
 
     it('should set the pagination page to the next page', () => {
-      expect(VueScrollTo.scrollTo).toHaveBeenCalledWith('#page-2', 500, {
+      expect(VueScrollTo.scrollTo).toHaveBeenCalledWith(`#page-${clickedPage}`, 500, {
         container: '#results',
         easing: 'ease-in',
         lazy: false,
