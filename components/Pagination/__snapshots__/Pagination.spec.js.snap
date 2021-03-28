@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination when the first page is active should render as expected 1`] = `
+<nav aria-label="Search results navigation">
+  <ul class="pagination">
+    <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled">
+        <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
+      </a></li>
+    <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+        1
+      </a></li>
+    <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+        2
+      </a></li>
+    <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+        3
+      </a></li>
+    <li class="page__item page__item--next"><a href="#" class="page__link">
+        <chevron-right-icon-stub aria-hidden="true" class="page__link__icon"></chevron-right-icon-stub> <span class="sr-only">Navigate to Next Page</span>
+      </a></li>
+  </ul>
+</nav>
+`;
+
+exports[`Pagination when the first page is not active should render as expected 1`] = `
+<nav aria-label="Search results navigation">
+  <ul class="pagination">
+    <li class="page__item page__item--previous"><a href="#" class="page__link">
+        <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
+      </a></li>
+    <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" class="page__link page__link--1">
+        1
+      </a></li>
+    <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" disabled="disabled" class="page__link page__link--2 page__link--active">
+        2
+      </a></li>
+    <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+        3
+      </a></li>
+    <li class="page__item page__item--next"><a href="#" class="page__link">
+        <chevron-right-icon-stub aria-hidden="true" class="page__link__icon"></chevron-right-icon-stub> <span class="sr-only">Navigate to Next Page</span>
+      </a></li>
+  </ul>
+</nav>
+`;
+
+exports[`Pagination when the last page is active should render as expected 1`] = `
+<nav aria-label="Search results navigation">
+  <ul class="pagination">
+    <li class="page__item page__item--previous"><a href="#" class="page__link">
+        <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
+      </a></li>
+    <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" class="page__link page__link--1">
+        1
+      </a></li>
+    <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+        2
+      </a></li>
+    <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" disabled="disabled" class="page__link page__link--3 page__link--active">
+        3
+      </a></li>
+    <li class="page__item page__item--next"><a href="#" disabled="disabled" class="page__link page__link--disabled">
+        <chevron-right-icon-stub aria-hidden="true" class="page__link__icon"></chevron-right-icon-stub> <span class="sr-only">Navigate to Next Page</span>
+      </a></li>
+  </ul>
+</nav>
+`;
+
+exports[`Pagination when the last page is not active should render as expected 1`] = `
+<nav aria-label="Search results navigation">
+  <ul class="pagination">
+    <li class="page__item page__item--previous"><a href="#" class="page__link">
+        <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
+      </a></li>
+    <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" class="page__link page__link--1">
+        1
+      </a></li>
+    <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" disabled="disabled" class="page__link page__link--2 page__link--active">
+        2
+      </a></li>
+    <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+        3
+      </a></li>
+    <li class="page__item page__item--next"><a href="#" class="page__link">
+        <chevron-right-icon-stub aria-hidden="true" class="page__link__icon"></chevron-right-icon-stub> <span class="sr-only">Navigate to Next Page</span>
+      </a></li>
+  </ul>
+</nav>
+`;
