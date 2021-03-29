@@ -2,6 +2,11 @@
 
 exports[`Index Page initial display should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -42,6 +47,11 @@ exports[`Index Page initial display should render as expected 1`] = `
 
 exports[`Index Page when a search is performed that matches the current search term should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -82,6 +92,11 @@ exports[`Index Page when a search is performed that matches the current search t
 
 exports[`Index Page when a search is performed without a search term should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -122,6 +137,11 @@ exports[`Index Page when a search is performed without a search term should rend
 
 exports[`Index Page when a valid search is performed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -162,6 +182,11 @@ exports[`Index Page when a valid search is performed should render as expected 1
 
 exports[`Index Page when an invalid search is performed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -202,6 +227,11 @@ exports[`Index Page when an invalid search is performed should render as expecte
 
 exports[`Index Page when clicking the clear search text button should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -242,6 +272,11 @@ exports[`Index Page when clicking the clear search text button should render as 
 
 exports[`Index Page when the next page of results is clicked, and the results have already been fetched should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">9</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -268,7 +303,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user1</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
@@ -276,7 +312,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user2</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
@@ -284,7 +321,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user3</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
@@ -294,7 +332,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user4</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
@@ -302,7 +341,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user5</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
@@ -310,7 +350,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user6</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
@@ -320,7 +361,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-7" class="user-list-item search__result"><img alt="Profile picture for user7" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user7</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
@@ -328,7 +370,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-8" class="user-list-item search__result"><img alt="Profile picture for user8" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user8</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
@@ -336,7 +379,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-9" class="user-list-item search__result"><img alt="Profile picture for user9" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user9</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
@@ -370,6 +414,11 @@ exports[`Index Page when the next page of results is clicked, and the results ha
 
 exports[`Index Page when the next page of results is clicked, and the results have not already been fetched should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">9</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -396,7 +445,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user1</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
@@ -404,7 +454,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user2</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
@@ -412,7 +463,8 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user3</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
@@ -446,6 +498,11 @@ exports[`Index Page when the next page of results is clicked, and the results ha
 
 exports[`Index Page when the next page of results is clicked, but another scroll is taking place should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">9</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -472,7 +529,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user1</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
@@ -480,7 +538,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user2</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
@@ -488,7 +547,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user3</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
@@ -498,7 +558,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user4</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
@@ -506,7 +567,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user5</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
@@ -514,7 +576,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user6</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
@@ -524,7 +587,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-7" class="user-list-item search__result"><img alt="Profile picture for user7" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user7</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
@@ -532,7 +596,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-8" class="user-list-item search__result"><img alt="Profile picture for user8" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user8</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
@@ -540,7 +605,8 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       <li id="search-result-9" class="user-list-item search__result"><img alt="Profile picture for user9" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user9</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
@@ -574,6 +640,11 @@ exports[`Index Page when the next page of results is clicked, but another scroll
 
 exports[`Index Page when the search term container is focused should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -614,6 +685,11 @@ exports[`Index Page when the search term container is focused should render as e
 
 exports[`Index Page when the search term container is not focused and there are no search errors should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -654,6 +730,11 @@ exports[`Index Page when the search term container is not focused and there are 
 
 exports[`Index Page when the search term input is not focused and there are no errors should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -694,6 +775,11 @@ exports[`Index Page when the search term input is not focused and there are no e
 
 exports[`Index Page when there are no search results to be displayed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -734,6 +820,11 @@ exports[`Index Page when there are no search results to be displayed should rend
 
 exports[`Index Page when there are search results to be displayed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">6</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -760,7 +851,8 @@ exports[`Index Page when there are search results to be displayed should render 
       <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user1</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
@@ -768,7 +860,8 @@ exports[`Index Page when there are search results to be displayed should render 
       <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user2</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
@@ -776,7 +869,8 @@ exports[`Index Page when there are search results to be displayed should render 
       <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user3</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
@@ -786,7 +880,8 @@ exports[`Index Page when there are search results to be displayed should render 
       <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user4</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
@@ -794,7 +889,8 @@ exports[`Index Page when there are search results to be displayed should render 
       <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user5</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
@@ -802,19 +898,29 @@ exports[`Index Page when there are search results to be displayed should render 
       <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
         <div class="user-list-item__details">
           <!----> <span class="user-list-item__details__login">user6</span>
-        </div> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+        </div>
+        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
             <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
             <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
           </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
       </li>
     </ul>
   </div>
-  <div class="results-toolbar" style="display: none;">
+  <div class="results-toolbar">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
         <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+            1
+          </a></li>
+        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+            2
+          </a></li>
+        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+            3
+          </a></li>
         <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg> <span class="sr-only">Navigate to Next Page</span></a></li>

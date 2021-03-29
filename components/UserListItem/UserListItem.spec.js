@@ -64,6 +64,10 @@ describe('User List Item', () => {
       expect(username.text()).toBe(user.login)
     })
 
+    it('should not render the user\'s followers', () => {
+      expect(() => wrapper.get('.user-list-item__followers')).toThrow()
+    })
+
     it('should not render the user\'s name', () => {
       expect(() => wrapper.get('.user-list-item__details__name')).toThrow()
     })
@@ -138,6 +142,12 @@ describe('User List Item', () => {
 
       expect(username.element).toBeVisible()
       expect(username.text()).toBe(user.login)
+    })
+
+    it('should render the user\'s followers', () => {
+      const followers = wrapper.get('.user-list-item__followers')
+
+      expect(followers.element).toBeVisible()
     })
 
     it('should render the user\'s name', () => {

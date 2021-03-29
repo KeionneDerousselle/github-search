@@ -52,13 +52,13 @@ body {
 
 .github-search-container {
   @apply flex flex-col;
-  @apply -mt-40;
-  @apply md:-mt-60;
+  @apply -mt-52;
+  @apply md:-mt-64;
 
-  height: calc(100% + 10rem);
+  height: calc(100% + 13rem);
 
   @media (min-width: 768px) {
-    height: calc(100% + 15rem);
+    height: calc(100% + 16rem);
   }
 }
 
