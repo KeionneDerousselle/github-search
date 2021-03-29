@@ -20,13 +20,11 @@ describe('Index Page', () => {
 
   beforeAll(() => {
     extend('required', required)
-    console.log = jest.fn()
     VueScrollTo.scrollTo = jest.fn()
     jest.useFakeTimers()
   })
 
   afterAll(() => {
-    console.log.mockRestore()
     jest.useRealTimers()
   })
 
@@ -784,6 +782,7 @@ describe('Index Page', () => {
   describe('when scrolling and the scrollable content under the results box is greater than 1.5 pages', () => {
     let mockedResultsScrollBox
     let mockedNextAction
+    let updateScrolledPageSpy
 
     beforeAll(async () => {
       mockedNextAction = jest.fn().mockResolvedValue()
@@ -814,10 +813,14 @@ describe('Index Page', () => {
         offsetHeight: 500
       }
 
+      updateScrolledPageSpy = jest.spyOn(wrapper.vm, 'updateScrolledPage')
+      updateScrolledPageSpy.mockImplementation(() => {})
+
       await wrapper.vm.handleScrollHelper(mockedResultsScrollBox)
     })
 
     afterAll(() => {
+      updateScrolledPageSpy.mockRestore()
       wrapper.destroy()
     })
 
@@ -833,6 +836,7 @@ describe('Index Page', () => {
   describe('when scrolling and the scrollable content under the results box is less than 1.5 pages', () => {
     let mockedResultsScrollBox
     let mockedNextAction
+    let updateScrolledPageSpy
 
     beforeAll(async () => {
       mockedNextAction = jest.fn().mockResolvedValue()
@@ -863,10 +867,14 @@ describe('Index Page', () => {
         offsetHeight: 500
       }
 
+      updateScrolledPageSpy = jest.spyOn(wrapper.vm, 'updateScrolledPage')
+      updateScrolledPageSpy.mockImplementation(() => {})
+
       await wrapper.vm.handleScrollHelper(mockedResultsScrollBox)
     })
 
     afterAll(() => {
+      updateScrolledPageSpy.mockRestore()
       wrapper.destroy()
     })
 
@@ -882,6 +890,7 @@ describe('Index Page', () => {
   describe('when scrolling and the scrollable content under the results box is less than 1.5 pages, but we are already fetching the next page', () => {
     let mockedResultsScrollBox
     let mockedNextAction
+    let updateScrolledPageSpy
 
     beforeAll(async () => {
       mockedNextAction = jest.fn().mockResolvedValue()
@@ -916,10 +925,14 @@ describe('Index Page', () => {
         fetchingTheNextPage: true
       })
 
+      updateScrolledPageSpy = jest.spyOn(wrapper.vm, 'updateScrolledPage')
+      updateScrolledPageSpy.mockImplementation(() => {})
+
       await wrapper.vm.handleScrollHelper(mockedResultsScrollBox)
     })
 
     afterAll(() => {
+      updateScrolledPageSpy.mockRestore()
       wrapper.destroy()
     })
 
@@ -1227,6 +1240,137 @@ describe('Index Page', () => {
 
     it('should not scroll to the page', () => {
       expect(VueScrollTo.scrollTo).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('when updating the scrolled to page, and the scrolled page is greater than the current page', () => {
+    let mockedSetPage
+    let mockedResultsScrollBox
+
+    beforeAll(async () => {
+      mockedSetPage = jest.fn().mockResolvedValue()
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25),
+              currentPage: jest.fn().mockReturnValue(1)
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              fetchNextPage: jest.fn().mockResolvedValue(),
+              fetchPage: jest.fn().mockResolvedValue(),
+              setPage: mockedSetPage
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        scrollTop: 300,
+        children: [ { clientHeight: 150 }, { clientHeight: 300 } ]
+      }
+
+      await wrapper.vm.updateScrolledPage(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should set the current page to the scrolled to page ', () => {
+      expect(mockedSetPage).toHaveBeenCalledWith(expect.any(Object), 2)
+    })
+  })
+
+  describe('when updating the scrolled to page, and the scrolled page is less than the current page', () => {
+    let mockedSetPage
+    let mockedResultsScrollBox
+
+    beforeAll(async () => {
+      mockedSetPage = jest.fn().mockResolvedValue()
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25),
+              currentPage: jest.fn().mockReturnValue(2)
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              fetchNextPage: jest.fn().mockResolvedValue(),
+              fetchPage: jest.fn().mockResolvedValue(),
+              setPage: mockedSetPage
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        scrollTop: 100,
+        children: [ { clientHeight: 150 }, { clientHeight: 300 } ]
+      }
+      await wrapper.vm.updateScrolledPage(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should set the current page to the scrolled to page ', () => {
+      expect(mockedSetPage).toHaveBeenCalledWith(expect.any(Object), 1)
+    })
+  })
+
+  describe('when updating the scrolled to page, and the scrolled page is the same as the current page', () => {
+    let mockedSetPage
+    let mockedResultsScrollBox
+
+    beforeAll(async () => {
+      mockedSetPage = jest.fn().mockResolvedValue()
+      wrapper = shallowPreMocked(IndexPage, {
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue([]),
+              currentSearchTerm: jest.fn().mockReturnValue(''),
+              numberOfResults: jest.fn().mockReturnValue(0),
+              resultsPerPage: jest.fn().mockReturnValue(25),
+              currentPage: jest.fn().mockReturnValue(1)
+            },
+            actions: {
+              setSearchTerm: jest.fn().mockResolvedValue(),
+              search: jest.fn().mockResolvedValue([]),
+              fetchNextPage: jest.fn().mockResolvedValue(),
+              fetchPage: jest.fn().mockResolvedValue(),
+              setPage: mockedSetPage
+            }
+          }
+        }
+      })
+
+      mockedResultsScrollBox = {
+        scrollTop: 150,
+        children: [ { clientHeight: 150 }, { clientHeight: 300 } ]
+      }
+
+      await wrapper.vm.updateScrolledPage(mockedResultsScrollBox)
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should not set the current page to the scrolled to page ', () => {
+      expect(mockedSetPage).not.toBeCalled()
     })
   })
 })

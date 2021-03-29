@@ -7,6 +7,7 @@
         We found <counter :number="numberOfResults" /> users!
       </p>
     </div>
+
     <form-validator
       class="search__form"
       @submit="handleSearchSubmitted">
@@ -194,7 +195,7 @@ export default {
       // is less than 1.5 pages: (this.$refs.results.offsetHeight * 1.5)
       if ((el.scrollHeight - el.scrollTop) < (el.offsetHeight * 1.5)) {
         // if the bottom of the content is not the same as the max position we've scrolled to
-        if ((el.scrollHeight >= this.maxScrollPosition) && !this.fetchingTheNextPage) {
+        if ((el.scrollHeight > this.maxScrollPosition) && !this.fetchingTheNextPage) {
           this.fetchingTheNextPage = true
           this.setMaxScollHeight(el)
 
@@ -203,10 +204,38 @@ export default {
           })
         }
       }
+
+      this.updateScrolledPage(el)
     },
 
     setMaxScollHeight(el) {
       this.maxScrollPosition = el.scrollHeight
+    },
+
+    updateScrolledPage(el) {
+      const calculatedPage = this.calculateScrolledToPage(el)
+
+      if (calculatedPage !== this.currentPage) {
+        return this.setPage(calculatedPage)
+      }
+    },
+
+    calculateScrolledToPage(el) {
+      const children = el.children
+      let previousMax = 0
+      let currentMax = 0
+      const scrollTop = el.scrollTop
+
+      // for every ul.page el in #results
+      for (let i = 0; i < children.length; i++) {
+        // console.log('hi')
+        // get the height of that page
+        currentMax += children[i].clientHeight
+        // if the scroll position is between the start of the page and the end of the page, return that we are on that page
+        if (scrollTop >= previousMax && scrollTop <= currentMax) return i + 1
+        // else, add the height of this page to the height of all the pages we've already checked, (reset the start looking position)
+        previousMax = currentMax
+      }
     },
 
     handlePageChanged(page) {
