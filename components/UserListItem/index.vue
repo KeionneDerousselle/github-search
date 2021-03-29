@@ -15,6 +15,16 @@
       <span class="user-list-item__details__login">{{ user.login }}</span>
     </div>
 
+    <div
+      v-if="userDetails"
+      class="user-list-item__followers">
+      {{ userDetails.followers }}
+      <users-icon
+        aria-hidden="true"
+        class="user-list-item__followers__icon" />
+      <span class="sr-only">Followers</span>
+    </div>
+
     <a
       :href="user.html_url"
       target="_blank"
@@ -28,11 +38,14 @@
 </template>
 <script>
 import LinkIcon from '@/components/Icons/Link'
+import UsersIcon from '@/components/Icons/Users'
+
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
-    LinkIcon
+    LinkIcon,
+    UsersIcon
   },
 
   props: {
@@ -82,13 +95,13 @@ export default {
   &__link:hover,
   &__link:focus,
   &__link:active {
-    @apply border-indigo-500 outline-none;
+    @apply border-indigo-700 outline-none;
 
     box-shadow: none;
   }
 
   &__link__icon {
-    @apply text-indigo-500;
+    @apply text-indigo-700;
     @apply w-4 h-4;
   }
 
@@ -99,11 +112,11 @@ export default {
 
   &__avatar {
     @apply inline-flex rounded-full mr-2.5;
-    @apply w-9 h-9;
+    @apply w-10 h-10;
   }
 
   &__details {
-    @apply inline-flex flex-col;
+    @apply inline-flex flex-col w-1/3;
 
     &__name {
       @apply text-gray-800 block;
@@ -116,6 +129,14 @@ export default {
       @apply text-xs;
       @apply md:text-sm;
     }
+  }
+
+  &__followers {
+    @apply text-indigo-700 inline-flex flex items-center ml-2.5 rounded-xl bg-indigo-100 px-1 py-0.5 text-sm font-bold border;
+  }
+
+  &__followers__icon {
+    @apply w-4 h-4 text-indigo-700;
   }
 }
 </style>
