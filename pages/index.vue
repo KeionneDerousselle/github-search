@@ -195,7 +195,7 @@ export default {
       // is less than 1.5 pages: (this.$refs.results.offsetHeight * 1.5)
       if ((el.scrollHeight - el.scrollTop) < (el.offsetHeight * 1.5)) {
         // if the bottom of the content is not the same as the max position we've scrolled to
-        if ((el.scrollHeight > this.maxScrollPosition) && !this.fetchingTheNextPage) {
+        if ((el.scrollHeight >= this.maxScrollPosition) && !this.fetchingTheNextPage) {
           this.fetchingTheNextPage = true
           this.setMaxScollHeight(el)
 
