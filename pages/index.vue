@@ -130,8 +130,6 @@ export default {
     ...mapActions('users', [
       'setSearchTerm',
       'search',
-      'fetchNextPage',
-      'fetchPage',
       'setPage'
     ]),
 
@@ -170,11 +168,12 @@ export default {
       if (this.searchTerm && (this.searchTerm.toLowerCase() !== this.currentSearchTerm.toLowerCase())) {
         this.performingSearch = true
 
-        return this.setSearchTerm(this.searchTerm).then(() => this.search()
+        return this.search({ searchTerm: this.searchTerm, page: 1, resultsPerPage: this.resultsPerPage })
+          .then(() => this.setSearchTerm(this.searchTerm))
           .catch(console.error)
           .finally(() => {
             this.performingSearch = false
-          }))
+          })
       }
     },
 
@@ -190,7 +189,7 @@ export default {
       el.removeEventListener('scroll', this.handleResultsScrolled)
     },
 
-    handleScrollHelper(el) {
+    async handleScrollHelper(el) {
       // when height of content under the view window (the bottom of the scroll: (this.$refs.results.scrollHeight - this.$refs.results.scrollTop))
       // is less than 1.5 pages: (this.$refs.results.offsetHeight * 1.5)
       if ((el.scrollHeight - el.scrollTop) < (el.offsetHeight * 1.5)) {
@@ -199,7 +198,11 @@ export default {
           this.fetchingTheNextPage = true
           this.setMaxScollHeight(el)
 
-          return this.fetchNextPage().finally(() => {
+          await this.search({
+            searchTerm: this.searchTerm,
+            page: this.currentPage + 1,
+            resultsPerPage: this.resultsPerPage
+          }).finally(() => {
             this.fetchingTheNextPage = false
           })
         }
@@ -252,7 +255,7 @@ export default {
         } else {
           this.fetchingTheNextPage = true
 
-          return this.fetchPage(page)
+          return this.search({ searchTerm: this.searchTerm, page, resultsPerPage: this.resultsPerPage })
             .then(() => {
               this.setMaxScollHeight(this.$refs.results)
               this.currentScrollCancellation = this.scrollToPage(pageId)

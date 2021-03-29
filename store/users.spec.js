@@ -139,25 +139,6 @@ describe('mutations', () => {
     })
   })
 
-  describe('INCREMENT_CURRENT_PAGE', () => {
-    let currentState
-    let currentPage
-
-    beforeAll(() => {
-      currentPage = 0
-
-      currentState = {
-        currentPage
-      }
-
-      mutations.INCREMENT_CURRENT_PAGE(currentState)
-    })
-
-    it('should increment the current page', () => {
-      expect(currentState.currentPage).toBe(currentPage + 1)
-    })
-  })
-
   describe('SET_SEARCH_TERM', () => {
     let currentState
     let searchTerm
@@ -182,30 +163,18 @@ describe('mutations', () => {
 
     beforeAll(() => {
       currentState = {
-        results: [{ id: 1, totalCount: 100, page: 2, usersOnPage: 50, users: [] }]
+        results: {
+          cacheKey: {
+            1: { id: 1, totalCount: 100, page: 2, usersOnPage: 50, users: [] }
+          }
+        }
       }
 
       mutations.RESET_RESULTS(currentState)
     })
 
     it('should increment the current page', () => {
-      expect(currentState.results).toEqual([])
-    })
-  })
-
-  describe('RESET_CURRENT_PAGE', () => {
-    let currentState
-
-    beforeAll(() => {
-      currentState = {
-        currentPage: 32
-      }
-
-      mutations.RESET_CURRENT_PAGE(currentState)
-    })
-
-    it('should increment the current page', () => {
-      expect(currentState.currentPage).toEqual(1)
+      expect(currentState.results).toEqual({})
     })
   })
 
@@ -270,18 +239,6 @@ describe('actions', () => {
     it('should make a commit to set the new search term', () => {
       expect(commit).toBeCalledWith('SET_SEARCH_TERM', searchTerm)
     })
-
-    it('should make a commit to reset search results', () => {
-      expect(commit).toBeCalledWith('RESET_RESULTS')
-    })
-
-    it('should make a commit to reset search results', () => {
-      expect(commit).toBeCalledWith('RESET_CURRENT_PAGE')
-    })
-
-    it('should make a commit to reset search results', () => {
-      expect(commit).toBeCalledWith('SET_NUMBER_OF_TOTAL_RESULTS', 0)
-    })
   })
 
   describe('when setting a search term that matches the current search term ', () => {
@@ -310,22 +267,19 @@ describe('actions', () => {
     let mockReturnedUsers
     let mockNumOfTotalResults
     let currentState
-    let currentPage
+    let page
     let resultsPerPage
-    let currentSearchTerm
+    let searchTerm
     let cacheKey
 
     beforeAll(async () => {
       mockReturnedUsers = [{ foo: 'bar' }]
-      currentSearchTerm = 'foo'
+      searchTerm = 'foo'
       resultsPerPage = 15
-      currentPage = 1
-      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+      page = 1
+      cacheKey = `/api/users${searchTerm}${resultsPerPage}`
 
       currentState = {
-        currentSearchTerm,
-        resultsPerPage,
-        currentPage,
         results: {}
       }
       mockNumOfTotalResults = 25
@@ -337,7 +291,7 @@ describe('actions', () => {
         }
       })
 
-      await actions.search({ commit, state: currentState })
+      await actions.search({ commit, state: currentState }, { searchTerm, page, resultsPerPage })
     })
 
     afterAll(() => {
@@ -348,9 +302,9 @@ describe('actions', () => {
     it('should make a get request to get users using the simple search term', () => {
       expect($axios.get).toHaveBeenCalledWith('/api/users', expect.objectContaining({
         params: {
-          q: currentState.currentSearchTerm,
-          per_page: currentState.resultsPerPage,
-          page: currentState.currentPage
+          q: searchTerm,
+          per_page: resultsPerPage,
+          page
         }
       }))
     })
@@ -360,7 +314,7 @@ describe('actions', () => {
         cacheKey,
         id: expect.any(String),
         totalCount: mockNumOfTotalResults,
-        page: currentState.currentPage,
+        page,
         usersOnPage: mockReturnedUsers.length,
         users: mockReturnedUsers,
         expiresAt: expect.any(Number)
@@ -376,26 +330,23 @@ describe('actions', () => {
     let mockReturnedUsers
     let mockNumOfTotalResults
     let currentState
-    let currentPage
+    let page
     let resultsPerPage
-    let currentSearchTerm
+    let searchTerm
     let cacheKey
 
     beforeAll(async () => {
       mockReturnedUsers = [{ foo: 'bar' }]
-      currentSearchTerm = 'foo'
+      searchTerm = 'foo'
       resultsPerPage = 15
-      currentPage = 1
-      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+      page = 1
+      cacheKey = `/api/users${searchTerm}${resultsPerPage}`
 
       currentState = {
-        currentSearchTerm,
-        resultsPerPage,
-        currentPage,
         results: {
           [cacheKey]: {
-            1: {
-              page: 1,
+            [page]: {
+              page,
               users: [],
               expiresAt: new Date(new Date().getTime() + 60 * 60000).getTime()
             }
@@ -411,7 +362,7 @@ describe('actions', () => {
         }
       })
 
-      await actions.search({ commit, state: currentState })
+      await actions.search({ commit, state: currentState }, { searchTerm, page, resultsPerPage })
     })
 
     afterAll(() => {
@@ -436,26 +387,23 @@ describe('actions', () => {
     let mockReturnedUsers
     let mockNumOfTotalResults
     let currentState
-    let currentPage
+    let page
     let resultsPerPage
-    let currentSearchTerm
+    let searchTerm
     let cacheKey
 
     beforeAll(async () => {
       mockReturnedUsers = [{ foo: 'bar' }]
-      currentSearchTerm = 'foo'
+      searchTerm = 'foo'
       resultsPerPage = 15
-      currentPage = 1
-      cacheKey = `/api/users${currentSearchTerm}${resultsPerPage}`
+      page = 1
+      cacheKey = `/api/users${searchTerm}${resultsPerPage}`
 
       currentState = {
-        currentSearchTerm,
-        resultsPerPage,
-        currentPage,
         results: {
           [cacheKey]: {
-            1: {
-              page: 1,
+            [page]: {
+              page,
               users: [],
               expiresAt: new Date(2021, 1, 1).getTime()
             }
@@ -471,7 +419,7 @@ describe('actions', () => {
         }
       })
 
-      await actions.search({ commit, state: currentState })
+      await actions.search({ commit, state: currentState }, { searchTerm, page, resultsPerPage })
     })
 
     afterAll(() => {
@@ -482,9 +430,9 @@ describe('actions', () => {
     it('should make a get request to get users using the simple search term', () => {
       expect($axios.get).toHaveBeenCalledWith('/api/users', expect.objectContaining({
         params: {
-          q: currentState.currentSearchTerm,
-          per_page: currentState.resultsPerPage,
-          page: currentState.currentPage
+          q: searchTerm,
+          per_page: resultsPerPage,
+          page
         }
       }))
     })
@@ -494,7 +442,7 @@ describe('actions', () => {
         cacheKey,
         id: expect.any(String),
         totalCount: mockNumOfTotalResults,
-        page: currentState.currentPage,
+        page,
         usersOnPage: mockReturnedUsers.length,
         users: mockReturnedUsers,
         expiresAt: expect.any(Number)
@@ -630,47 +578,6 @@ describe('actions', () => {
         data: mockedUserDetails,
         expiresAt: expect.any(Number)
       })
-    })
-  })
-
-  describe('when getting the next page of search results', () => {
-    beforeAll(async () => {
-      await actions.fetchNextPage({ commit, dispatch })
-    })
-
-    afterAll(() => {
-      commit.mockReset()
-      dispatch.mockReset()
-    })
-
-    it('should make a commit to increment the current page', () => {
-      expect(commit).toHaveBeenCalledWith('INCREMENT_CURRENT_PAGE')
-    })
-
-    it('should dispatch the search action', () => {
-      expect(dispatch).toHaveBeenCalledWith('search')
-    })
-  })
-
-  describe('when fetching a page of search results', () => {
-    let page
-
-    beforeAll(async () => {
-      page = 4
-      await actions.fetchPage({ commit, dispatch }, page)
-    })
-
-    afterAll(() => {
-      commit.mockReset()
-      dispatch.mockReset()
-    })
-
-    it('should make a commit to set the current page', () => {
-      expect(commit).toHaveBeenCalledWith('SET_CURRENT_PAGE', page)
-    })
-
-    it('should dispatch the search action', () => {
-      expect(dispatch).toHaveBeenCalledWith('search')
     })
   })
 

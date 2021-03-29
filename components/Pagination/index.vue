@@ -160,8 +160,6 @@ export default {
   .page__link {
     @apply rounded-full border border-transparent inline-flex w-10 h-10 flex items-center justify-center text-sm md:text-base;
 
-    transition: all 0.3s ease-in;
-
     &:hover:not(.page__link--disabled),
     &:focus:not(.page__link--disabled) {
       @apply border-indigo-100;

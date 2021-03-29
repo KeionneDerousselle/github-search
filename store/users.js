@@ -29,20 +29,12 @@ export const mutations = {
     Vue.set(state.userDetailsCache, userDetails.username, userDetails)
   },
 
-  INCREMENT_CURRENT_PAGE(state) {
-    state.currentPage++
-  },
-
   SET_SEARCH_TERM(state, searchTerm) {
     state.currentSearchTerm = searchTerm
   },
 
   RESET_RESULTS(state) {
-    state.results = []
-  },
-
-  RESET_CURRENT_PAGE(state) {
-    state.currentPage = 1
+    state.results = {}
   },
 
   SET_CURRENT_PAGE(state, page) {
@@ -73,23 +65,20 @@ export const actions = {
   setSearchTerm({ commit, state: { currentSearchTerm } }, searchTerm) {
     if (searchTerm.toLowerCase() !== currentSearchTerm.toLowerCase()) {
       commit('SET_SEARCH_TERM', searchTerm)
-      commit('RESET_RESULTS')
-      commit('RESET_CURRENT_PAGE')
-      commit('SET_NUMBER_OF_TOTAL_RESULTS', 0)
     }
   },
 
-  search({ commit, state: { resultsPerPage, currentPage, currentSearchTerm, results } }) {
-    const cacheKey = generateSearchCacheKey(currentSearchTerm, resultsPerPage)
-    const cacheData = results[cacheKey]?.[currentPage]
+  search({ commit, state: { results } }, { searchTerm, page, resultsPerPage }) {
+    const cacheKey = generateSearchCacheKey(searchTerm, resultsPerPage)
+    const cacheData = results[cacheKey]?.[page]
     const now = new Date().getTime()
 
     if (!cacheData || cacheData.expiresAt <= now) {
       return this.$axios.get(searchUsersUrl, {
         params: {
-          q: currentSearchTerm,
+          q: searchTerm,
           per_page: resultsPerPage,
-          page: currentPage
+          page
         }
       }).then(({ data }) => {
         // eslint-disable-next-line camelcase
@@ -99,7 +88,7 @@ export const actions = {
           cacheKey,
           id: uuid(),
           totalCount: total_count,
-          page: currentPage,
+          page,
           usersOnPage: items.length,
           users: items,
           expiresAt: addMinutes(new Date(), 10)
@@ -120,18 +109,6 @@ export const actions = {
 
       commit('SET_USER_DETAILS', { username, data, expiresAt: addMinutes(new Date(), 10) })
     }
-  },
-
-  fetchNextPage({ commit, dispatch }) {
-    commit('INCREMENT_CURRENT_PAGE')
-
-    return dispatch('search')
-  },
-
-  fetchPage({ commit, dispatch }, page) {
-    commit('SET_CURRENT_PAGE', page)
-
-    return dispatch('search')
   },
 
   setPage({ commit }, page) {
