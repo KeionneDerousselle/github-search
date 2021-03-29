@@ -2,6 +2,11 @@
 
 exports[`Index Page initial display should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -42,6 +47,11 @@ exports[`Index Page initial display should render as expected 1`] = `
 
 exports[`Index Page when a search is performed that matches the current search term should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -82,6 +92,11 @@ exports[`Index Page when a search is performed that matches the current search t
 
 exports[`Index Page when a search is performed without a search term should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -122,6 +137,11 @@ exports[`Index Page when a search is performed without a search term should rend
 
 exports[`Index Page when a valid search is performed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -162,6 +182,11 @@ exports[`Index Page when a valid search is performed should render as expected 1
 
 exports[`Index Page when an invalid search is performed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -202,6 +227,11 @@ exports[`Index Page when an invalid search is performed should render as expecte
 
 exports[`Index Page when clicking the clear search text button should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -242,6 +272,11 @@ exports[`Index Page when clicking the clear search text button should render as 
 
 exports[`Index Page when the next page of results is clicked, and the results have already been fetched should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">9</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -370,6 +405,11 @@ exports[`Index Page when the next page of results is clicked, and the results ha
 
 exports[`Index Page when the next page of results is clicked, and the results have not already been fetched should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">9</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -446,6 +486,11 @@ exports[`Index Page when the next page of results is clicked, and the results ha
 
 exports[`Index Page when the next page of results is clicked, but another scroll is taking place should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">9</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -574,6 +619,11 @@ exports[`Index Page when the next page of results is clicked, but another scroll
 
 exports[`Index Page when the search term container is focused should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -614,6 +664,11 @@ exports[`Index Page when the search term container is focused should render as e
 
 exports[`Index Page when the search term container is not focused and there are no search errors should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -654,6 +709,11 @@ exports[`Index Page when the search term container is not focused and there are 
 
 exports[`Index Page when the search term input is not focused and there are no errors should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -694,6 +754,11 @@ exports[`Index Page when the search term input is not focused and there are no e
 
 exports[`Index Page when there are no search results to be displayed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
+    <p>
+      We found <span class="counter">0</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -734,6 +799,11 @@ exports[`Index Page when there are no search results to be displayed should rend
 
 exports[`Index Page when there are search results to be displayed should render as expected 1`] = `
 <div class="search-page">
+  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+    <p>
+      We found <span class="counter">6</span> users!
+    </p>
+  </div>
   <form class="form search__form">
     <div class="attrs-fix search__box">
       <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
@@ -809,12 +879,21 @@ exports[`Index Page when there are search results to be displayed should render 
       </li>
     </ul>
   </div>
-  <div class="results-toolbar" style="display: none;">
+  <div class="results-toolbar">
     <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
       <ul class="pagination">
         <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+            1
+          </a></li>
+        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+            2
+          </a></li>
+        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+            3
+          </a></li>
         <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg> <span class="sr-only">Navigate to Next Page</span></a></li>

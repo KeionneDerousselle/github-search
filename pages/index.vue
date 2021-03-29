@@ -1,5 +1,12 @@
 <template>
   <div class="search-page">
+    <div
+      v-show="numberOfResults"
+      class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
+      <p>
+        We found <counter :number="numberOfResults" /> users!
+      </p>
+    </div>
     <form-validator
       class="search__form"
       @submit="handleSearchSubmitted">
@@ -75,6 +82,7 @@ import FormValidator from '@/components/FormValidator'
 import Searchfield from '@/components/Searchfield'
 import UserListItem from '@/components/UserListItem'
 import Pagination from '@/components/Pagination'
+import Counter from '@/components/Counter'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -87,6 +95,7 @@ export default {
     Searchfield,
     UserListItem,
     Pagination,
+    Counter,
     'kd-github-search-button': Button
   },
 
@@ -144,28 +153,6 @@ export default {
       // const anyErrors = errors && errors.length > 0
 
       const classStrats = [
-        // {
-        //   shouldApply: () => this.disabled,
-        //   classes: [
-        //     'bg-black-10',
-        //     'border-black-20',
-        //     'text-black-40',
-        //     'placeholder:text-black-30'
-        //   ]
-        // },
-        // {
-        //   shouldApply: () => anyErrors,
-        //   classes: [
-        //     'text-error-400',
-        //     'border-error-200',
-        //     'placeholder:text-error-400',
-        //     'hover:border-error-400',
-        //     'hover:placeholder:text-error-400',
-        //     'focus:border-error-500',
-        //     'focus:placeholder:text-error-500'
-        //   ]
-        // },
-
         {
           shouldApply: () => true,
           classes: ['search__input']
@@ -207,13 +194,11 @@ export default {
       // is less than 1.5 pages: (this.$refs.results.offsetHeight * 1.5)
       if ((el.scrollHeight - el.scrollTop) < (el.offsetHeight * 1.5)) {
         // if the bottom of the content is not the same as the max position we've scrolled to
-        if ((el.scrollHeight !== this.maxScrollPosition) && !this.fetchingTheNextPage) {
+        if ((el.scrollHeight >= this.maxScrollPosition) && !this.fetchingTheNextPage) {
           this.fetchingTheNextPage = true
+          this.setMaxScollHeight(el)
 
-          return this.fetchNextPage().then(() => {
-            // set the maxium scrolled position to the bottom of the newly drawn content (containing all items)
-            this.setMaxScollHeight(el)
-          }).finally(() => {
+          return this.fetchNextPage().finally(() => {
             this.fetchingTheNextPage = false
           })
         }

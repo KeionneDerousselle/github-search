@@ -530,10 +530,15 @@ describe('Index Page', () => {
     it('should display the results box', () => {
       expect(wrapper.get('#results-box').element).toBeVisible()
     })
+
+    it('should not display the count of total results', () => {
+      expect(wrapper.get('.results__count').element).not.toBeVisible()
+    })
   })
 
   describe('when there are search results to be displayed', () => {
     let results
+    let numberOfResults
 
     beforeAll(() => {
       results = [
@@ -557,6 +562,8 @@ describe('Index Page', () => {
         }
       ]
 
+      numberOfResults = 6
+
       wrapper = mountPreMocked(IndexPage, {
         store: {
           users: {
@@ -564,7 +571,7 @@ describe('Index Page', () => {
               results: jest.fn().mockReturnValue(results),
               currentSearchTerm: jest.fn().mockReturnValue(''),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
+              numberOfResults: jest.fn().mockReturnValue(numberOfResults),
               resultsPerPage: jest.fn().mockReturnValue(1),
               currentPage: jest.fn().mockReturnValue(1)
             },
@@ -602,6 +609,13 @@ describe('Index Page', () => {
         })
       })
     })
+
+    it('should display the count of total results', () => {
+      const totalResults = wrapper.get('.results__count')
+
+      expect(totalResults.element).toBeVisible()
+      expect(totalResults.text()).toContain(numberOfResults)
+    })
   })
 
   describe('when there are no search results to be displayed', () => {
@@ -638,6 +652,12 @@ describe('Index Page', () => {
 
     it('should not display any search results ', () => {
       expect(() => wrapper.get('.search__result')).toThrow()
+    })
+
+    it('should display the count of total results', () => {
+      const totalResults = wrapper.get('.results__count')
+
+      expect(totalResults.element).not.toBeVisible()
     })
   })
 
