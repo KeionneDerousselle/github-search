@@ -58,7 +58,7 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: true
         env:
-          HD_NODE_ENV: "dev"
+          HD_NODE_ENV: "production"
           HD_HOST: "0.0.0.0"
           HD_NPM_CONFIG_PRODUCTION: "false"
           HD_BASE_URL: "https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com"
@@ -78,7 +78,7 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: true
         env:
-          HD_NODE_ENV: "stage"
+          HD_NODE_ENV: "production"
           HD_HOST: "0.0.0.0"
           HD_NPM_CONFIG_PRODUCTION: "false"
           HD_BASE_URL: "https://${{secrets.HEROKU_APP_NAME}}-stage.herokuapp.com"
