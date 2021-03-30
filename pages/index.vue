@@ -1,89 +1,63 @@
 <template>
-  <div class="search-page">
-    <div
-      v-show="numberOfResults"
-      class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
-      <p>
-        We found <counter :number="numberOfResults" /> users!
-      </p>
-    </div>
+  <layout
+    :page-title="pageTitle"
+    :left-section-title="leftSectionTitle"
+    :right-section-title="rightSectionTitle">
+    <template #headerTop>
+      <search-form class="md:hidden md:max-w-xs w-full" />
+    </template>
 
-    <form-validator
-      class="search__form"
-      @submit="handleSearchSubmitted">
-      <template #default="{ invalid }">
-        <searchfield
-          id="search-box"
-          v-model="searchTerm"
-          class="search__box"
-          placeholder="Search"
-          rules="required"
-          label="Search Term"
-          name="Search Term"
-          vee-validate-name="A search term"
-          mode="aggressive"
-          immediate
-          :show-errors="false"
-          :calc-input-classes="getSearchInputClasses"
-          :calc-container-classes="getSearchInputContainerClasses" />
+    <template #leftSectionContent>
+      <search-form class="hidden md:flex md:max-w-xs w-full mb-4" />
 
-        <kd-github-search-button
-          id="search-button"
-          class="search__button"
-          type="submit"
-          :disabled="invalid || performingSearch"
-          :loading="performingSearch">
-          <span class="sr-only">Submit</span>
-          <check-icon
-            v-show="!performingSearch"
-            class="search__button__icon"
-            aria-hidden="true" />
-        </kd-github-search-button>
-      </template>
-    </form-validator>
-
-    <div
-      id="results-box"
-      class="results-box">
       <div
-        id="results"
-        ref="results"
-        class="results">
-        <ul
-          v-for="result in results"
-          :id="`page-${result.page}`"
-          :key="result.id">
-          <user-list-item
-            v-for="user in result.users"
-            :id="`search-result-${user.id}`"
-            :key="user.id"
-            :user="user"
-            class="search__result" />
-        </ul>
+        id="results-box"
+        class="results-box content__panel">
+        <div
+          id="results"
+          ref="results"
+          class="results">
+          <ul
+            v-for="result in results"
+            :id="`page-${result.page}`"
+            :key="result.id">
+            <user-list-item
+              v-for="user in result.users"
+              :id="`search-result-${user.id}`"
+              :key="user.id"
+              :user="user"
+              class="search__result" />
+          </ul>
+        </div>
+
+        <div
+          v-show="numberOfResults"
+          class="results-toolbar">
+          <pagination
+            id="results-pagination"
+            class="results__pagination"
+            :total-items="numberOfResults"
+            :items-per-page="resultsPerPage"
+            :current-page="currentPage"
+            @change="handlePageChanged" />
+        </div>
       </div>
-      <div
-        v-show="numberOfResults"
-        class="results-toolbar">
-        <pagination
-          id="results-pagination"
-          class="results__pagination"
-          :total-items="numberOfResults"
-          :items-per-page="resultsPerPage"
-          :current-page="currentPage"
-          @change="handlePageChanged" />
+    </template>
+
+    <template #rightSectionContent>
+      <div class="user__details">
+        coming soon...
       </div>
-    </div>
-  </div>
+    </template>
+  </layout>
 </template>
 
 <script>
-import CheckIcon from '@/components/Icons/Check'
-import Button from '@/components/Button'
-import FormValidator from '@/components/FormValidator'
-import Searchfield from '@/components/Searchfield'
+import Layout from '@/components/Layout'
+import SearchForm from '@/components/SearchForm'
 import UserListItem from '@/components/UserListItem'
 import Pagination from '@/components/Pagination'
-import Counter from '@/components/Counter'
+// import Counter from '@/components/Counter'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -91,21 +65,20 @@ import VueScrollTo from 'vue-scrollto'
 
 export default {
   components: {
-    CheckIcon,
-    FormValidator,
-    Searchfield,
+    Layout,
+    SearchForm,
     UserListItem,
-    Pagination,
-    Counter,
-    'kd-github-search-button': Button
+    Pagination
+    // Counter,
   },
 
   data: () => ({
-    searchTerm: '',
-    performingSearch: false,
     maxScrollPosition: 0,
     fetchingTheNextPage: false,
-    currentScrollCancellation: null
+    currentScrollCancellation: null,
+    pageTitle: 'GitHub Users Search',
+    leftSectionTitle: 'Search',
+    rightSectionTitle: 'User Details'
   }),
 
   computed: {
@@ -128,54 +101,9 @@ export default {
 
   methods: {
     ...mapActions('users', [
-      'setSearchTerm',
       'search',
       'setPage'
     ]),
-
-    getSearchInputContainerClasses(errors, isFocused) {
-      const classStrats = [
-        {
-          shouldApply: () => isFocused,
-          classes: [ 'search__container', 'search__container--focused' ]
-        },
-        {
-          shouldApply: () => true,
-          classes: ['search__container']
-        }
-      ]
-
-      return classStrats.find(cs => cs.shouldApply()).classes
-    },
-
-    getSearchInputClasses(errors, isFocused) {
-      // const anyErrors = errors && errors.length > 0
-
-      const classStrats = [
-        {
-          shouldApply: () => true,
-          classes: ['search__input']
-        }
-      ]
-
-      return classStrats.find(cs => cs.shouldApply()).classes
-    },
-
-    handleSearchSubmitted() {
-      // TODO: Loading State
-      // TODO: Handle Errors
-
-      if (this.searchTerm && (this.searchTerm.toLowerCase() !== this.currentSearchTerm.toLowerCase())) {
-        this.performingSearch = true
-
-        return this.search({ searchTerm: this.searchTerm, page: 1, resultsPerPage: this.resultsPerPage })
-          .then(() => this.setSearchTerm(this.searchTerm))
-          .catch(console.error)
-          .finally(() => {
-            this.performingSearch = false
-          })
-      }
-    },
 
     handleResultsScrolled() {
       this.handleScrollHelper(this.$refs.results)
@@ -199,7 +127,7 @@ export default {
           this.setMaxScollHeight(el)
 
           await this.search({
-            searchTerm: this.searchTerm,
+            searchTerm: this.currentSearchTerm,
             page: this.currentPage + 1,
             resultsPerPage: this.resultsPerPage
           }).finally(() => {
@@ -255,7 +183,7 @@ export default {
         } else {
           this.fetchingTheNextPage = true
 
-          return this.search({ searchTerm: this.searchTerm, page, resultsPerPage: this.resultsPerPage })
+          return this.search({ searchTerm: this.currentSearchTerm, page, resultsPerPage: this.resultsPerPage })
             .then(() => {
               this.setMaxScollHeight(this.$refs.results)
               this.currentScrollCancellation = this.scrollToPage(pageId)
@@ -284,77 +212,20 @@ export default {
 </script>
 
 <style lang="scss">
-.search-page {
-  @apply max-w-md flex flex-col h-full;
-}
-
-.search__form {
-  @apply flex items-start justify-between flex-none;
-}
-
-.search__box {
-  @apply flex-grow w-11/12;
-  @apply mr-3;
-  @apply md:mr-4;
-}
-
-.search__container {
-  @apply shadow-lg bg-indigo-500 text-white;
-
-  &--focused {
-    @apply ring-4 ring-indigo-400;
-  }
-}
-
-.search__input {
-  @apply placeholder-indigo-50 text-sm md:text-base;
-
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active,
-  &:-internal-autofill-selected {
-    @apply bg-indigo-500 text-white;
-
-    -webkit-text-fill-color: white;
-    caret-color: white;
-  }
-}
-
-.search__button {
-  @apply shadow-lg border-0 bg-indigo-200 flex-none text-indigo-800 h-full;
-
-  &:hover:not(:disabled) {
-    @apply bg-indigo-300 shadow-2xl;
-  }
-
-  &:focus:not(:active) {
-    @apply shadow-2xl ring-indigo-400 ring-4;
-  }
-
-  &:disabled {
-    @apply bg-gray-300;
-  }
-
-  &:disabled .search__button__icon {
-    @apply text-gray-600;
-  }
-
-  &__icon {
-    @apply font-bold w-4 h-4;
-  }
-}
-
 .results-box {
-  @apply shadow-lg bg-white rounded-lg mt-6 flex flex-1 flex-col h-full overflow-hidden;
+  @apply flex flex-col overflow-hidden relative;
+
+  flex: 1 1 1px;
 }
 
 .results {
-  @apply flex-1 overflow-y-auto h-full;
+  @apply overflow-y-auto h-full;
+
+  flex: 1 1 auto;
 }
 
 .results-toolbar {
-  @apply flex-none bg-indigo-500 p-4 text-white text-sm md:text-base flex justify-center items-center;
+  @apply bottom-0 left-0 right-0 bg-indigo-500 text-indigo-100 p-4;
 
   transition: all 0.3s ease-in;
 }

@@ -28,6 +28,7 @@
     <a
       :href="user.html_url"
       target="_blank"
+      rel="noopener"
       class="user-list-item__link">
       <link-icon
         class="user-list-item__link__icon"
@@ -116,18 +117,17 @@ export default {
   }
 
   &__details {
-    @apply inline-flex flex-col w-1/3;
+    @apply inline-flex flex-col w-2/5;
 
     &__name {
       @apply text-gray-800 block;
-      @apply text-sm;
-      @apply md:text-base;
+      @apply sm:text-sm;
     }
 
     &__login {
       @apply text-gray-600 block;
       @apply text-xs;
-      @apply md:text-sm;
+      @apply sm:text-xs;
     }
   }
 
