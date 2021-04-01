@@ -45,7 +45,7 @@ export default {
   }
 
   &__bottom {
-    @apply hidden lg:block border-t border-indigo-100 border-opacity-20 py-5;
+    @apply hidden md:block border-t border-indigo-100 border-opacity-20 py-5;
   }
 
   &__logo {

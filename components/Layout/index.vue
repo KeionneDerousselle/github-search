@@ -103,13 +103,9 @@ export default {
 .content {
   @apply -mt-24 pb-8;
 
-  height: calc(100% - 12rem);
+  height: calc(100% - 11.5rem);
 
   @media (min-width: 768px) {
-    height: calc(100% - 10rem);
-  }
-
-  @media (min-width: 1024px) {
     height: calc(100% - 12.5rem);
   }
 
