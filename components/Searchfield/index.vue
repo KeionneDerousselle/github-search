@@ -223,6 +223,7 @@ export default {
 
     clearSearch() {
       this.searchTerm = ''
+      this.$emit('input', '')
     }
   }
 }

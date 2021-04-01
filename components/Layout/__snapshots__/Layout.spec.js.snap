@@ -1,0 +1,603 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout when a header bottom slot is not provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a header bottom slot is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom">
+        <div id="header-bottom">Header Bottom Content</div>
+      </div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a header top slot is not provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a header top slot is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content">
+          <div id="header-top">Header Top Content</div>
+        </div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a left section content is not provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a left section content is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col">
+              <div id="left-section-content">Left Section Content</div>
+            </div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a left section title is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+              Left Section Title
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a page title is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+        Page Title
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a right section content is not provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a right section content is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+
+            </h2>
+            <div class="content__panel p-4">
+              <div id="right-section-content">Right Section Content</div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Layout when a right section title is provided should render as expected 1`] = `
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content"></div>
+      </div>
+      <div class="header__bottom"></div>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container h-full">
+      <h1 id="main-content-title" class="sr-only">
+
+      </h1>
+      <div class="flex h-full">
+        <div class="content__left">
+          <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+            <h2 id="content-left-title" class="sr-only">
+
+            </h2>
+            <div class="h-full flex flex-col"></div>
+          </section>
+        </div>
+        <div class="content__right">
+          <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+            <h2 id="content-right-title" class="sr-only">
+              Right Section Title
+            </h2>
+            <div class="content__panel p-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="kd-github-search-footer" class="footer github-search-footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+          </svg>
+          by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+          <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

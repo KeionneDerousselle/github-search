@@ -121,18 +121,17 @@ export default {
 
     &__name {
       @apply text-gray-800 block;
-      @apply sm:text-sm;
+      @apply text-sm;
     }
 
     &__login {
       @apply text-gray-600 block;
       @apply text-xs;
-      @apply sm:text-xs;
     }
   }
 
   &__followers {
-    @apply text-indigo-700 inline-flex flex items-center ml-2.5 rounded-xl bg-indigo-100 px-1 py-0.5 text-sm font-bold border;
+    @apply text-indigo-700 inline-flex items-center ml-2.5 rounded-xl bg-indigo-100 px-1 py-0.5 text-sm font-bold border;
   }
 
   &__followers__icon {

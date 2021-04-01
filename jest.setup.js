@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import { mount, shallowMount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
+import flushPromises from 'flush-promises'
 
 // Global Helpers
 global.routerPush = jest.fn()
@@ -104,4 +105,11 @@ const createComponentMocks = ({
   returnOptions.stubs.nuxt = true
 
   return returnOptions
+}
+
+global.flushValidationUpdates = async wrapper => {
+  await flushPromises()
+  jest.runAllTimers()
+  await flushPromises()
+  await wrapper.vm.$nextTick()
 }

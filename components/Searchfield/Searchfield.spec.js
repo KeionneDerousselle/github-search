@@ -552,6 +552,10 @@ describe('Searchfield', () => {
       expect(wrapper.vm.searchTerm).toBe('')
       expect(searchBox.element.value).toBe('')
     })
+
+    it('should emit the cleared value via an input event', () => {
+      expect(wrapper.emitted().input[1]).toEqual([''])
+    })
   })
 
   describe('when the input event is emitted from the input', () => {

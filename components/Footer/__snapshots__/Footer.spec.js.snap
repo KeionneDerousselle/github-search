@@ -2,15 +2,17 @@
 
 exports[`Footer should render as expected 1`] = `
 <footer class="footer">
-  <div class="footer__content">
-    <p>
-      Created with
-      <heart-icon-stub class="w-5 h-5 inline-flex fill-current text-pink-500"></heart-icon-stub>
-      by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" class="footer__link">
-        Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
-      <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" class="footer__link">
-        here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
-    </p>
+  <div class="container">
+    <div class="footer__content">
+      <p>
+        Created with
+        <heart-icon-stub class="w-5 h-5 inline-flex fill-current text-pink-500"></heart-icon-stub>
+        by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+        <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+          here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+      </p>
+    </div>
   </div>
 </footer>
 `;

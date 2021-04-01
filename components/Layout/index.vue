@@ -14,13 +14,16 @@
 
     <main class="content">
       <div class="container h-full">
-        <h1 class="sr-only">
+        <h1
+          id="main-content-title"
+          class="sr-only">
           {{ pageTitle }}
         </h1>
 
         <div class="flex h-full">
           <div class="content__left">
             <section
+              id="left-section"
               class="h-full"
               aria-labelledby="content-left-title">
               <h2
@@ -37,6 +40,7 @@
 
           <div class="content__right">
             <section
+              id="right-section"
               class="h-full"
               aria-labelledby="content-right-title">
               <h2
@@ -57,7 +61,6 @@
     <kd-github-search-footer
       id="kd-github-search-footer"
       class="github-search-footer" />
-    </kd-github-search-header>
   </div>
 </template>
 <script>

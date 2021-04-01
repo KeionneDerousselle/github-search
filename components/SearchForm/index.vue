@@ -118,7 +118,7 @@ export default {
 </script>
 <style lang="scss">
 .search__form__container {
-  @apply flex items-start justify-between flex-none;
+  @apply flex items-start justify-between flex-none w-full;
 }
 
 .search__box {

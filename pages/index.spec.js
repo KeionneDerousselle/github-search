@@ -8,15 +8,6 @@ jest.mock('vue-scrollto')
 
 describe('Index Page', () => {
   let wrapper
-  /**
-   * https://vee-validate.logaretm.com/v3/advanced/testing.html#testing-error-messages
-   */
-  const flushValidationUpdates = async wrapper => {
-    await flushPromises()
-    jest.runAllTimers()
-    await flushPromises()
-    await wrapper.vm.$nextTick()
-  }
 
   beforeAll(() => {
     extend('required', required)
@@ -26,444 +17,6 @@ describe('Index Page', () => {
 
   afterAll(() => {
     jest.useRealTimers()
-  })
-
-  describe('when a search is performed without a search term', () => {
-    let searchButton
-    let mockSearchAction
-
-    beforeAll(async () => {
-      mockSearchAction = jest.fn().mockResolvedValue([])
-
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      searchButton = wrapper.get('#search-button')
-
-      searchButton.trigger('click')
-      await flushValidationUpdates(wrapper)
-    })
-
-    afterAll(() => {
-      mockSearchAction.mockRestore()
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should disable the search submit button', () => {
-      expect(searchButton.attributes().disabled).toBeTruthy()
-    })
-
-    it('should not call the search action', () => {
-      expect(mockSearchAction).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('when an invalid search is performed', () => {
-    let searchButton
-    let mockSearchAction
-
-    // TODO: include validation rules
-    beforeAll(async () => {
-      mockSearchAction = jest.fn().mockResolvedValue([])
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      const searchBox = wrapper.get('#search-box')
-
-      searchButton = wrapper.get('#search-button')
-
-      searchBox.setValue('')
-      searchBox.trigger('blur')
-      searchButton.trigger('click')
-
-      await flushValidationUpdates(wrapper)
-    })
-
-    afterAll(() => {
-      mockSearchAction.mockRestore()
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should display an error message about the search term being invalid', () => {
-
-    })
-
-    it('should disable the search submit button', () => {
-      expect(searchButton.attributes().disabled).toBeTruthy()
-    })
-
-    it('should not call the search action', () => {
-      expect(mockSearchAction).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('when a valid search is performed', () => {
-    let searchButton
-    let mockSearchAction
-    let mockSetSearchTermAction
-    let searchTerm
-    let page
-    let resultsPerPage
-
-    // TODO: include validation rules
-    beforeAll(async () => {
-      searchTerm = 'test'
-      mockSearchAction = jest.fn().mockResolvedValue([])
-      mockSetSearchTermAction = jest.fn().mockResolvedValue()
-      page = 1
-      resultsPerPage = 25
-
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(resultsPerPage),
-              currentPage: jest.fn().mockReturnValue(page)
-            },
-            actions: {
-              setSearchTerm: mockSetSearchTermAction,
-              search: mockSearchAction,
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      const searchBox = wrapper.get('#search-box')
-
-      searchButton = wrapper.get('#search-button')
-
-      searchBox.setValue(searchTerm)
-      searchBox.trigger('blur')
-      await flushValidationUpdates(wrapper)
-
-      searchButton.trigger('click')
-      await flushValidationUpdates(wrapper)
-    })
-
-    afterAll(() => {
-      mockSearchAction.mockRestore()
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should not disable the search submit button', () => {
-      expect(searchButton.attributes().disabled).toBeFalsy()
-    })
-
-    it('should set the current search term in the store', () => {
-      expect(mockSetSearchTermAction).toHaveBeenCalledWith(expect.any(Object), searchTerm)
-    })
-
-    it('should call the search action', () => {
-      expect(mockSearchAction).toHaveBeenCalledWith(expect.any(Object), { searchTerm, page, resultsPerPage })
-    })
-  })
-
-  describe('when a search is performed that matches the current search term', () => {
-    let searchButton
-    let mockSearchAction
-    let mockSetSearchTermAction
-    let searchTerm
-
-    // TODO: include validation rules
-    beforeAll(async () => {
-      searchTerm = 'test'
-      mockSearchAction = jest.fn().mockResolvedValue([])
-      mockSetSearchTermAction = jest.fn().mockResolvedValue()
-
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue('test'),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: mockSetSearchTermAction,
-              search: mockSearchAction,
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      const searchBox = wrapper.get('#search-box')
-
-      searchButton = wrapper.get('#search-button')
-
-      searchBox.setValue(searchTerm)
-      searchBox.trigger('blur')
-      await flushValidationUpdates(wrapper)
-
-      searchButton.trigger('click')
-      await flushValidationUpdates(wrapper)
-    })
-
-    afterAll(() => {
-      mockSearchAction.mockRestore()
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should not disable the search submit button', () => {
-      expect(searchButton.attributes().disabled).toBeFalsy()
-    })
-
-    it('should not set the current search term in the store', () => {
-      expect(mockSetSearchTermAction).not.toHaveBeenCalled()
-    })
-
-    it('should not call the search action', () => {
-      expect(mockSearchAction).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('when the search term container is focused', () => {
-    let searchContainerClasses
-
-    beforeAll(async () => {
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      const searchContainer = wrapper.get('.searchfield')
-
-      searchContainer.trigger('focus')
-      await flushPromises()
-      await wrapper.vm.$nextTick()
-
-      searchContainerClasses = searchContainer.classes()
-    })
-
-    afterAll(() => {
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should contain the default search container css classes', () => {
-      expect(searchContainerClasses).toContain('search__container')
-    })
-
-    it('should contain the focused search container css classes', () => {
-      expect(searchContainerClasses).toContain('search__container')
-      expect(searchContainerClasses).toContain('search__container--focused')
-    })
-  })
-
-  describe('when the search term container is not focused and there are no search errors', () => {
-    let searchContainerClasses
-
-    beforeAll(() => {
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      searchContainerClasses = wrapper.get('.searchfield').classes()
-    })
-
-    afterAll(() => {
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should contain the default search container css classes', () => {
-      expect(searchContainerClasses).toContain('search__container')
-    })
-
-    it('should not contain the focused search container css classes', () => {
-      expect(searchContainerClasses).not.toContain('search__container--focused')
-    })
-  })
-
-  describe('when the search term input is not focused and there are no errors', () => {
-    let searchInputClasses
-
-    beforeAll(() => {
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      searchInputClasses = wrapper.get('#search-box').classes()
-    })
-
-    afterAll(() => {
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should contain the default search input css classes', () => {
-      expect(searchInputClasses).toContain('search__input')
-    })
-  })
-
-  describe('when clicking the clear search text button', () => {
-    let searchClearButton
-    let searchBox
-
-    beforeAll(async () => {
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
-
-      searchBox = wrapper.get('#search-box')
-      searchBox.setValue('test')
-      searchBox.trigger('blur')
-      await flushValidationUpdates(wrapper)
-
-      searchClearButton = wrapper.get('.searchfield__clear')
-      searchClearButton.trigger('click')
-      await flushValidationUpdates(wrapper)
-    })
-
-    afterAll(() => {
-      wrapper.destroy()
-    })
-
-    it('should render as expected', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should disable the search submit button', () => {
-      expect(wrapper.get('#search-button').attributes().disabled).toBeTruthy()
-    })
   })
 
   describe('initial display', () => {
@@ -515,9 +68,9 @@ describe('Index Page', () => {
       expect(wrapper.get('#results-box').element).toBeVisible()
     })
 
-    it('should not display the count of total results', () => {
-      expect(wrapper.get('.results__count').element).not.toBeVisible()
-    })
+    // it('should not display the count of total results', () => {
+    //   expect(wrapper.get('.results__count').element).not.toBeVisible()
+    // })
   })
 
   describe('when there are search results to be displayed', () => {
@@ -592,12 +145,12 @@ describe('Index Page', () => {
       })
     })
 
-    it('should display the count of total results', () => {
-      const totalResults = wrapper.get('.results__count')
+    // it('should display the count of total results', () => {
+    //   const totalResults = wrapper.get('.results__count')
 
-      expect(totalResults.element).toBeVisible()
-      expect(totalResults.text()).toContain(numberOfResults)
-    })
+    //   expect(totalResults.element).toBeVisible()
+    //   expect(totalResults.text()).toContain(numberOfResults)
+    // })
   })
 
   describe('when there are no search results to be displayed', () => {
@@ -635,11 +188,11 @@ describe('Index Page', () => {
       expect(() => wrapper.get('.search__result')).toThrow()
     })
 
-    it('should display the count of total results', () => {
-      const totalResults = wrapper.get('.results__count')
+    // it('should display the count of total results', () => {
+    //   const totalResults = wrapper.get('.results__count')
 
-      expect(totalResults.element).not.toBeVisible()
-    })
+    //   expect(totalResults.element).not.toBeVisible()
+    // })
   })
 
   describe('when the adding the scroll listener', () => {
@@ -816,15 +369,17 @@ describe('Index Page', () => {
     let mockedResultsScrollBox
     let mockedSearch
     let updateScrolledPageSpy
+    let currentSearchTerm
 
     beforeAll(async () => {
+      currentSearchTerm = 'test'
       mockedSearch = jest.fn().mockResolvedValue()
       wrapper = shallowPreMocked(IndexPage, {
         store: {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
+              currentSearchTerm: jest.fn().mockReturnValue(currentSearchTerm),
               numberOfResults: jest.fn().mockReturnValue(0),
               resultsPerPage: jest.fn().mockReturnValue(25),
               currentPage: jest.fn().mockReturnValue(1)
@@ -858,7 +413,7 @@ describe('Index Page', () => {
 
     it('should fetch the next page of results', () => {
       expect(mockedSearch).toHaveBeenCalledWith(expect.any(Object), {
-        searchTerm: wrapper.vm.searchTerm,
+        searchTerm: currentSearchTerm,
         page: wrapper.vm.currentPage + 1,
         resultsPerPage: wrapper.vm.resultsPerPage
       })
@@ -877,15 +432,17 @@ describe('Index Page', () => {
     let mockedResultsScrollBox
     let mockedSearch
     let updateScrolledPageSpy
+    let currentSearchTerm
 
     beforeAll(async () => {
+      currentSearchTerm = 'test'
       mockedSearch = jest.fn().mockResolvedValue()
       wrapper = shallowPreMocked(IndexPage, {
         store: {
           users: {
             getters: {
               results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
+              currentSearchTerm: jest.fn().mockReturnValue(currentSearchTerm),
               numberOfResults: jest.fn().mockReturnValue(0),
               resultsPerPage: jest.fn().mockReturnValue(25),
               currentPage: jest.fn().mockReturnValue(1)
@@ -1045,8 +602,11 @@ describe('Index Page', () => {
     let mockedSetPage
     let clickedPage
     let getElementByIdSpy
+    let currentSearchTerm
 
     beforeAll(async () => {
+      currentSearchTerm = 'test'
+
       getElementByIdSpy = jest.spyOn(global.window.document, 'getElementById')
       getElementByIdSpy.mockImplementation(() => undefined)
 
@@ -1071,7 +631,7 @@ describe('Index Page', () => {
           users: {
             getters: {
               results: jest.fn().mockReturnValue(results),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
+              currentSearchTerm: jest.fn().mockReturnValue(currentSearchTerm),
               userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(9),
               resultsPerPage: jest.fn().mockReturnValue(3),
@@ -1106,7 +666,7 @@ describe('Index Page', () => {
 
     it('should fetch the page of results', () => {
       expect(mockedSearch).toHaveBeenCalledWith(expect.any(Object), {
-        searchTerm: wrapper.vm.searchTerm,
+        searchTerm: currentSearchTerm,
         page: clickedPage,
         resultsPerPage: wrapper.vm.resultsPerPage
       })
