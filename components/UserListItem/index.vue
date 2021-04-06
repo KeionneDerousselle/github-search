@@ -1,7 +1,7 @@
 <template>
   <li
     v-bind="$attrs"
-    class="user-list-item"
+    :class="['user-list-item', { 'user-list-item--selected': selected }]"
     v-on="$listeners">
     <img
       :src="user.avatar_url"
@@ -53,6 +53,11 @@ export default {
     user: {
       type: Object,
       required: true
+    },
+
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -82,7 +87,11 @@ export default {
 .user-list-item {
   @apply list-none flex items-center w-full border-b border-indigo-200 p-4;
 
-  &:hover {
+  &--selected {
+    @apply bg-indigo-300 bg-opacity-80;
+  }
+
+  &:hover:not(.user-list-item--selected) {
     @apply bg-indigo-50;
   }
 
