@@ -42,6 +42,12 @@ describe('state', () => {
 
     expect(currentSearchTerm).toBe('')
   })
+
+  it('should set the selected user to null', () => {
+    const { selectedUser } = defaultState
+
+    expect(selectedUser).toEqual(null)
+  })
 })
 
 describe('mutations', () => {
@@ -194,6 +200,25 @@ describe('mutations', () => {
 
     it('should set the current page to the passed in page', () => {
       expect(currentState.currentPage).toEqual(page)
+    })
+  })
+
+  describe('SET_SELECTED_USER', () => {
+    let currentState
+    let selectedUser
+
+    beforeAll(() => {
+      selectedUser = { id: 1, login: 'user1' }
+
+      currentState = {
+        selectedUser: null
+      }
+
+      mutations.SET_SELECTED_USER(currentState, selectedUser)
+    })
+
+    it('should set the selected user', () => {
+      expect(currentState.selectedUser).toBe(selectedUser)
     })
   })
 })
@@ -602,6 +627,23 @@ describe('actions', () => {
       expect(dispatch).not.toHaveBeenCalled()
     })
   })
+
+  describe('when setting the selected user', () => {
+    let selectedUser
+
+    beforeAll(async () => {
+      selectedUser = { id: 1, login: 'user1' }
+      await actions.setSelectedUser({ commit }, selectedUser)
+    })
+
+    afterAll(() => {
+      commit.mockReset()
+    })
+
+    it('should make a commit to set the selected user', () => {
+      expect(commit).toHaveBeenCalledWith('SET_SELECTED_USER', selectedUser)
+    })
+  })
 })
 
 describe('getters', () => {
@@ -721,6 +763,18 @@ describe('getters', () => {
 
     it('should return the current page from the state', () => {
       expect(getters.currentPage(currentState)).toBe(currentState.currentPage)
+    })
+  })
+
+  describe('selectedUser', () => {
+    beforeAll(() => {
+      currentState = {
+        selectedUser: { id: 1, login: 'user1' }
+      }
+    })
+
+    it('should return the selected user from the state', () => {
+      expect(getters.selectedUser(currentState)).toBe(currentState.selectedUser)
     })
   })
 })

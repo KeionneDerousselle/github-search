@@ -30,8 +30,7 @@ export default {
   data: () => ({
     maxScrollPosition: 0,
     fetchingTheNextPage: false,
-    currentScrollCancellation: null,
-    selectedUser: null
+    currentScrollCancellation: null
   }),
 
   computed: {
@@ -39,7 +38,8 @@ export default {
       'results',
       'currentSearchTerm',
       'resultsPerPage',
-      'currentPage'
+      'currentPage',
+      'selectedUser'
     ])
   },
 
@@ -54,7 +54,8 @@ export default {
   methods: {
     ...mapActions('users', [
       'search',
-      'setPage'
+      'setPage',
+      'setSelectedUser'
     ]),
 
     addScrollListener(el) {
@@ -122,7 +123,7 @@ export default {
     },
 
     handleUserSelected(user) {
-
+      this.setSelectedUser(user)
     }
   }
 }

@@ -7,32 +7,42 @@ jest.mock('vue-scrollto')
 describe('Index Page', () => {
   let wrapper
 
+  const createWrapper = ({ store = {} } = {}) => {
+    const { users, ...storeModules } = store
+
+    return mountPreMocked(IndexPage, {
+      store: {
+        users: {
+          getters: {
+            results: jest.fn().mockReturnValue([]),
+            currentSearchTerm: jest.fn().mockReturnValue(''),
+            resultsPerPage: jest.fn().mockReturnValue(25),
+            numberOfResults: jest.fn().mockReturnValue(0),
+            currentPage: jest.fn().mockReturnValue(1),
+            userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+            selectedUser: jest.fn().mockReturnValue(null),
+            ...(users?.getters || {})
+          },
+          actions: {
+            search: jest.fn().mockResolvedValue(),
+            setPage: jest.fn().mockResolvedValue(),
+            get: jest.fn().mockResolvedValue(),
+            setSelectedUser: jest.fn().mockResolvedValue(),
+            ...(users?.actions || {})
+          }
+        },
+        ...(storeModules || {})
+      }
+    })
+  }
+
   beforeAll(() => {
     VueScrollTo.scrollTo = jest.fn()
   })
 
   describe('initial display', () => {
     beforeAll(() => {
-      wrapper = mountPreMocked(IndexPage, {
-        store: {
-          users: {
-            getters: {
-              results: jest.fn().mockReturnValue([]),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
-              numberOfResults: jest.fn().mockReturnValue(0),
-              resultsPerPage: jest.fn().mockReturnValue(25),
-              currentPage: jest.fn().mockReturnValue(1)
-            },
-            actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
-              search: jest.fn().mockResolvedValue([]),
-              get: jest.fn().mockResolvedValue(),
-              setPage: jest.fn().mockResolvedValue()
-            }
-          }
-        }
-      })
+      wrapper = createWrapper()
     })
 
     afterAll(() => {
@@ -97,21 +107,17 @@ describe('Index Page', () => {
       mockedSearch = jest.fn().mockResolvedValue()
       mockedSetPage = jest.fn().mockResolvedValue()
 
-      wrapper = mountPreMocked(IndexPage, {
+      wrapper = createWrapper({
         store: {
           users: {
             getters: {
               results: jest.fn().mockReturnValue(results),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(9),
               resultsPerPage: jest.fn().mockReturnValue(3),
               currentPage: jest.fn().mockReturnValue(1)
             },
             actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
               search: mockedSearch,
-              get: jest.fn().mockResolvedValue(),
               setPage: mockedSetPage
             }
           }
@@ -191,21 +197,18 @@ describe('Index Page', () => {
       mockedSearch = jest.fn().mockResolvedValue()
       mockedSetPage = jest.fn().mockResolvedValue()
 
-      wrapper = mountPreMocked(IndexPage, {
+      wrapper = createWrapper({
         store: {
           users: {
             getters: {
               results: jest.fn().mockReturnValue(results),
               currentSearchTerm: jest.fn().mockReturnValue(currentSearchTerm),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(9),
               resultsPerPage: jest.fn().mockReturnValue(3),
               currentPage: jest.fn().mockReturnValue(1)
             },
             actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
               search: mockedSearch,
-              get: jest.fn().mockResolvedValue(),
               setPage: mockedSetPage
             }
           }
@@ -300,21 +303,17 @@ describe('Index Page', () => {
       mockedSearch = jest.fn().mockResolvedValue({})
       mockedSetPage = jest.fn().mockResolvedValue()
 
-      wrapper = mountPreMocked(IndexPage, {
+      wrapper = createWrapper({
         store: {
           users: {
             getters: {
               results: jest.fn().mockReturnValue(results),
-              currentSearchTerm: jest.fn().mockReturnValue(''),
-              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
               numberOfResults: jest.fn().mockReturnValue(9),
               resultsPerPage: jest.fn().mockReturnValue(3),
               currentPage: jest.fn().mockReturnValue(1)
             },
             actions: {
-              setSearchTerm: jest.fn().mockResolvedValue(),
               search: mockedSearch,
-              get: jest.fn().mockResolvedValue(),
               setPage: mockedSetPage
             }
           }

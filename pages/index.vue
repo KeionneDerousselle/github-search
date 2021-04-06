@@ -71,8 +71,7 @@ export default {
     currentScrollCancellation: null,
     pageTitle: 'GitHub Users Search',
     leftSectionTitle: 'Search',
-    rightSectionTitle: 'User Details',
-    selectedUser: null
+    rightSectionTitle: 'User Details'
   }),
 
   computed: {
@@ -81,7 +80,8 @@ export default {
       'currentSearchTerm',
       'numberOfResults',
       'resultsPerPage',
-      'currentPage'
+      'currentPage',
+      'selectedUser'
     ])
   },
 

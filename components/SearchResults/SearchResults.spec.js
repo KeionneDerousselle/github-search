@@ -16,6 +16,7 @@ describe('Search Results', () => {
             resultsPerPage: jest.fn().mockReturnValue(25),
             currentPage: jest.fn().mockReturnValue(1),
             userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue()),
+            selectedUser: jest.fn().mockReturnValue(null),
             ...(users?.getters || {})
           },
 
@@ -23,6 +24,7 @@ describe('Search Results', () => {
             search: jest.fn().mockResolvedValue(),
             setPage: jest.fn().mockResolvedValue(),
             get: jest.fn().mockResolvedValue(),
+            setSelectedUser: jest.fn().mockResolvedValue(),
             ...(users?.actions || {})
           }
         },
@@ -111,6 +113,70 @@ describe('Search Results', () => {
 
     it('should not display any search results ', () => {
       expect(() => wrapper.get('.search__result')).toThrow()
+    })
+  })
+
+  describe('when a user in the results list is clicked', () => {
+    let results
+    let userToClick
+    let mockedSetSelectedUser
+
+    beforeAll(async () => {
+      userToClick = { id: 2, login: 'user2' }
+
+      results = [
+        {
+          id: 1,
+          page: 1,
+          users: [
+            { id: 1, login: 'user1' },
+            userToClick,
+            { id: 3, login: 'user3' }
+          ]
+        },
+        {
+          id: 2,
+          page: 2,
+          users: [
+            { id: 4, login: 'user4' },
+            { id: 5, login: 'user5' },
+            { id: 6, login: 'user6' }
+          ]
+        }
+      ]
+
+      mockedSetSelectedUser = jest.fn().mockResolvedValue()
+
+      wrapper = createWrapper({
+        store: {
+          users: {
+            actions: {
+              setSelectedUser: mockedSetSelectedUser
+            },
+            getters: {
+              results: jest.fn().mockReturnValue(results),
+              resultsPerPage: jest.fn().mockReturnValue(1),
+              currentPage: jest.fn().mockReturnValue(1)
+            }
+          }
+        }
+      })
+
+      wrapper.get(`#search-result-${userToClick.id}`).trigger('click')
+
+      await flushPromises()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should call the store action to set the selectedUser', () => {
+      expect(mockedSetSelectedUser).toHaveBeenCalledWith(expect.any(Object), userToClick)
     })
   })
 
