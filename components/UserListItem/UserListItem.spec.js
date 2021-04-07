@@ -164,4 +164,90 @@ describe('User List Item', () => {
       expect(externalLink.attributes().target).toBe('_blank')
     })
   })
+
+  describe('when a user list item is selected', () => {
+    beforeAll(() => {
+      user = {
+        login: 'test_user',
+        avatar_url: 'https://some.fake.com/avatar.png',
+        html_url: 'https://www.some.external.link.com'
+      }
+
+      wrapper = shallowPreMocked(UserListItem, {
+        store: {
+          users: {
+            actions: {
+              get: jest.fn().mockResolvedValue()
+            },
+            getters: {
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+            }
+          }
+        },
+        propsData: {
+          user,
+          selected: true
+        }
+      })
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should add the selected class to the user list item', () => {
+      const userListItemEl = wrapper.get('.user-list-item')
+
+      expect(userListItemEl.element).toBeVisible()
+      expect(userListItemEl.classes()).toContain('user-list-item--selected')
+    })
+  })
+
+  describe('when listeners are provided to the user list item', () => {
+    let onClickHandler
+
+    beforeAll(async () => {
+      user = {
+        login: 'test_user',
+        avatar_url: 'https://some.fake.com/avatar.png',
+        html_url: 'https://www.some.external.link.com'
+      }
+
+      onClickHandler = jest.fn()
+
+      wrapper = mountPreMocked(UserListItem, {
+        listeners: {
+          click: onClickHandler
+        },
+        store: {
+          users: {
+            actions: {
+              get: jest.fn().mockResolvedValue()
+            },
+            getters: {
+              userDetailsByUsername: jest.fn().mockReturnValue(jest.fn().mockReturnValue())
+            }
+          }
+        },
+        propsData: {
+          user
+        }
+      })
+
+      wrapper.trigger('click')
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should trigger listener handlers on the appropriate events', () => {
+      expect(onClickHandler).toHaveBeenCalled()
+    })
+  })
 })
