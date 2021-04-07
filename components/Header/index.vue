@@ -2,18 +2,22 @@
   <header
     class="header"
     v-bind="$attrs">
-    <div class="header__content">
-      <h1 class="header__title">
+    <div class="container">
+      <div class="header__top">
         <span
-          class="header__icons"
+          class="header__logo"
           aria-hidden="true">
           <user-group-icon class="header__icon header__icon--users" />
         </span>
 
-        <span>
-          Github User Search
-        </span>
-      </h1>
+        <div class="header__top__content">
+          <slot name="headerTop" />
+        </div>
+      </div>
+
+      <div class="header__bottom">
+        <slot name="headerBottom" />
+      </div>
     </div>
   </header>
 </template>
@@ -30,32 +34,26 @@ export default {
 
 <style lang="scss">
 .header {
-  @apply w-full bg-indigo-600 p-4;
-  @apply h-72;
-  @apply md:h-96 md:p-6;
+  @apply bg-indigo-600 pb-24 w-full;
 
-  &__content {
-    @apply border-b-2 border-indigo-500;
+  &__top {
+    @apply w-full py-5 flex items-center;
   }
 
-  &__title {
-    @apply text-indigo-100 mb-4 flex items-center font-bold;
-    @apply text-lg;
-    @apply lg:mb-6;
-    @apply lg:text-xl;
-    @apply xl:text-2xl;
+  &__top__content {
+    @apply flex flex-1 items-center justify-center clear-both;
   }
 
-  &__icons {
-    @apply mr-2.5 border-2 border-indigo-100 p-2 rounded-full flex items-center justify-center;
+  &__bottom {
+    @apply hidden md:block border-t border-indigo-100 border-opacity-20 py-5;
+  }
+
+  &__logo {
+    @apply flex-shrink-0 border-indigo-100 flex items-center justify-center mr-3 md:mr-0;
   }
 
   &__icon {
-    @apply inline-flex;
-  }
-
-  &__icon--users {
-    @apply w-6 h-6 text-indigo-100;
+    @apply h-6 md:h-8 w-auto text-indigo-100;
   }
 }
 </style>

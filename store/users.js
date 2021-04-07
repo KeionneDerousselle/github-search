@@ -7,7 +7,8 @@ export const state = () => ({
   resultsPerPage: 25,
   currentPage: 1,
   numberOfResults: 0,
-  currentSearchTerm: ''
+  currentSearchTerm: '',
+  selectedUser: null
 })
 
 export const mutations = {
@@ -39,6 +40,10 @@ export const mutations = {
 
   SET_CURRENT_PAGE(state, page) {
     state.currentPage = page
+  },
+
+  SET_SELECTED_USER(state, selectedUser) {
+    state.selectedUser = selectedUser
   }
 }
 
@@ -113,6 +118,10 @@ export const actions = {
 
   setPage({ commit }, page) {
     commit('SET_CURRENT_PAGE', page)
+  },
+
+  setSelectedUser({ commit }, user) {
+    commit('SET_SELECTED_USER', user)
   }
 }
 
@@ -126,5 +135,6 @@ export const getters = {
   currentSearchTerm: ({ currentSearchTerm }) => currentSearchTerm,
   numberOfResults: ({ numberOfResults }) => numberOfResults,
   resultsPerPage: ({ resultsPerPage }) => resultsPerPage,
-  currentPage: ({ currentPage }) => currentPage
+  currentPage: ({ currentPage }) => currentPage,
+  selectedUser: ({ selectedUser }) => selectedUser
 }

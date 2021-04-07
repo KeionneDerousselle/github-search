@@ -223,6 +223,7 @@ export default {
 
     clearSearch() {
       this.searchTerm = ''
+      this.$emit('input', '')
     }
   }
 }
@@ -236,21 +237,29 @@ export default {
 }
 
 .searchfield {
-  @apply relative p-3 inline-flex overflow-hidden items-center text-base p-4 font-normal;
+  @apply relative;
 
   transition: all 0.5s;
 
+  &__left,
+  &__right {
+    @apply absolute inset-y-0 flex items-center;
+  }
+
   &__left {
-    @apply mr-2.5 inline-flex;
+    @apply pointer-events-none left-0 pl-3 ;
   }
 
   &__right {
-    @apply ml-2.5 inline-flex;
+    @apply right-0 pr-3;
   }
 }
 
 .searchfield__input {
-  @apply appearance-none m-0 border-0 outline-none flex-1;
+  @apply block appearance-none rounded-md w-full bg-opacity-20;
+  @apply py-2 px-10 m-0;
+  @apply outline-none leading-5 border-0;
+  @apply sm:text-sm;
 
   background: inherit;
   color: inherit;
@@ -269,8 +278,6 @@ export default {
   }
 
   &::placeholder {
-    @apply font-normal;
-
     font-family: inherit;
   }
 
@@ -293,7 +300,7 @@ export default {
 }
 
 .searchfield__icon {
-  @apply w-4 h-4;
+  @apply w-5 h-5;
 }
 
 .searchfield__clear {
@@ -306,7 +313,7 @@ export default {
   }
 
   &__icon {
-    @apply w-4 h-4;
+    @apply w-5 h-5;
   }
 }
 </style>

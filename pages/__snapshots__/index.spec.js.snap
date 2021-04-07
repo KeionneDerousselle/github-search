@@ -1,932 +1,722 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index Page initial display should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content">
+          <form class="form search__form md:hidden md:max-w-xs w-full" id="search-form">
+            <div class="search__form__container">
+              <div class="attrs-fix search__box">
+                <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                    Search Term
+                  </label>
+                  <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                    <!---->
+                  </div></button>
+                  </span>
+                </div>
+                <!---->
+                <!---->
+              </div>
+            </div> <button id="search-button" type="submit" class="search__button button">
+              <div class="button__content">
+                <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg></span>
+                <!---->
+              </div>
+            </button>
+        </div>
+        </form>
       </div>
-      <!---->
-      <!---->
     </div>
-</div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="header__bottom"></div>
 </div>
-</div>
-`;
-
-exports[`Index Page when a search is performed that matches the current search term should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style=""><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
+</header>
+<main class="content">
+  <div class="container h-full">
+    <h1 id="main-content-title" class="sr-only">
+      GitHub Users Search
+    </h1>
+    <div class="flex h-full">
+      <div class="content__left">
+        <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+          <h2 id="content-left-title" class="sr-only">
+            Search
+          </h2>
+          <div class="h-full flex flex-col">
+            <form class="form search__form hidden md:flex md:max-w-xs w-full mb-4" id="search-form">
+              <div class="search__form__container">
+                <div class="attrs-fix search__box">
+                  <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                      Search Term
+                    </label>
+                    <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                      <!---->
+                    </div></button></span>
+                  </div>
+                  <!---->
+                  <!---->
+                </div>
+              </div> <button id="search-button" type="submit" class="search__button button">
+                <div class="button__content">
+                  <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg></span>
+                  <!---->
+                </div>
+              </button>
+          </div>
+          </form>
+          <div id="results-box" class="results-box content__panel">
+            <div id="results" class="results"></div>
+            <div class="results-toolbar" style="display: none;">
+              <nav aria-label="Search results navigation" class="w-full results__pagination" id="results-pagination">
+                <ul class="pagination">
+                  <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+                  <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
       </div>
-      <!---->
-      <!---->
+      </section>
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when a search is performed without a search term should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
+    <div class="content__right">
+      <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+        <h2 id="content-right-title" class="sr-only">
+          User Details
+        </h2>
+        <div class="content__panel p-4">
+          <div class="user__details">
+            <!---->
+          </div>
+        </div>
+      </section>
     </div>
-</div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
   </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
   </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when a valid search is performed should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style=""><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
+</main>
+<footer id="kd-github-search-footer" class="footer github-search-footer">
+  <div class="container">
+    <div class="footer__content">
+      <p>
+        Created with
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+        </svg>
+        by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+        <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+          here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+      </p>
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon" style="">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
   </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when an invalid search is performed should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
-    </div>
-</div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when clicking the clear search text button should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container search__container--focused"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
-    </div>
-</div> <button id="search-button" type="submit" class="search__button button" disabled="disabled">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+</footer>
 </div>
 `;
 
 exports[`Index Page when the next page of results is clicked, and the results have already been fetched should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
-    <p>
-      We found <span class="counter">9</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content">
+          <form class="form search__form md:hidden md:max-w-xs w-full" id="search-form">
+            <div class="search__form__container">
+              <div class="attrs-fix search__box">
+                <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                    Search Term
+                  </label>
+                  <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                    <!---->
+                  </div></button>
+                  </span>
+                </div>
+                <!---->
+                <!---->
+              </div>
+            </div> <button id="search-button" type="submit" class="search__button button">
+              <div class="button__content">
+                <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg></span>
+                <!---->
+              </div>
+            </button>
+        </div>
+        </form>
       </div>
-      <!---->
-      <!---->
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results">
-    <ul id="page-1">
-      <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user1</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user2</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user3</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-    <ul id="page-2">
-      <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user4</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user5</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user6</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-    <ul id="page-3">
-      <li id="search-result-7" class="user-list-item search__result"><img alt="Profile picture for user7" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user7</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-8" class="user-list-item search__result"><img alt="Profile picture for user8" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user8</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-9" class="user-list-item search__result"><img alt="Profile picture for user9" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user9</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-  </div>
-  <div class="results-toolbar">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
-            1
-          </a></li>
-        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
-            2
-          </a></li>
-        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
-            3
-          </a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="header__bottom"></div>
 </div>
+</header>
+<main class="content">
+  <div class="container h-full">
+    <h1 id="main-content-title" class="sr-only">
+      GitHub Users Search
+    </h1>
+    <div class="flex h-full">
+      <div class="content__left">
+        <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+          <h2 id="content-left-title" class="sr-only">
+            Search
+          </h2>
+          <div class="h-full flex flex-col">
+            <form class="form search__form hidden md:flex md:max-w-xs w-full mb-4" id="search-form">
+              <div class="search__form__container">
+                <div class="attrs-fix search__box">
+                  <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                      Search Term
+                    </label>
+                    <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                      <!---->
+                    </div></button></span>
+                  </div>
+                  <!---->
+                  <!---->
+                </div>
+              </div> <button id="search-button" type="submit" class="search__button button">
+                <div class="button__content">
+                  <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg></span>
+                  <!---->
+                </div>
+              </button>
+          </div>
+          </form>
+          <div id="results-box" class="results-box content__panel">
+            <div id="results" class="results">
+              <ul id="page-1">
+                <li id="search-result-1" class="search__result user-list-item"><img alt="Profile picture for user1" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user1</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-2" class="search__result user-list-item"><img alt="Profile picture for user2" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user2</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-3" class="search__result user-list-item"><img alt="Profile picture for user3" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user3</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+              <ul id="page-2">
+                <li id="search-result-4" class="search__result user-list-item"><img alt="Profile picture for user4" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user4</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-5" class="search__result user-list-item"><img alt="Profile picture for user5" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user5</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-6" class="search__result user-list-item"><img alt="Profile picture for user6" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user6</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+              <ul id="page-3">
+                <li id="search-result-7" class="search__result user-list-item"><img alt="Profile picture for user7" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user7</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-8" class="search__result user-list-item"><img alt="Profile picture for user8" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user8</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-9" class="search__result user-list-item"><img alt="Profile picture for user9" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user9</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="results-toolbar">
+              <nav aria-label="Search results navigation" class="w-full results__pagination" id="results-pagination">
+                <ul class="pagination">
+                  <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+                  <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+                      1
+                    </a></li>
+                  <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+                      2
+                    </a></li>
+                  <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+                      3
+                    </a></li>
+                  <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      </div>
+      </section>
+    </div>
+    <div class="content__right">
+      <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+        <h2 id="content-right-title" class="sr-only">
+          User Details
+        </h2>
+        <div class="content__panel p-4">
+          <div class="user__details">
+            <!---->
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  </div>
+</main>
+<footer id="kd-github-search-footer" class="footer github-search-footer">
+  <div class="container">
+    <div class="footer__content">
+      <p>
+        Created with
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+        </svg>
+        by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+        <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+          here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+      </p>
+    </div>
+  </div>
+</footer>
 </div>
 `;
 
 exports[`Index Page when the next page of results is clicked, and the results have not already been fetched should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
-    <p>
-      We found <span class="counter">9</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content">
+          <form class="form search__form md:hidden md:max-w-xs w-full" id="search-form">
+            <div class="search__form__container">
+              <div class="attrs-fix search__box">
+                <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                    Search Term
+                  </label>
+                  <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                    <!---->
+                  </div></button>
+                  </span>
+                </div>
+                <!---->
+                <!---->
+              </div>
+            </div> <button id="search-button" type="submit" class="search__button button">
+              <div class="button__content">
+                <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg></span>
+                <!---->
+              </div>
+            </button>
+        </div>
+        </form>
       </div>
-      <!---->
-      <!---->
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results">
-    <ul id="page-1">
-      <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user1</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user2</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user3</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-  </div>
-  <div class="results-toolbar">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
-            1
-          </a></li>
-        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
-            2
-          </a></li>
-        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
-            3
-          </a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="header__bottom"></div>
 </div>
+</header>
+<main class="content">
+  <div class="container h-full">
+    <h1 id="main-content-title" class="sr-only">
+      GitHub Users Search
+    </h1>
+    <div class="flex h-full">
+      <div class="content__left">
+        <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+          <h2 id="content-left-title" class="sr-only">
+            Search
+          </h2>
+          <div class="h-full flex flex-col">
+            <form class="form search__form hidden md:flex md:max-w-xs w-full mb-4" id="search-form">
+              <div class="search__form__container">
+                <div class="attrs-fix search__box">
+                  <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                      Search Term
+                    </label>
+                    <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                      <!---->
+                    </div></button></span>
+                  </div>
+                  <!---->
+                  <!---->
+                </div>
+              </div> <button id="search-button" type="submit" class="search__button button">
+                <div class="button__content">
+                  <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg></span>
+                  <!---->
+                </div>
+              </button>
+          </div>
+          </form>
+          <div id="results-box" class="results-box content__panel">
+            <div id="results" class="results">
+              <ul id="page-1">
+                <li id="search-result-1" class="search__result user-list-item"><img alt="Profile picture for user1" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user1</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-2" class="search__result user-list-item"><img alt="Profile picture for user2" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user2</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-3" class="search__result user-list-item"><img alt="Profile picture for user3" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user3</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="results-toolbar">
+              <nav aria-label="Search results navigation" class="w-full results__pagination" id="results-pagination">
+                <ul class="pagination">
+                  <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+                  <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+                      1
+                    </a></li>
+                  <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+                      2
+                    </a></li>
+                  <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+                      3
+                    </a></li>
+                  <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      </div>
+      </section>
+    </div>
+    <div class="content__right">
+      <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+        <h2 id="content-right-title" class="sr-only">
+          User Details
+        </h2>
+        <div class="content__panel p-4">
+          <div class="user__details">
+            <!---->
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  </div>
+</main>
+<footer id="kd-github-search-footer" class="footer github-search-footer">
+  <div class="container">
+    <div class="footer__content">
+      <p>
+        Created with
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+        </svg>
+        by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+        <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+          here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+      </p>
+    </div>
+  </div>
+</footer>
 </div>
 `;
 
 exports[`Index Page when the next page of results is clicked, but another scroll is taking place should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
-    <p>
-      We found <span class="counter">9</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
+<div class="app">
+  <header id="kd-github-search-header" class="header github-search-header">
+    <div class="container">
+      <div class="header__top"><span aria-hidden="true" class="header__logo"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="header__icon header__icon--users"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
+        <div class="header__top__content">
+          <form class="form search__form md:hidden md:max-w-xs w-full" id="search-form">
+            <div class="search__form__container">
+              <div class="attrs-fix search__box">
+                <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                    Search Term
+                  </label>
+                  <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                    <!---->
+                  </div></button>
+                  </span>
+                </div>
+                <!---->
+                <!---->
+              </div>
+            </div> <button id="search-button" type="submit" class="search__button button">
+              <div class="button__content">
+                <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg></span>
+                <!---->
+              </div>
+            </button>
+        </div>
+        </form>
       </div>
-      <!---->
-      <!---->
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results">
-    <ul id="page-1">
-      <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user1</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user2</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user3</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-    <ul id="page-2">
-      <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user4</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user5</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user6</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-    <ul id="page-3">
-      <li id="search-result-7" class="user-list-item search__result"><img alt="Profile picture for user7" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user7</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-8" class="user-list-item search__result"><img alt="Profile picture for user8" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user8</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-9" class="user-list-item search__result"><img alt="Profile picture for user9" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user9</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-  </div>
-  <div class="results-toolbar">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
-            1
-          </a></li>
-        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
-            2
-          </a></li>
-        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
-            3
-          </a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="header__bottom"></div>
 </div>
-</div>
-`;
-
-exports[`Index Page when the search term container is focused should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container search__container--focused"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
+</header>
+<main class="content">
+  <div class="container h-full">
+    <h1 id="main-content-title" class="sr-only">
+      GitHub Users Search
+    </h1>
+    <div class="flex h-full">
+      <div class="content__left">
+        <section id="left-section" aria-labelledby="content-left-title" class="h-full">
+          <h2 id="content-left-title" class="sr-only">
+            Search
+          </h2>
+          <div class="h-full flex flex-col">
+            <form class="form search__form hidden md:flex md:max-w-xs w-full mb-4" id="search-form">
+              <div class="search__form__container">
+                <div class="attrs-fix search__box">
+                  <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
+                      Search Term
+                    </label>
+                    <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
+                      <!---->
+                    </div></button></span>
+                  </div>
+                  <!---->
+                  <!---->
+                </div>
+              </div> <button id="search-button" type="submit" class="search__button button">
+                <div class="button__content">
+                  <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg></span>
+                  <!---->
+                </div>
+              </button>
+          </div>
+          </form>
+          <div id="results-box" class="results-box content__panel">
+            <div id="results" class="results">
+              <ul id="page-1">
+                <li id="search-result-1" class="search__result user-list-item"><img alt="Profile picture for user1" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user1</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-2" class="search__result user-list-item"><img alt="Profile picture for user2" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user2</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-3" class="search__result user-list-item"><img alt="Profile picture for user3" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user3</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+              <ul id="page-2">
+                <li id="search-result-4" class="search__result user-list-item"><img alt="Profile picture for user4" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user4</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-5" class="search__result user-list-item"><img alt="Profile picture for user5" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user5</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-6" class="search__result user-list-item"><img alt="Profile picture for user6" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user6</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+              <ul id="page-3">
+                <li id="search-result-7" class="search__result user-list-item"><img alt="Profile picture for user7" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user7</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user7's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-8" class="search__result user-list-item"><img alt="Profile picture for user8" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user8</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user8's GitHub Account in a new window.</span></a>
+                </li>
+                <li id="search-result-9" class="search__result user-list-item"><img alt="Profile picture for user9" class="user-list-item__avatar">
+                  <div class="user-list-item__details">
+                    <!----> <span class="user-list-item__details__login">user9</span>
+                  </div>
+                  <!----> <a target="_blank" rel="noopener" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                    </svg> <span class="sr-only"> Opens link to user9's GitHub Account in a new window.</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="results-toolbar">
+              <nav aria-label="Search results navigation" class="w-full results__pagination" id="results-pagination">
+                <ul class="pagination">
+                  <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
+                  <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
+                      1
+                    </a></li>
+                  <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
+                      2
+                    </a></li>
+                  <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
+                      3
+                    </a></li>
+                  <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
       </div>
-      <!---->
-      <!---->
+      </section>
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when the search term container is not focused and there are no search errors should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
+    <div class="content__right">
+      <section id="right-section" aria-labelledby="content-right-title" class="h-full">
+        <h2 id="content-right-title" class="sr-only">
+          User Details
+        </h2>
+        <div class="content__panel p-4">
+          <div class="user__details">
+            <!---->
+          </div>
+        </div>
+      </section>
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
   </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
   </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when the search term input is not focused and there are no errors should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
+</main>
+<footer id="kd-github-search-footer" class="footer github-search-footer">
+  <div class="container">
+    <div class="footer__content">
+      <p>
+        Created with
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline-flex fill-current text-pink-500">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+        </svg>
+        by <a id="footer-dev-link" href="https://www.keionne.com" target="_blank" rel="noopener" class="footer__link">
+          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span></a>. Take a look at the code
+        <a id="footer-repo-link" href="https://www.github.com/KeionneDerousselle/github-search" target="_blank" rel="noopener" class="footer__link">
+          here<span class="sr-only">Opens the source code repository for this website in a new window.</span></a>.
+      </p>
     </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
   </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when there are no search results to be displayed should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg" style="display: none;">
-    <p>
-      We found <span class="counter">0</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
-    </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results"></div>
-  <div class="results-toolbar" style="display: none;">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-</div>
-`;
-
-exports[`Index Page when there are search results to be displayed should render as expected 1`] = `
-<div class="search-page">
-  <div class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
-    <p>
-      We found <span class="counter">6</span> users!
-    </p>
-  </div>
-  <form class="form search__form">
-    <div class="attrs-fix search__box">
-      <div class="input searchfield-container"><label for="search-box" class="input__label sr-only">
-          Search Term
-        </label>
-        <div tabindex="0" class="searchfield rounded-lg search__container"><span class="searchfield__left"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="searchfield__icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span> <input type="search" placeholder="Search" name="Search Term" id="search-box" class="searchfield__input search__input"> <span class="searchfield__right"><button type="reset" class="searchfield__clear button" style="display: none;"><div class="button__content"><!----> <span class="button__content--center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="searchfield__clear__icon"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></span>
-          <!---->
-        </div></button></span>
-      </div>
-      <!---->
-      <!---->
-    </div>
-</div> <button id="search-button" type="submit" class="search__button button">
-  <div class="button__content">
-    <!----> <span class="button__content--center"><span class="sr-only">Submit</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="search__button__icon">
-      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-    </svg></span>
-    <!---->
-  </div>
-</button></form>
-<div id="results-box" class="results-box">
-  <div id="results" class="results">
-    <ul id="page-1">
-      <li id="search-result-1" class="user-list-item search__result"><img alt="Profile picture for user1" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user1</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user1's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-2" class="user-list-item search__result"><img alt="Profile picture for user2" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user2</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user2's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-3" class="user-list-item search__result"><img alt="Profile picture for user3" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user3</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user3's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-    <ul id="page-2">
-      <li id="search-result-4" class="user-list-item search__result"><img alt="Profile picture for user4" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user4</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user4's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-5" class="user-list-item search__result"><img alt="Profile picture for user5" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user5</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user5's GitHub Account in a new window.</span></a>
-      </li>
-      <li id="search-result-6" class="user-list-item search__result"><img alt="Profile picture for user6" class="user-list-item__avatar">
-        <div class="user-list-item__details">
-          <!----> <span class="user-list-item__details__login">user6</span>
-        </div>
-        <!----> <a target="_blank" class="user-list-item__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="user-list-item__link__icon">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg> <span class="sr-only"> Opens link to user6's GitHub Account in a new window.</span></a>
-      </li>
-    </ul>
-  </div>
-  <div class="results-toolbar">
-    <nav aria-label="Search results navigation" id="results-pagination" class="results__pagination">
-      <ul class="pagination">
-        <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg> <span class="sr-only">Navigate to Previous Page</span></a></li>
-        <li aria-label="Navigate to page number 1" class="page__item page__item--page page__item--1"><a href="#" disabled="disabled" class="page__link page__link--1 page__link--active">
-            1
-          </a></li>
-        <li aria-label="Navigate to page number 2" class="page__item page__item--page page__item--2"><a href="#" class="page__link page__link--2">
-            2
-          </a></li>
-        <li aria-label="Navigate to page number 3" class="page__item page__item--page page__item--3"><a href="#" class="page__link page__link--3">
-            3
-          </a></li>
-        <li class="page__item page__item--next"><a href="#" class="page__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" class="page__link__icon">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg> <span class="sr-only">Navigate to Next Page</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+</footer>
 </div>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination when the first page is active should render as expected 1`] = `
-<nav aria-label="Search results navigation">
+<nav aria-label="Search results navigation" class="w-full">
   <ul class="pagination">
     <li class="page__item page__item--previous"><a href="#" disabled="disabled" class="page__link page__link--disabled">
         <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
@@ -23,7 +23,7 @@ exports[`Pagination when the first page is active should render as expected 1`] 
 `;
 
 exports[`Pagination when the first page is not active should render as expected 1`] = `
-<nav aria-label="Search results navigation">
+<nav aria-label="Search results navigation" class="w-full">
   <ul class="pagination">
     <li class="page__item page__item--previous"><a href="#" class="page__link">
         <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
@@ -45,7 +45,7 @@ exports[`Pagination when the first page is not active should render as expected 
 `;
 
 exports[`Pagination when the last page is active should render as expected 1`] = `
-<nav aria-label="Search results navigation">
+<nav aria-label="Search results navigation" class="w-full">
   <ul class="pagination">
     <li class="page__item page__item--previous"><a href="#" class="page__link">
         <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>
@@ -67,7 +67,7 @@ exports[`Pagination when the last page is active should render as expected 1`] =
 `;
 
 exports[`Pagination when the last page is not active should render as expected 1`] = `
-<nav aria-label="Search results navigation">
+<nav aria-label="Search results navigation" class="w-full">
   <ul class="pagination">
     <li class="page__item page__item--previous"><a href="#" class="page__link">
         <chevron-left-icon-stub aria-hidden="true" class="page__link__icon"></chevron-left-icon-stub> <span class="sr-only">Navigate to Previous Page</span>

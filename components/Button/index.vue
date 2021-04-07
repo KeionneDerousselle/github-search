@@ -46,7 +46,11 @@ export default {
 </script>
 <style lang="scss">
 .button {
-  @apply flex appearance-none items-center justify-center align-middle cursor-pointer font-bold text-center no-underline select-none text-base p-4 border border-gray-400 bg-gray-100 rounded-lg;
+  @apply appearance-none flex items-center justify-center align-middle rounded-md;
+  @apply cursor-pointer no-underline select-none;
+  @apply p-2 m-0;
+  @apply font-bold text-center leading-5 sm:text-sm;
+  @apply border border-gray-400 bg-gray-100;
 
   color: inherit;
   font-family: inherit;
@@ -68,7 +72,7 @@ export default {
 
   &__content--left,
   &__content--right {
-    @apply text-base font-normal;
+    @apply text-sm font-normal;
   }
 
   &__content--left {
@@ -80,7 +84,7 @@ export default {
   }
 
   &__spinner {
-    @apply hidden w-4 h-4 bg-transparent border-solid border-2 border-r-0 rounded-full text-center normal-case text-base not-italic font-normal border-gray-600;
+    @apply hidden w-5 h-5 bg-transparent border-solid border-2 border-r-0 rounded-full text-center normal-case sm:text-sm not-italic font-normal border-gray-600;
 
     color: inherit;
     transition: all 0.3s ease-in-out;

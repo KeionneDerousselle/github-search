@@ -2,25 +2,29 @@
   <footer
     v-bind="$attrs"
     class="footer">
-    <div class="footer__content">
-      <p>
-        Created with
-        <heart-icon class="w-5 h-5 inline-flex fill-current text-pink-500" />
-        by <a
-          id="footer-dev-link"
-          href="https://www.keionne.com"
-          class="footer__link"
-          target="_blank">
-          Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span>
-        </a>. Take a look at the code
-        <a
-          id="footer-repo-link"
-          href="https://www.github.com/KeionneDerousselle/github-search"
-          class="footer__link"
-          target="_blank">
-          here<span class="sr-only">Opens the source code repository for this website in a new window.</span>
-        </a>.
-      </p>
+    <div class="container">
+      <div class="footer__content">
+        <p>
+          Created with
+          <heart-icon class="w-5 h-5 inline-flex fill-current text-pink-500" />
+          by <a
+            id="footer-dev-link"
+            href="https://www.keionne.com"
+            class="footer__link"
+            target="_blank"
+            rel="noopener">
+            Keionne Derousselle<span class="sr-only">Opens the developer's website in a new window.</span>
+          </a>. Take a look at the code
+          <a
+            id="footer-repo-link"
+            href="https://www.github.com/KeionneDerousselle/github-search"
+            class="footer__link"
+            target="_blank"
+            rel="noopener">
+            here<span class="sr-only">Opens the source code repository for this website in a new window.</span>
+          </a>.
+        </p>
+      </div>
     </div>
   </footer>
 </template>
@@ -35,14 +39,10 @@ export default {
 </script>
 <style lang="scss">
 .footer {
-  @apply pb-4 pl-4 pr-4 w-full;
-  @apply md:pb-6 md:pl-6 md:pr-6;
+  @apply border-indigo-500;
 
-  .footer__content {
-    @apply border-t-2 border-indigo-500 text-indigo-100 flex justify-center;
-    @apply text-sm pt-4;
-    @apply md:text-base;
-    @apply lg:text-lg lg:pt-6;
+  &__content {
+    @apply border-t border-indigo-100 py-8 text-sm text-indigo-100 text-center;
   }
 
   .footer__link {

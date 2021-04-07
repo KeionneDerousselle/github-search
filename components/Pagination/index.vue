@@ -1,5 +1,7 @@
 <template>
-  <nav aria-label="Search results navigation">
+  <nav
+    class="w-full"
+    aria-label="Search results navigation">
     <ul class="pagination">
       <li class="page__item page__item--previous">
         <a
@@ -141,24 +143,28 @@ export default {
 </script>
 <style lang="scss">
 .pagination {
-  @apply flex w-full h-full clear-both;
+  @apply flex justify-center items-center w-full h-full clear-both relative;
 
   .page__item {
+    &--page {
+      @apply inline-block;
+    }
+
     &--page:not(:last-of-type) {
       @apply ml-2;
     }
 
     &--previous {
-      @apply mr-6;
+      @apply absolute left-0;
     }
 
     &--next {
-      @apply ml-6;
+      @apply absolute right-0;
     }
   }
 
   .page__link {
-    @apply rounded-full border border-transparent inline-flex w-10 h-10 flex items-center justify-center text-sm md:text-base;
+    @apply rounded-full border border-transparent inline-flex w-8 h-8 items-center justify-center sm:text-sm;
 
     &:hover:not(.page__link--disabled),
     &:focus:not(.page__link--disabled) {
@@ -166,7 +172,7 @@ export default {
     }
 
     &__icon {
-      @apply text-indigo-100 w-4 h-4;
+      @apply text-indigo-100 w-5 h-5;
     }
 
     &--active {
@@ -177,7 +183,7 @@ export default {
       @apply cursor-not-allowed bg-gray-300 bg-opacity-60;
 
       .page__link__icon {
-        @apply text-gray-600 w-4 h-4;
+        @apply text-gray-600 w-5 h-5;
       }
     }
   }

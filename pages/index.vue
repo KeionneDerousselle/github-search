@@ -1,89 +1,55 @@
 <template>
-  <div class="search-page">
-    <div
-      v-show="numberOfResults"
-      class="results__count text-indigo-100 flex items-center justify-center flex-none mb-6 text-lg">
-      <p>
-        We found <counter :number="numberOfResults" /> users!
-      </p>
-    </div>
+  <layout
+    :page-title="pageTitle"
+    :left-section-title="leftSectionTitle"
+    :right-section-title="rightSectionTitle">
+    <template #headerTop>
+      <search-form
+        id="search-form"
+        class="md:hidden md:max-w-xs w-full" />
+    </template>
 
-    <form-validator
-      class="search__form"
-      @submit="handleSearchSubmitted">
-      <template #default="{ invalid }">
-        <searchfield
-          id="search-box"
-          v-model="searchTerm"
-          class="search__box"
-          placeholder="Search"
-          rules="required"
-          label="Search Term"
-          name="Search Term"
-          vee-validate-name="A search term"
-          mode="aggressive"
-          immediate
-          :show-errors="false"
-          :calc-input-classes="getSearchInputClasses"
-          :calc-container-classes="getSearchInputContainerClasses" />
+    <template #leftSectionContent>
+      <search-form
+        id="search-form"
+        class="hidden md:flex md:max-w-xs w-full mb-4" />
 
-        <kd-github-search-button
-          id="search-button"
-          class="search__button"
-          type="submit"
-          :disabled="invalid || performingSearch"
-          :loading="performingSearch">
-          <span class="sr-only">Submit</span>
-          <check-icon
-            v-show="!performingSearch"
-            class="search__button__icon"
-            aria-hidden="true" />
-        </kd-github-search-button>
-      </template>
-    </form-validator>
-
-    <div
-      id="results-box"
-      class="results-box">
       <div
-        id="results"
-        ref="results"
-        class="results">
-        <ul
-          v-for="result in results"
-          :id="`page-${result.page}`"
-          :key="result.id">
-          <user-list-item
-            v-for="user in result.users"
-            :id="`search-result-${user.id}`"
-            :key="user.id"
-            :user="user"
-            class="search__result" />
-        </ul>
+        id="results-box"
+        class="results-box content__panel">
+        <search-results id="results" />
+
+        <div
+          v-show="numberOfResults"
+          class="results-toolbar">
+          <pagination
+            id="results-pagination"
+            class="results__pagination"
+            :total-items="numberOfResults"
+            :items-per-page="resultsPerPage"
+            :current-page="currentPage"
+            @change="handlePageChanged" />
+        </div>
       </div>
-      <div
-        v-show="numberOfResults"
-        class="results-toolbar">
-        <pagination
-          id="results-pagination"
-          class="results__pagination"
-          :total-items="numberOfResults"
-          :items-per-page="resultsPerPage"
-          :current-page="currentPage"
-          @change="handlePageChanged" />
+    </template>
+
+    <template #rightSectionContent>
+      <div class="user__details">
+        <user-details
+          v-if="selectedUser"
+          :user="selectedUser" />
       </div>
-    </div>
-  </div>
+    </template>
+  </layout>
 </template>
 
 <script>
-import CheckIcon from '@/components/Icons/Check'
-import Button from '@/components/Button'
-import FormValidator from '@/components/FormValidator'
-import Searchfield from '@/components/Searchfield'
-import UserListItem from '@/components/UserListItem'
+import Layout from '@/components/Layout'
+import SearchForm from '@/components/SearchForm'
+import SearchResults from '@/components/SearchResults'
 import Pagination from '@/components/Pagination'
-import Counter from '@/components/Counter'
+import UserDetails from '@/components/UserDetails'
+// import Counter from '@/components/Counter'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -91,21 +57,21 @@ import VueScrollTo from 'vue-scrollto'
 
 export default {
   components: {
-    CheckIcon,
-    FormValidator,
-    Searchfield,
-    UserListItem,
+    Layout,
+    SearchForm,
+    SearchResults,
     Pagination,
-    Counter,
-    'kd-github-search-button': Button
+    UserDetails
+    // Counter,
   },
 
   data: () => ({
-    searchTerm: '',
-    performingSearch: false,
     maxScrollPosition: 0,
     fetchingTheNextPage: false,
-    currentScrollCancellation: null
+    currentScrollCancellation: null,
+    pageTitle: 'GitHub Users Search',
+    leftSectionTitle: 'Search',
+    rightSectionTitle: 'User Details'
   }),
 
   computed: {
@@ -114,131 +80,19 @@ export default {
       'currentSearchTerm',
       'numberOfResults',
       'resultsPerPage',
-      'currentPage'
+      'currentPage',
+      'selectedUser'
     ])
-  },
-
-  mounted() {
-    this.addScrollListener(this.$refs.results)
-  },
-
-  beforeDestroy() {
-    this.removeScrollListener(this.$refs.results)
   },
 
   methods: {
     ...mapActions('users', [
-      'setSearchTerm',
       'search',
       'setPage'
     ]),
 
-    getSearchInputContainerClasses(errors, isFocused) {
-      const classStrats = [
-        {
-          shouldApply: () => isFocused,
-          classes: [ 'search__container', 'search__container--focused' ]
-        },
-        {
-          shouldApply: () => true,
-          classes: ['search__container']
-        }
-      ]
-
-      return classStrats.find(cs => cs.shouldApply()).classes
-    },
-
-    getSearchInputClasses(errors, isFocused) {
-      // const anyErrors = errors && errors.length > 0
-
-      const classStrats = [
-        {
-          shouldApply: () => true,
-          classes: ['search__input']
-        }
-      ]
-
-      return classStrats.find(cs => cs.shouldApply()).classes
-    },
-
-    handleSearchSubmitted() {
-      // TODO: Loading State
-      // TODO: Handle Errors
-
-      if (this.searchTerm && (this.searchTerm.toLowerCase() !== this.currentSearchTerm.toLowerCase())) {
-        this.performingSearch = true
-
-        return this.search({ searchTerm: this.searchTerm, page: 1, resultsPerPage: this.resultsPerPage })
-          .then(() => this.setSearchTerm(this.searchTerm))
-          .catch(console.error)
-          .finally(() => {
-            this.performingSearch = false
-          })
-      }
-    },
-
-    handleResultsScrolled() {
-      this.handleScrollHelper(this.$refs.results)
-    },
-
-    addScrollListener(el) {
-      el.addEventListener('scroll', this.handleResultsScrolled)
-    },
-
-    removeScrollListener(el) {
-      el.removeEventListener('scroll', this.handleResultsScrolled)
-    },
-
-    async handleScrollHelper(el) {
-      // when height of content under the view window (the bottom of the scroll: (this.$refs.results.scrollHeight - this.$refs.results.scrollTop))
-      // is less than 1.5 pages: (this.$refs.results.offsetHeight * 1.5)
-      if ((el.scrollHeight - el.scrollTop) < (el.offsetHeight * 1.5)) {
-        // if the bottom of the content is not the same as the max position we've scrolled to
-        if ((el.scrollHeight >= this.maxScrollPosition) && !this.fetchingTheNextPage) {
-          this.fetchingTheNextPage = true
-          this.setMaxScollHeight(el)
-
-          await this.search({
-            searchTerm: this.searchTerm,
-            page: this.currentPage + 1,
-            resultsPerPage: this.resultsPerPage
-          }).finally(() => {
-            this.fetchingTheNextPage = false
-          })
-        }
-      }
-
-      this.updateScrolledPage(el)
-    },
-
     setMaxScollHeight(el) {
       this.maxScrollPosition = el.scrollHeight
-    },
-
-    updateScrolledPage(el) {
-      const calculatedPage = this.calculateScrolledToPage(el)
-
-      if (calculatedPage !== this.currentPage) {
-        return this.setPage(calculatedPage)
-      }
-    },
-
-    calculateScrolledToPage(el) {
-      const children = el.children
-      let previousMax = 0
-      let currentMax = 0
-      const scrollTop = el.scrollTop
-
-      // for every ul.page el in #results
-      for (let i = 0; i < children.length; i++) {
-        // console.log('hi')
-        // get the height of that page
-        currentMax += children[i].clientHeight
-        // if the scroll position is between the start of the page and the end of the page, return that we are on that page
-        if (scrollTop >= previousMax && scrollTop <= currentMax) return i + 1
-        // else, add the height of this page to the height of all the pages we've already checked, (reset the start looking position)
-        previousMax = currentMax
-      }
     },
 
     handlePageChanged(page) {
@@ -255,9 +109,11 @@ export default {
         } else {
           this.fetchingTheNextPage = true
 
-          return this.search({ searchTerm: this.searchTerm, page, resultsPerPage: this.resultsPerPage })
+          return this.search({ searchTerm: this.currentSearchTerm, page, resultsPerPage: this.resultsPerPage })
             .then(() => {
-              this.setMaxScollHeight(this.$refs.results)
+              const resultsEl = document.getElementById('results')
+
+              this.setMaxScollHeight(resultsEl)
               this.currentScrollCancellation = this.scrollToPage(pageId)
             }).finally(() => {
               this.currentScrollCancellation = null
@@ -284,77 +140,20 @@ export default {
 </script>
 
 <style lang="scss">
-.search-page {
-  @apply max-w-md flex flex-col h-full;
-}
-
-.search__form {
-  @apply flex items-start justify-between flex-none;
-}
-
-.search__box {
-  @apply flex-grow w-11/12;
-  @apply mr-3;
-  @apply md:mr-4;
-}
-
-.search__container {
-  @apply shadow-lg bg-indigo-500 text-white;
-
-  &--focused {
-    @apply ring-4 ring-indigo-400;
-  }
-}
-
-.search__input {
-  @apply placeholder-indigo-50 text-sm md:text-base;
-
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active,
-  &:-internal-autofill-selected {
-    @apply bg-indigo-500 text-white;
-
-    -webkit-text-fill-color: white;
-    caret-color: white;
-  }
-}
-
-.search__button {
-  @apply shadow-lg border-0 bg-indigo-200 flex-none text-indigo-800 h-full;
-
-  &:hover:not(:disabled) {
-    @apply bg-indigo-300 shadow-2xl;
-  }
-
-  &:focus:not(:active) {
-    @apply shadow-2xl ring-indigo-400 ring-4;
-  }
-
-  &:disabled {
-    @apply bg-gray-300;
-  }
-
-  &:disabled .search__button__icon {
-    @apply text-gray-600;
-  }
-
-  &__icon {
-    @apply font-bold w-4 h-4;
-  }
-}
-
 .results-box {
-  @apply shadow-lg bg-white rounded-lg mt-6 flex flex-1 flex-col h-full overflow-hidden;
+  @apply flex flex-col overflow-hidden relative;
+
+  flex: 1 1 1px;
 }
 
 .results {
-  @apply flex-1 overflow-y-auto h-full;
+  @apply overflow-y-auto h-full;
+
+  flex: 1 1 auto;
 }
 
 .results-toolbar {
-  @apply flex-none bg-indigo-500 p-4 text-white text-sm md:text-base flex justify-center items-center;
+  @apply bottom-0 left-0 right-0 bg-indigo-500 text-indigo-100 p-4;
 
   transition: all 0.3s ease-in;
 }

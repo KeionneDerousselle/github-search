@@ -1,7 +1,7 @@
 <template>
   <li
     v-bind="$attrs"
-    class="user-list-item"
+    :class="['user-list-item', { 'user-list-item--selected': selected }]"
     v-on="$listeners">
     <img
       :src="user.avatar_url"
@@ -28,6 +28,7 @@
     <a
       :href="user.html_url"
       target="_blank"
+      rel="noopener"
       class="user-list-item__link">
       <link-icon
         class="user-list-item__link__icon"
@@ -52,6 +53,11 @@ export default {
     user: {
       type: Object,
       required: true
+    },
+
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -81,7 +87,11 @@ export default {
 .user-list-item {
   @apply list-none flex items-center w-full border-b border-indigo-200 p-4;
 
-  &:hover {
+  &--selected {
+    @apply bg-indigo-300 bg-opacity-80;
+  }
+
+  &:hover:not(.user-list-item--selected) {
     @apply bg-indigo-50;
   }
 
@@ -116,23 +126,21 @@ export default {
   }
 
   &__details {
-    @apply inline-flex flex-col w-1/3;
+    @apply inline-flex flex-col w-2/5;
 
     &__name {
       @apply text-gray-800 block;
       @apply text-sm;
-      @apply md:text-base;
     }
 
     &__login {
       @apply text-gray-600 block;
       @apply text-xs;
-      @apply md:text-sm;
     }
   }
 
   &__followers {
-    @apply text-indigo-700 inline-flex flex items-center ml-2.5 rounded-xl bg-indigo-100 px-1 py-0.5 text-sm font-bold border;
+    @apply text-indigo-700 inline-flex items-center ml-2.5 rounded-xl bg-indigo-100 px-1 py-0.5 text-sm font-bold border;
   }
 
   &__followers__icon {
