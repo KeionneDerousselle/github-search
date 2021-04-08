@@ -6,6 +6,12 @@ import flushPromises from 'flush-promises'
 global.routerPush = jest.fn()
 jest.spyOn(global, 'routerPush')
 
+global.transitionStub = () => ({
+  render(h) {
+    return this.$options._renderChildren
+  }
+})
+
 // Vue Test Utils Mount Helpers
 global.mount = mount
 global.shallow = shallowMount

@@ -162,7 +162,8 @@ module.exports = {
         shallowPreMocked: false,
         routerPush: false,
         mockTransitions: false,
-        flushValidationUpdates: false
+        flushValidationUpdates: false,
+        transitionStub: false
       }
     }
   ]
