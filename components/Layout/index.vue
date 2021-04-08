@@ -38,7 +38,9 @@
             </section>
           </div>
 
-          <div class="content__right">
+          <div
+            v-if="!$isMobile"
+            class="content__right">
             <section
               id="right-section"
               class="h-full"
@@ -55,6 +57,20 @@
             </section>
           </div>
         </div>
+
+        <transition-group
+          :name="drawerTransition.name"
+          :mode="drawerTransition.mode"
+          :appear="drawerTransition.appear"
+          tag="div">
+          <div
+            v-if="$slots.drawer && $isMobile && displayDrawer"
+            :key="drawerTransition.key"
+            :style="$vh100"
+            class="drawer">
+            <slot name="drawer" />
+          </div>
+        </transition-group>
       </div>
     </main>
 
@@ -87,6 +103,51 @@ export default {
     rightSectionTitle: {
       type: String,
       default: ''
+    },
+
+    showDrawer: {
+      type: Boolean,
+      default: null
+    }
+  },
+
+  data: ({ showDrawer }) => ({
+    displayDrawer: showDrawer,
+    drawerTransition: {
+      key: false,
+      name: '',
+      mode: '',
+      appear: false
+    }
+  }),
+
+  watch: {
+    showDrawer(newValue) {
+      if (newValue) {
+        this.openDrawer()
+      } else {
+        this.closeDrawer()
+      }
+    }
+  },
+
+  methods: {
+    openDrawer() {
+      this.displayDrawer = true
+      this.drawerTransition = {
+        key: true,
+        name: 'slide-in',
+        mode: 'in-out'
+      }
+    },
+
+    closeDrawer() {
+      this.displayDrawer = false
+      this.drawerTransition = {
+        key: false,
+        name: 'slide-in',
+        mode: 'out-in'
+      }
     }
   }
 }
@@ -123,14 +184,16 @@ export default {
 }
 
 .drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 50;
-  overflow: auto;
-  background-color: white;
+  @apply fixed top-0 left-0 bottom-0 h-full w-full overflow-auto bg-white z-50 block md:hidden;
+
+  &.slide-in-enter-active,
+  &.slide-in-leave-active {
+    transition: all 0.3s;
+  }
+
+  &.slide-in-enter,
+  &.slide-in-leave-to {
+    transform: translateX(100%);
+  }
 }
 </style>

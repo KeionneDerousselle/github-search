@@ -353,4 +353,79 @@ describe('Index Page', () => {
       expect(VueScrollTo.scrollTo).not.toHaveBeenCalled()
     })
   })
+
+  describe('when a user from the results list is selected', () => {
+    let results
+    let selectedUser
+    let mockSetSelectedUser
+
+    beforeAll(async () => {
+      selectedUser = { id: 2, login: 'user2' }
+
+      results = [
+        {
+          id: 1,
+          page: 1,
+          users: [
+            { id: 1, login: 'user1' },
+            selectedUser,
+            { id: 3, login: 'user3' }
+          ]
+        },
+        {
+          id: 2,
+          page: 2,
+          users: [
+            { id: 4, login: 'user4' },
+            { id: 5, login: 'user5' },
+            { id: 6, login: 'user6' }
+          ]
+        },
+        {
+          id: 3,
+          page: 3,
+          users: [
+            { id: 7, login: 'user7' },
+            { id: 8, login: 'user8' },
+            { id: 9, login: 'user9' }
+          ]
+        }
+      ]
+
+      mockSetSelectedUser = jest.fn().mockResolvedValue()
+
+      wrapper = createWrapper({
+        store: {
+          users: {
+            getters: {
+              results: jest.fn().mockReturnValue(results),
+              numberOfResults: jest.fn().mockReturnValue(9),
+              resultsPerPage: jest.fn().mockReturnValue(3),
+              currentPage: jest.fn().mockReturnValue(1)
+            },
+            actions: {
+              setSelectedUser: mockSetSelectedUser
+            }
+          }
+        }
+      })
+
+      wrapper.vm.handleUserSelected(selectedUser)
+      await flushPromises()
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      mockSetSelectedUser.mockReset()
+      wrapper.destroy()
+    })
+
+    it('should call the action to set the selected user', () => {
+      expect(mockSetSelectedUser).toHaveBeenCalledWith(expect.any(Object), selectedUser)
+    })
+
+    it('should show the User Details Drawer', () => {
+      expect(wrapper.vm.showUserDetailsDrawer).toBe(true)
+    })
+  })
 })

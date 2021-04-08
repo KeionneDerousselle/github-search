@@ -101,6 +101,9 @@ exports[`Index Page initial display should render as expected 1`] = `
       </section>
     </div>
   </div>
+  <transition-group-stub tag="div" name="" mode="">
+    <!---->
+  </transition-group-stub>
   </div>
 </main>
 <footer id="kd-github-search-footer" class="footer github-search-footer">
@@ -320,6 +323,9 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       </section>
     </div>
   </div>
+  <transition-group-stub tag="div" name="" mode="">
+    <!---->
+  </transition-group-stub>
   </div>
 </main>
 <footer id="kd-github-search-footer" class="footer github-search-footer">
@@ -481,6 +487,9 @@ exports[`Index Page when the next page of results is clicked, and the results ha
       </section>
     </div>
   </div>
+  <transition-group-stub tag="div" name="" mode="">
+    <!---->
+  </transition-group-stub>
   </div>
 </main>
 <footer id="kd-github-search-footer" class="footer github-search-footer">
@@ -700,6 +709,9 @@ exports[`Index Page when the next page of results is clicked, but another scroll
       </section>
     </div>
   </div>
+  <transition-group-stub tag="div" name="" mode="">
+    <!---->
+  </transition-group-stub>
   </div>
 </main>
 <footer id="kd-github-search-footer" class="footer github-search-footer">

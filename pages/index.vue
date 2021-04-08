@@ -2,7 +2,8 @@
   <layout
     :page-title="pageTitle"
     :left-section-title="leftSectionTitle"
-    :right-section-title="rightSectionTitle">
+    :right-section-title="rightSectionTitle"
+    :show-drawer="showUserDetailsDrawer">
     <template #headerTop>
       <search-form
         id="search-form"
@@ -17,7 +18,9 @@
       <div
         id="results-box"
         class="results-box content__panel">
-        <search-results id="results" />
+        <search-results
+          id="results"
+          @userSelected="handleUserSelected" />
 
         <div
           v-show="numberOfResults"
@@ -39,6 +42,15 @@
           v-if="selectedUser"
           :user="selectedUser" />
       </div>
+    </template>
+
+    <template #drawer>
+      <button @click="showUserDetailsDrawer = false">
+        close
+      </button>
+      <user-details
+        v-if="selectedUser"
+        :user="selectedUser" />
     </template>
   </layout>
 </template>
@@ -71,7 +83,8 @@ export default {
     currentScrollCancellation: null,
     pageTitle: 'GitHub Users Search',
     leftSectionTitle: 'Search',
-    rightSectionTitle: 'User Details'
+    rightSectionTitle: 'User Details',
+    showUserDetailsDrawer: false
   }),
 
   computed: {
@@ -88,7 +101,8 @@ export default {
   methods: {
     ...mapActions('users', [
       'search',
-      'setPage'
+      'setPage',
+      'setSelectedUser'
     ]),
 
     setMaxScollHeight(el) {
@@ -134,6 +148,11 @@ export default {
         x: false,
         y: true
       })
+    },
+
+    handleUserSelected(user) {
+      this.setSelectedUser(user)
+      this.showUserDetailsDrawer = true
     }
   }
 }

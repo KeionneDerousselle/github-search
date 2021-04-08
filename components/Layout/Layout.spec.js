@@ -10,6 +10,17 @@ describe('Layout', () => {
       headerTopId = 'header-top'
 
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         slots: {
           headerTop: `<div id="${headerTopId}">Header Top Content</div>`
         }
@@ -39,7 +50,19 @@ describe('Layout', () => {
     beforeAll(() => {
       headerTopId = 'header-top'
 
-      wrapper = mountPreMocked(Layout)
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ]
+      })
     })
 
     afterAll(() => {
@@ -66,6 +89,17 @@ describe('Layout', () => {
       headerBottomId = 'header-bottom'
 
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         slots: {
           headerBottom: `<div id="${headerBottomId}">Header Bottom Content</div>`
         }
@@ -95,7 +129,19 @@ describe('Layout', () => {
     beforeAll(() => {
       headerBottomId = 'header-bottom'
 
-      wrapper = mountPreMocked(Layout)
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ]
+      })
     })
 
     afterAll(() => {
@@ -121,6 +167,17 @@ describe('Layout', () => {
     beforeAll(() => {
       pageTitle = 'Page Title'
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         propsData: {
           pageTitle
         }
@@ -149,6 +206,17 @@ describe('Layout', () => {
     beforeAll(() => {
       leftSectionTitle = 'Left Section Title'
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         propsData: {
           leftSectionTitle
         }
@@ -177,6 +245,17 @@ describe('Layout', () => {
     beforeAll(() => {
       leftSectionContentId = 'left-section-content'
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         slots: {
           leftSectionContent: `<div id="${leftSectionContentId}">Left Section Content</div>`
         }
@@ -205,7 +284,19 @@ describe('Layout', () => {
 
     beforeAll(() => {
       leftSectionContentId = 'left-section-content'
-      wrapper = mountPreMocked(Layout)
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ]
+      })
     })
 
     afterAll(() => {
@@ -231,6 +322,17 @@ describe('Layout', () => {
     beforeAll(() => {
       rightSectionTitle = 'Right Section Title'
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         propsData: {
           rightSectionTitle
         }
@@ -259,6 +361,17 @@ describe('Layout', () => {
     beforeAll(() => {
       rightSectionContentId = 'right-section-content'
       wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
         slots: {
           rightSectionContent: `<div id="${rightSectionContentId}">Right Section Content</div>`
         }
@@ -287,7 +400,19 @@ describe('Layout', () => {
 
     beforeAll(() => {
       rightSectionContentId = 'right-section-content'
-      wrapper = mountPreMocked(Layout)
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ]
+      })
     })
 
     afterAll(() => {
@@ -304,6 +429,238 @@ describe('Layout', () => {
 
     it('should not display the right section content', () => {
       expect(() => wrapper.get(`#right-section #${rightSectionContentId}`)).toThrow()
+    })
+  })
+
+  describe('when a drawer slot is provided on a mobile device and the show drawer prop is true', () => {
+    let drawerId
+
+    beforeAll(async () => {
+      drawerId = 'drawer-content'
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(true),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
+
+        slots: {
+          drawer: `<div id="${drawerId}">Drawer Content</div>`
+        }
+      })
+
+      wrapper.setProps({
+        showDrawer: true
+      })
+
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should display the drawer', () => {
+      expect(wrapper.get('.drawer').element).toBeVisible()
+    })
+
+    it('should display the drawer content', () => {
+      expect(wrapper.get(`.drawer #${drawerId}`).element).toBeVisible()
+    })
+
+    it('should set the display drawer flag to true', () => {
+      expect(wrapper.vm.displayDrawer).toBe(true)
+    })
+
+    it('should set the drawer transition to the opening transition', () => {
+      expect(wrapper.vm.drawerTransition).toEqual({
+        key: true,
+        name: 'slide-in',
+        mode: 'in-out'
+      })
+    })
+  })
+
+  describe('when a drawer slot is provided on a mobile device, but the show drawer prop is false', () => {
+    let drawerId
+
+    beforeAll(async () => {
+      drawerId = 'drawer-content'
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(true),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
+
+        slots: {
+          drawer: `<div id="${drawerId}">Drawer Content</div>`
+        }
+      })
+
+      wrapper.setProps({
+        showDrawer: false
+      })
+
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display the drawer', () => {
+      expect(() => wrapper.get('.drawer')).toThrow()
+    })
+
+    it('should not display the drawer content', () => {
+      expect(() => wrapper.get(`.drawer #${drawerId}`)).toThrow()
+    })
+
+    it('should set the display drawer flag to false', () => {
+      expect(wrapper.vm.displayDrawer).toBe(false)
+    })
+
+    it('should set the drawer transition to the close transition', () => {
+      expect(wrapper.vm.drawerTransition).toEqual({
+        key: false,
+        name: 'slide-in',
+        mode: 'out-in'
+      })
+    })
+  })
+
+  describe('when a drawer slot is provided and the show drawer prop is true, but the device is not mobile', () => {
+    let drawerId
+
+    beforeAll(async () => {
+      drawerId = 'drawer-content'
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(false),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ],
+
+        slots: {
+          drawer: `<div id="${drawerId}">Drawer Content</div>`
+        }
+      })
+
+      wrapper.setProps({
+        showDrawer: true
+      })
+
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display the drawer', () => {
+      expect(() => wrapper.get('.drawer')).toThrow()
+    })
+
+    it('should not display the drawer content', () => {
+      expect(() => wrapper.get(`.drawer #${drawerId}`)).toThrow()
+    })
+
+    it('should set the display drawer flag to true', () => {
+      expect(wrapper.vm.displayDrawer).toBe(true)
+    })
+
+    it('should set the drawer transition to the opening transition', () => {
+      expect(wrapper.vm.drawerTransition).toEqual({
+        key: true,
+        name: 'slide-in',
+        mode: 'in-out'
+      })
+    })
+  })
+
+  describe('when a drawer slot is not provided, the show drawer prop is true, and the device is mobile', () => {
+    let drawerId
+
+    beforeAll(async () => {
+      drawerId = 'drawer-content'
+      wrapper = mountPreMocked(Layout, {
+        stubs: {
+          'transition-group': transitionStub()
+        },
+        mixins: [
+          {
+            computed: {
+              $isMobile: jest.fn().mockReturnValue(true),
+              $vh100: jest.fn().mockReturnValue({ height: `${window.innerHeight}px` })
+            }
+          }
+        ]
+      })
+
+      wrapper.setProps({
+        showDrawer: true
+      })
+
+      await wrapper.vm.$nextTick()
+    })
+
+    afterAll(() => {
+      wrapper.destroy()
+    })
+
+    it('should render as expected', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
+    it('should not display the drawer', () => {
+      expect(() => wrapper.get('.drawer')).toThrow()
+    })
+
+    it('should not display the drawer content', () => {
+      expect(() => wrapper.get(`.drawer #${drawerId}`)).toThrow()
+    })
+
+    it('should set the display drawer flag to true', () => {
+      expect(wrapper.vm.displayDrawer).toBe(true)
+    })
+
+    it('should set the drawer transition to the opening transition', () => {
+      expect(wrapper.vm.drawerTransition).toEqual({
+        key: true,
+        name: 'slide-in',
+        mode: 'in-out'
+      })
     })
   })
 })
