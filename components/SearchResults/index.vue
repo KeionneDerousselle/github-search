@@ -54,8 +54,7 @@ export default {
   methods: {
     ...mapActions('users', [
       'search',
-      'setPage',
-      'setSelectedUser'
+      'setPage'
     ]),
 
     addScrollListener(el) {
@@ -123,7 +122,7 @@ export default {
     },
 
     handleUserSelected(user) {
-      this.setSelectedUser(user)
+      this.$emit('userSelected', user)
     }
   }
 }
